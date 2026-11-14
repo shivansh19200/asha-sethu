@@ -1,0 +1,41 @@
+/* Theme tokens: light (default) and dark (when .theme-dark on root) */
+:root{
+  /* spacing & type */
+  --font-body: 'Hind', 'Noto Sans Devanagari', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-size-body: 18px;
+  --font-size-header: 22px;
+
+  /* Light tokens */
+  --bg: #FCFBF8;
+  --card: #FFFFFF;
+  --ink: #1B2B33;
+  --muted: #66695E;
+  --primary: #1F5E9E;
+  --on-primary: #FFFFFF;
+  --sage: #E6EFE6;
+  --sage-ink: #2B4A35;
+  --border: #DAD5C7;
+  --control-border: #7F9BB5;
+  --ring: #6FA3D6;
+  --accent: #1F5E9E; /* reuse primary */
+  --amber-bg: #FBE2C4;
+  --amber-ink: #6B3205;
+}
+
+/* Dark theme overrides */
+.theme-dark{
+  --bg: #11181A;
+  --card: #18232A;
+  --ink: #ECE7DA;
+  --muted: #A4AD9F;
+  --primary: #6FA8E0;
+  --on-primary: #0F1A24;
+  --accent: #86B8E8;
+  --sage: #1D2B22;
+  --sage-ink: #BFE0C6;
+  --border: #2A352E;
+  --control-border: #5A7A96;
+  --ring: #86B8E8;
+  --amber-bg: #3A2008;
+  --amber-ink: #FFB26B;
+}
