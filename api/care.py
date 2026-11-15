@@ -148,6 +148,7 @@ class handler(BaseHTTPRequestHandler):
                 return send(self, 200, {'ok': True})
             if act == 'clear_demo':
                 db.table('visits').delete().like('client_id', 'demo-%').execute()
+                db.table('visits').delete().filter('record->>demo', 'eq', 'true').execute()
                 return send(self, 200, {'ok': True})
             return send(self, 400, {'error': 'unknown action'})
         except Exception as e:

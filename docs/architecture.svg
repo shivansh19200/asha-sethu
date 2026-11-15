@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter,Arial,sans-serif"><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7BD5C4"/></marker><marker id="g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8BD36B"/></marker></defs><rect width="1600" height="900" fill="#0A2A21"/><pattern id="d" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#ffffff" opacity=".07"/></pattern><rect width="1600" height="900" fill="url(#d)"/>
+<text x="800" y="70" text-anchor="middle" font-size="54" font-weight="700" font-family="Georgia,serif" fill="#F4F7F9" >Asha Sethu: System Architecture</text>
+<text x="800" y="112" text-anchor="middle" font-size="24" font-weight="400" fill="#9FB0BC" >Voice-first triage for ASHA home visits, with a plain-code safety floor</text>
+<text x="210" y="165" text-anchor="middle" font-size="26" font-weight="700" fill="#F4F7F9" >ASHA &amp; Phone</text>
+<text x="210" y="194" text-anchor="middle" font-size="19" font-weight="400" fill="#9FB0BC" >(Client)</text>
+<text x="660" y="165" text-anchor="middle" font-size="26" font-weight="700" fill="#F4F7F9" >Backend &amp; API Routing</text>
+<text x="660" y="194" text-anchor="middle" font-size="19" font-weight="400" fill="#9FB0BC" >(Python on Vercel)</text>
+<text x="1090" y="165" text-anchor="middle" font-size="26" font-weight="700" fill="#F4F7F9" >AI &amp; Rules Services</text>
+<text x="1090" y="194" text-anchor="middle" font-size="19" font-weight="400" fill="#9FB0BC" >(Helpers, never in charge)</text>
+<text x="1450" y="165" text-anchor="middle" font-size="26" font-weight="700" fill="#F4F7F9" >Alerts &amp; Care</text>
+<text x="1450" y="194" text-anchor="middle" font-size="19" font-weight="400" fill="#9FB0BC" >(Output)</text>
+<rect x="112" y="235" width="270" height="560" rx="18" fill="#ffffff" fill-opacity=".05" stroke="#7BD5C4" stroke-width="2.5" />
+<g transform="translate(140 258) scale(1.0)"><rect width="54" height="92" rx="10" fill="none" stroke="#7BD5C4" stroke-width="3.5"/><rect x="6" y="12" width="42" height="64" rx="4" fill="#7BD5C4" opacity=".25"/><circle cx="27" cy="84" r="3" fill="#7BD5C4"/></g>
+<text x="285" y="300" text-anchor="middle" font-size="22" font-weight="700" fill="#F4F7F9" >Web app</text>
+<text x="285" y="326" text-anchor="middle" font-size="17" font-weight="400" fill="#9FB0BC" >React + Vite</text>
+<text x="285" y="348" text-anchor="middle" font-size="15" font-weight="400" fill="#9FB0BC" >(works on any phone)</text>
+<g transform="translate(150 450)" stroke="#7BD5C4" stroke-width="3.5" fill="none" stroke-linecap="round"><rect x="-8" y="-18" width="16" height="26" rx="8"/><path d="M-15 0q0 17 15 17t15-17M0 17v9"/></g>
+<text x="185" y="448" text-anchor="start" font-size="19" font-weight="700" fill="#F4F7F9" >Voice input</text>
+<text x="185" y="470" text-anchor="start" font-size="15" font-weight="400" fill="#9FB0BC" >Browser speech</text>
+<g transform="translate(150 535)" stroke="#7BD5C4" stroke-width="3" fill="none" stroke-linecap="round"><rect x="-20" y="-13" width="40" height="26" rx="5"/><path d="M-12 -4h2M-4 -4h2M4 -4h2M12 -4h2M-10 5h20"/></g>
+<text x="185" y="533" text-anchor="start" font-size="19" font-weight="700" fill="#F4F7F9" >Type or tick</text>
+<text x="185" y="555" text-anchor="start" font-size="15" font-weight="400" fill="#9FB0BC" >Checklist, no typing</text>
+<g transform="translate(150 620)" stroke="#7BD5C4" stroke-width="3" fill="none"><circle r="17"/><ellipse rx="7" ry="17"/><path d="M-17 0h34"/></g>
+<text x="185" y="618" text-anchor="start" font-size="19" font-weight="700" fill="#F4F7F9" >Language</text>
+<text x="185" y="640" text-anchor="start" font-size="15" font-weight="400" fill="#9FB0BC" >Hindi, Hinglish, English</text>
+<g transform="translate(150 705)" stroke="#7BD5C4" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle r="18"/><path d="M-8 1l6 6 11-13"/></g>
+<text x="185" y="703" text-anchor="start" font-size="19" font-weight="700" fill="#F4F7F9" >She confirms</text>
+<text x="185" y="725" text-anchor="start" font-size="15" font-weight="400" fill="#9FB0BC" >Every sign, every send</text>
+<rect x="470" y="235" width="380" height="330" rx="22" fill="#ffffff" fill-opacity=".05" stroke="#8BD36B" stroke-width="2.5" />
+<g transform="translate(660 300)" stroke="#8BD36B" stroke-width="3.2" fill="none"><circle cx="-18" cy="-14" r="7"/><circle cx="18" cy="-14" r="7"/><circle cx="0" cy="16" r="7"/><path d="M-12 -10L-4 10M12 -10L4 10"/></g>
+<text x="660" y="345" text-anchor="middle" font-size="23" font-weight="700" fill="#F4F7F9" >Backend Server</text>
+<text x="660" y="370" text-anchor="middle" font-size="16" font-weight="400" fill="#9FB0BC" >(API routes)</text>
+<rect x="500" y="395" width="320" height="150" rx="14" fill="#3A2E12" stroke="#F2A33A" stroke-width="2.5" />
+<g transform="translate(540 440)" stroke="#F2A33A" stroke-width="3.5" fill="none" stroke-linejoin="round"><path d="M0 -24L22 -15V4Q22 18 0 26Q-22 18 -22 4V-15Z"/><path d="M-8 1l6 6 11-13" stroke-linecap="round"/></g>
+<text x="570" y="432" text-anchor="start" font-size="20" font-weight="700" fill="#F4F7F9" >Safety floor</text>
+<text x="570" y="456" text-anchor="start" font-size="15" font-weight="400" fill="#9FB0BC" >Plain Python rules.</text>
+<text x="570" y="476" text-anchor="start" font-size="15" font-weight="400" fill="#9FB0BC" >Sets the minimum level.</text>
+<text x="660" y="520" text-anchor="middle" font-size="15" font-weight="600" fill="#F2A33A" >AI can raise it, never lower it</text>
+<rect x="500" y="590" width="320" height="205" rx="18" fill="#124232" stroke="#8BD36B" stroke-width="2.5" />
+<g transform="translate(560 660)" stroke="#8BD36B" stroke-width="3.5" fill="none"><ellipse cx="0" cy="-22" rx="26" ry="9"/><path d="M-26 -22v40q0 9 26 9t26-9v-40M-26 -2q0 9 26 9t26-9"/></g>
+<text x="600" y="650" text-anchor="start" font-size="19" font-weight="700" fill="#F4F7F9" >Serverless Postgres</text>
+<text x="600" y="672" text-anchor="start" font-size="15" font-weight="400" fill="#9FB0BC" >(Supabase)</text>
+<text x="660" y="730" text-anchor="middle" font-size="15" font-weight="400" fill="#F4F7F9" >Visits under random codes</text>
+<text x="660" y="752" text-anchor="middle" font-size="15" font-weight="400" fill="#9FB0BC" >No names. Age as days only.</text>
+<text x="660" y="774" text-anchor="middle" font-size="15" font-weight="400" fill="#9FB0BC" >Doctor inbox, follow-ups</text>
+<rect x="930" y="235" width="330" height="560" rx="22" fill="#ffffff" fill-opacity=".05" stroke="#E59B6B" stroke-width="2.5" />
+<rect x="955" y="265" width="280" height="150" rx="14" fill="#0F362A" stroke="#E59B6B" stroke-width="2.5" />
+<g transform="translate(1000 310)" stroke="#E59B6B" stroke-width="3.2" fill="none" stroke-linecap="round"><circle cx="-12" cy="-8" r="11"/><circle cx="12" cy="-8" r="11"/><circle cx="0" cy="12" r="11"/><path d="M0 -8V1M-8 4l-4-6M8 4l4-6"/></g>
+<text x="1058" y="305" text-anchor="start" font-size="18" font-weight="700" fill="#F4F7F9" >Groq LLM (optional)</text>
+<text x="1095" y="360" text-anchor="middle" font-size="16" font-weight="400" fill="#F4F7F9" >Understands free wording</text>
+<text x="1095" y="383" text-anchor="middle" font-size="15" font-weight="400" fill="#9FB0BC" >Hindi, Hinglish, typos</text>
+<rect x="955" y="440" width="280" height="150" rx="14" fill="#0F362A" stroke="#8BD36B" stroke-width="2.5" />
+<g transform="translate(1000 485)" stroke="#8BD36B" stroke-width="3.2" fill="none"><circle cx="-18" cy="-14" r="7"/><circle cx="18" cy="-14" r="7"/><circle cx="0" cy="16" r="7"/><path d="M-12 -10L-4 10M12 -10L4 10"/></g>
+<text x="1058" y="480" text-anchor="start" font-size="18" font-weight="700" fill="#F4F7F9" >LangGraph Agent</text>
+<text x="1095" y="535" text-anchor="middle" font-size="16" font-weight="400" fill="#F4F7F9" >Picks the next question</text>
+<text x="1095" y="558" text-anchor="middle" font-size="15" font-weight="400" fill="#9FB0BC" >Shows every step, tagged</text>
+<rect x="955" y="615" width="280" height="150" rx="14" fill="#0F362A" stroke="#F2A33A" stroke-width="2.5" />
+<g transform="translate(1000 660)" stroke="#F2A33A" stroke-width="3.2" fill="none" stroke-linejoin="round"><path d="M-16 -22h20l12 12V22h-32z"/><path d="M-8 -2h16M-8 8h16"/></g>
+<text x="1058" y="655" text-anchor="start" font-size="16" font-weight="700" fill="#F4F7F9" >Doctor-reviewed bank</text>
+<text x="1095" y="710" text-anchor="middle" font-size="16" font-weight="400" fill="#F4F7F9" >33 signs, 32 reviewed</text>
+<text x="1095" y="733" text-anchor="middle" font-size="15" font-weight="400" fill="#9FB0BC" >Dr Pratibha Aggarwal</text>
+<rect x="1330" y="235" width="230" height="560" rx="22" fill="#ffffff" fill-opacity=".05" stroke="#F0554A" stroke-width="2.5" />
+<g transform="translate(1445 300) scale(1)"><path d="M0 -26L26 20H-26Z" fill="#F0554A"/><path d="M0 -10V6M0 11v3" stroke="#fff" stroke-width="4" stroke-linecap="round"/></g>
+<text x="1445" y="350" text-anchor="middle" font-size="19" font-weight="700" fill="#F4F7F9" >Red / Amber / Unsure</text>
+<text x="1445" y="374" text-anchor="middle" font-size="14" font-weight="400" fill="#9FB0BC" >Never Green when unsure</text>
+<g transform="translate(1445 455)" stroke="#7BD5C4" stroke-width="3.2" fill="none" stroke-linejoin="round"><path d="M-16 -22h20l12 12V22h-32z"/><path d="M-8 -2h16M-8 8h16"/></g>
+<text x="1445" y="505" text-anchor="middle" font-size="19" font-weight="700" fill="#F4F7F9" >Referral note</text>
+<text x="1445" y="529" text-anchor="middle" font-size="14" font-weight="400" fill="#9FB0BC" >Draft, sent only on tap</text>
+<g transform="translate(1445 605)" stroke="#7BD5C4" stroke-width="3.2" fill="none"><rect x="-24" y="-18" width="48" height="36" rx="5"/><path d="M-14 8v-6M-4 8v-14M6 8v-9M16 8v-18" stroke-linecap="round"/></g>
+<text x="1445" y="655" text-anchor="middle" font-size="19" font-weight="700" fill="#F4F7F9" >Care team view</text>
+<text x="1445" y="679" text-anchor="middle" font-size="14" font-weight="400" fill="#9FB0BC" >Village alerts, overdue</text>
+<g transform="translate(1445 740)"><rect x="-22" y="-14" width="44" height="34" fill="none" stroke="#F0554A" stroke-width="3.2"/><path d="M0 -8v18M-9 1h18" stroke="#F0554A" stroke-width="4"/><path d="M-26 -14L0 -28L26 -14" fill="none" stroke="#F0554A" stroke-width="3.2"/></g>
+<text x="1445" y="785" text-anchor="middle" font-size="15" font-weight="700" fill="#F4F7F9" >Doctor / Health centre</text>
+<path d="M382 420L470 420" stroke="#7BD5C4" stroke-width="2.5" fill="none" marker-end="url(#a)"  />
+<text x="426" y="365" text-anchor="middle" font-size="15" font-weight="400" fill="#F4F7F9" >Speech,</text><text x="426" y="385" text-anchor="middle" font-size="15" font-weight="400" fill="#F4F7F9" >text, ticks</text>
+<path d="M850 340L930 340" stroke="#7BD5C4" stroke-width="2.5" fill="none" marker-end="url(#a)" marker-start="url(#a)" />
+<path d="M850 430L955 430" stroke="#7BD5C4" stroke-width="2.5" fill="none" marker-end="url(#a)" marker-start="url(#a)" />
+<path d="M850 690L955 690" stroke="#7BD5C4" stroke-width="2.5" fill="none" marker-end="url(#a)" marker-start="url(#a)" />
+<text x="895" y="385" text-anchor="middle" font-size="15" font-weight="400" fill="#F4F7F9" >Free</text><text x="895" y="405" text-anchor="middle" font-size="15" font-weight="400" fill="#F4F7F9" >text</text>
+<text x="895" y="640" text-anchor="middle" font-size="15" font-weight="400" fill="#F4F7F9" >Rules</text><text x="895" y="660" text-anchor="middle" font-size="15" font-weight="400" fill="#F4F7F9" >lookup</text>
+<path d="M1260 330L1330 330" stroke="#7BD5C4" stroke-width="2.5" fill="none" marker-end="url(#a)"  />
+<path d="M1260 505L1330 505" stroke="#7BD5C4" stroke-width="2.5" fill="none" marker-end="url(#a)"  />
+<path d="M1260 690L1330 690" stroke="#8BD36B" stroke-width="2.5" fill="none" marker-end="url(#g)"  stroke-dasharray="7 6"/>
+<path d="M660 562L660 592" stroke="#8BD36B" stroke-width="2.5" fill="none" marker-end="url(#g)" marker-start="url(#g)" />
+<text x="745" y="582" text-anchor="middle" font-size="15" font-weight="400" fill="#F4F7F9" >Visit records</text>
+<text x="800" y="872" text-anchor="middle" font-size="17" font-weight="400" fill="#9FB0BC" >Prototype security. Real logins come before any field use. Built with AgentFoundry.</text>
+<g><circle cx="426" cy="455" r="17" fill="#F2A33A"/><text x="426" y="461" text-anchor="middle" font-size="18" font-weight="700" fill="#0A2A21">1</text></g><g><circle cx="890" cy="340" r="17" fill="#F2A33A"/><text x="890" y="346" text-anchor="middle" font-size="18" font-weight="700" fill="#0A2A21">2</text></g><g><circle cx="890" cy="430" r="17" fill="#F2A33A"/><text x="890" y="436" text-anchor="middle" font-size="18" font-weight="700" fill="#0A2A21">3</text></g><g><circle cx="660" cy="578" r="17" fill="#F2A33A"/><text x="660" y="584" text-anchor="middle" font-size="18" font-weight="700" fill="#0A2A21">4</text></g><g><circle cx="1295" cy="330" r="17" fill="#F2A33A"/><text x="1295" y="336" text-anchor="middle" font-size="18" font-weight="700" fill="#0A2A21">5</text></g><g><circle cx="1295" cy="690" r="17" fill="#F2A33A"/><text x="1295" y="696" text-anchor="middle" font-size="18" font-weight="700" fill="#0A2A21">6</text></g><text x="800" y="835" text-anchor="middle" font-size="17" fill="#F2C879">1 She speaks or ticks  ·  2 Agent asks the next question  ·  3 Rules set the floor  ·  4 Visit saved  ·  5 Alert + referral  ·  6 Care team follows up</text></svg>

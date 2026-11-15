@@ -49,7 +49,7 @@ class handler(BaseHTTPRequestHandler):
                 'signs': b.get('signs', []),
                 'answers': b.get('answers', []),
                 'level': b['level'],
-                'record': b.get('record', {}),
+                'record': {**(b.get('record') or {}), **({'demo': True} if b.get('demo') else {})},
                 'asha_name': b.get('asha_name'),
                 'village': b.get('village'),
             }
