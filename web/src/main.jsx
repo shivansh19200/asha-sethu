@@ -1,6 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import SmokeTest from './SmokeTest'
+import App from './App'
+import './layout.css'
 
 const root = createRoot(document.getElementById('root'))
-root.render(<SmokeTest />)
+root.render(<App />)

@@ -1,0 +1,25 @@
+/* layout.css - Responsive layout for wider screens */
+
+@media (min-width: 481px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  #root {
+    width: 420px;
+    border: 1px solid var(--bd);
+    border-radius: 26px;
+    background-color: var(--card);
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  #root {
+    width: 100%;
+  }
+}
