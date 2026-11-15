@@ -16,6 +16,7 @@ async function postJson(url, body) {
 export async function saveVisit(body) {
   const prior = localStorage.getItem('priorCode')
   if (prior) body = { ...body, prior_code: prior }
+  if (localStorage.getItem('demoMode')) body = { ...body, demo: true }
   try { const d = await postJson('/api/visits', body); return { ok: true, code: d.patient_code } }
   catch { write(VKEY, [...read(VKEY), body]); return { ok: false, code: null } }
 }

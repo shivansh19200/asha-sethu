@@ -1,0 +1,82 @@
+/* polish.css: visual pass. Imported LAST in main.jsx so it overrides earlier files. Tokens + shell + components. */
+:root[data-theme="light"], :root:not([data-theme]) {
+  --bg: #F3F7F4; --card: #FFFFFF; --ink: #10261E; --mut: #5B6B63;
+  --pri: #0E6B4F; --onpri: #FFFFFF; --acc: #0E6B4F; --sky: #E3F1EA; --skyink: #0B4A37;
+  --bd: #D8E3DC; --bds: #A9C2B3; --ring: #5DB894;
+}
+:root[data-theme="dark"] {
+  --bg: #0E1815; --card: #15231E; --ink: #E8F0EB; --mut: #9DB0A6;
+  --pri: #4FC29A; --onpri: #07241A; --acc: #6FD3AE; --sky: #1B3329; --skyink: #BFEBD8;
+  --bd: #25382F; --bds: #3F6453; --ring: #4FC29A;
+}
+:root { --shadow: 0 1px 2px rgba(16,38,30,.06), 0 6px 18px rgba(16,38,30,.07); }
+body { font-weight: 400; }
+h1, .sx-header, .home-header, .settings-header { font-weight: 600; letter-spacing: -.01em; }
+:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+
+/* ---------- shells ---------- */
+:root { --ease: cubic-bezier(.22,1,.36,1); }
+/* landing mode (desktop): the page scrolls; the app lives inside .phone */
+body.landing-mode { display: block; padding: 0; background: #fff; }
+body.landing-mode #root { width: 100%; height: auto; border: 0; border-radius: 0; background: transparent; overflow: visible; box-shadow: none; }
+@media (min-width: 481px) and (max-width: 899px) {
+  body { background: var(--bg); padding: 16px; }
+  #root { width: 420px; border-radius: 28px; box-shadow: var(--shadow); }
+}
+/* care-team page: full width, no phone frame */
+body.care-mode { display: block; background: #F4F6F5; padding: 0; }
+body.care-mode #root { width: 100%; height: auto; overflow: visible; border: 0; border-radius: 0; box-shadow: none; background: transparent; }
+
+/* smoother screen changes inside the app */
+@keyframes screenIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.phone > *, #root > .home, #root > .sx-screen, #root > .settings { animation: screenIn 420ms var(--ease) both; }
+.sx-back, .sx-btn, .sx-fill, .sx-row, .tile, .seg-lang button, .settings-toggle-button { transition: transform 200ms var(--ease), box-shadow 200ms var(--ease), background-color 200ms, border-color 200ms, color 200ms; }
+@media (prefers-reduced-motion: reduce) { .phone > *, #root > * { animation: none !important; } }
+
+/* ---------- components ---------- */
+.sx-screen, .home, .settings { padding-left: 20px; padding-right: 20px; }
+.settings { padding-top: 16px; padding-bottom: 32px; }
+.sx-btn { border-radius: 16px; font-weight: 600; box-shadow: var(--shadow); border-color: var(--bd); }
+.sx-btn.on { border-color: var(--pri); }
+.sx-btn.line { border-color: var(--pri); box-shadow: none; }
+.sx-fill { border-radius: 16px; font-weight: 600; background: linear-gradient(180deg, var(--pri), color-mix(in srgb, var(--pri) 82%, #000)); box-shadow: 0 6px 16px color-mix(in srgb, var(--pri) 35%, transparent); border-color: transparent; }
+.sx-back { border-radius: 14px; border-color: var(--bd); box-shadow: var(--shadow); }
+.sx-row { border-color: var(--bd); box-shadow: var(--shadow); border-radius: 16px; font-weight: 500; }
+.sx-row.on { background: var(--sky); border-color: var(--pri); }
+.sx-input, .sx-text, .settings-input { border-color: var(--bd); border-radius: 14px; box-shadow: inset 0 1px 2px rgba(16,38,30,.04); }
+.sx-input:focus, .sx-text:focus, .settings-input:focus { border-color: var(--pri); }
+.sx-rowcard { border-radius: 16px; box-shadow: var(--shadow); border-color: var(--bd); }
+.sx-chip, .sx-tag { font-weight: 600; }
+.sx-section, .sx-label, .home-label, .settings-label { color: var(--acc); font-weight: 600; }
+.sx-mic { box-shadow: 0 10px 26px color-mix(in srgb, var(--pri) 40%, transparent); }
+.sx-banner { border-radius: 0 0 22px 22px; }
+
+/* Home */
+.home { gap: 14px; padding-top: 16px; padding-bottom: 28px; }
+.home-top { gap: 10px; }
+.home-brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 17px; color: var(--ink); }
+.home-who { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; background: var(--card); border: 1px solid var(--bd); border-radius: 999px; padding: 6px 14px 6px 8px; font: inherit; font-size: 13px; font-weight: 500; color: var(--ink); cursor: pointer; box-shadow: var(--shadow); }
+.home-who i { width: 24px; height: 24px; border-radius: 999px; background: var(--sky); color: var(--skyink); display: grid; place-items: center; }
+.seg-lang { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--sky); border: 1px solid var(--bd); }
+.seg-lang button { border: 0; background: transparent; color: var(--mut); font: inherit; font-size: 13px; font-weight: 600; padding: 7px 13px; border-radius: 999px; cursor: pointer; min-width: 42px; }
+.seg-lang button.on { background: var(--pri); color: var(--onpri); box-shadow: 0 2px 6px rgba(0,0,0,.18); }
+.home-hero { background: linear-gradient(135deg, #0E6B4F, #0A4B38); border: 0; border-radius: 22px; box-shadow: var(--shadow); }
+.home-hero-svg circle { fill: #5DB894; opacity: .35; }
+.tile { border: 1px solid var(--bd); border-radius: 22px; box-shadow: var(--shadow); min-height: 156px; justify-content: center; gap: 6px; transition: transform 140ms ease-out, box-shadow 140ms; background: var(--card); }
+.tile:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(16,38,30,.14); }
+.tile-illustration { width: 64px; height: 64px; background: var(--sky); border-radius: 999px; overflow: hidden; align-items: flex-end; }
+.tile-label { font-size: 17px; font-weight: 600; }
+.tile-sub { font-size: 12px; color: var(--mut); text-align: center; line-height: 1.3; }
+.home-bottom { border-top: 0; padding-top: 0; }
+.home-followups { background: var(--card); border: 1px solid var(--bd); border-radius: 14px; padding: 10px 14px; box-shadow: var(--shadow); }
+.home-overdue-pill { font-weight: 600; }
+
+/* Settings */
+.settings-back { color: var(--acc); font-weight: 600; }
+.settings-link { display: flex; justify-content: space-between; align-items: center; width: 100%; background: var(--card); border: 1px solid var(--bd); border-radius: 14px; padding: 14px 16px; font: inherit; font-size: 16px; font-weight: 600; color: var(--ink); cursor: pointer; box-shadow: var(--shadow); text-align: left; }
+.settings-link::after { content: '›'; color: var(--acc); font-size: 22px; line-height: 1; }
+.settings-toggle-button { border-radius: 12px; font-weight: 600; }
+
+.sx-btn.sm { white-space: nowrap; }
+
+body.landing-mode #root, body.care-mode #root { max-width: none; margin: 0; }

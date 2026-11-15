@@ -1,0 +1,18 @@
+.tr-spot { position: fixed; z-index: 90; border-radius: 16px; pointer-events: none; box-shadow: 0 0 0 100vmax rgba(8,32,24,.6); outline: 3px solid #F2A33A; outline-offset: 0; }
+.tr-spot.pulse { animation: trPulse 1.4s ease-in-out infinite; }
+@keyframes trPulse { 0%, 100% { outline-color: #F2A33A; outline-offset: 0; } 50% { outline-color: rgba(242,163,58,.35); outline-offset: 7px; } }
+.tr-tip { position: fixed; z-index: 95; background: #fff; border-radius: 20px; padding: 18px 20px; box-shadow: 0 24px 70px rgba(8,32,24,.4); font-size: 15px; color: #10261E; animation: trIn 420ms cubic-bezier(.22,1,.36,1) both;}
+@keyframes trIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.tr-prog { display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #0E6B4F; }
+.tr-prog button { background: none; border: 0; font: inherit; font-size: 12px; text-transform: none; letter-spacing: 0; color: #6B7D74; cursor: pointer; text-decoration: underline; }
+.tr-tip h3 { margin: 8px 0 6px; font-family: 'Fraunces', Georgia, serif; font-size: 22px; font-weight: 600; letter-spacing: -.01em; }
+.tr-tip p { margin: 0; line-height: 1.5; color: #3E5248; }
+.tr-hint { margin-top: 10px; font-size: 13px; font-weight: 600; color: #8A5A00; background: #FFF4D6; border-radius: 10px; padding: 7px 10px; }
+.tr-bar { display: flex; gap: 8px; justify-content: flex-end; margin-top: 14px; }
+.tr-main { background: #0E6B4F; color: #fff; border: 0; border-radius: 12px; padding: 10px 18px; font: inherit; font-weight: 600; font-size: 14px; cursor: pointer; text-decoration: none; transition: background 160ms, transform 160ms; }
+.tr-main:hover { background: #0B5A42; transform: translateY(-1px); }
+.tr-ghost { background: none; border: 1px solid #C5D3CA; border-radius: 12px; padding: 10px 14px; font: inherit; font-size: 14px; color: #4B5E55; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { .tr-spot, .tr-tip { transition: none; animation: none; } }
+
+.tr-spot.anim { transition: top 420ms cubic-bezier(.22,1,.36,1), left 420ms cubic-bezier(.22,1,.36,1), width 420ms cubic-bezier(.22,1,.36,1), height 420ms cubic-bezier(.22,1,.36,1); }
+.tr-tip.anim { transition: top 420ms cubic-bezier(.22,1,.36,1), left 420ms cubic-bezier(.22,1,.36,1); }

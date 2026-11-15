@@ -25,6 +25,13 @@ export default function App() {
     return () => window.removeEventListener('online', syncPending)
   }, [])
 
+  // scenario cards on the landing page start a prefilled visit
+  useEffect(() => {
+    const run = (e) => { setVisit({ ...emptyVisit, patient: e.detail.patient, text: e.detail.text, checklistDone: !!e.detail.checklistDone }); setScreen('describe') }
+    window.addEventListener('asha-demo', run)
+    return () => window.removeEventListener('asha-demo', run)
+  }, [])
+
   // goToScreen('describe', 'mother') starts a fresh visit for that patient type.
   const goToScreen = (screenName, patient) => {
     if (patient) setVisit({ ...emptyVisit, patient })

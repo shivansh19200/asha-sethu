@@ -1,0 +1,63 @@
+.cx { --b: #D9E0DC; --ink: #14201B; --mut: #64736B; --g: #0E6B4F; display: grid; grid-template-columns: 236px 1fr; min-height: 100vh; color: var(--ink); font-size: 14px; font-family: 'Hind', 'Noto Sans Devanagari', system-ui, sans-serif; }
+.cx button, .cx a { font: inherit; }
+.cx-side { background: #0B3A2C; color: #C6DDD1; padding: 20px 14px; display: flex; flex-direction: column; gap: 2px; position: sticky; top: 0; height: 100vh; }
+.cx-brand { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 16px; padding: 0 8px 18px; }
+.cx-navlab { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: #7FA895; padding: 8px 10px; }
+.cx-nav { display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px; border: 0; border-radius: 8px; background: none; color: inherit; text-align: left; cursor: pointer; text-decoration: none; transition: background 160ms; }
+.cx-nav:hover { background: rgba(255,255,255,.08); }
+.cx-nav.on { background: rgba(255,255,255,.14); color: #fff; }
+.cx-count { margin-left: auto; background: #E0922F; color: #1B1204; font-size: 11px; font-weight: 600; border-radius: 999px; padding: 1px 8px; }
+.cx-grow { flex: 1; }
+.cx-main { padding: 28px 36px 40px; max-width: 1180px; width: 100%; }
+.cx-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+.cx-top h1 { margin: 0; font-size: 24px; font-weight: 600; }
+.cx-top p { margin: 4px 0 0; color: var(--mut); }
+.cx-top-r { display: flex; gap: 10px; align-items: center; }
+.cx-demo { border: 1px solid #B7791F; background: #FFF4D6; color: #6B4A0B; font-size: 11px; font-weight: 600; letter-spacing: .06em; padding: 4px 10px; border-radius: 6px; }
+.cx-btn { background: #fff; border: 1px solid var(--b); border-radius: 8px; padding: 8px 14px; cursor: pointer; font-weight: 500; color: var(--ink); transition: background 160ms, border-color 160ms; }
+.cx-btn:hover { background: #F1F5F3; }
+.cx-btn.pri { background: var(--g); color: #fff; border-color: var(--g); }
+.cx-btn.pri:hover { background: #0B5A42; }
+.cx-link { background: none; border: 0; color: var(--g); cursor: pointer; font-weight: 500; }
+.cx-err { background: #FDECEA; border: 1px solid #E5A5A0; color: #8A1C15; padding: 10px 14px; border-radius: 8px; margin-bottom: 14px; }
+.cx-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; }
+.cx-kpi { background: #fff; border: 1px solid var(--b); border-radius: 10px; padding: 16px 18px; }
+.cx-kpi span { color: var(--mut); font-size: 13px; }
+.cx-kpi b { display: block; font-size: 32px; font-weight: 600; margin-top: 4px; }
+.cx-kpi.warn { border-color: #E0B46A; background: #FFFAF0; }
+.cx-cols { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; }
+.cx-card { background: #fff; border: 1px solid var(--b); border-radius: 10px; padding: 18px; margin-bottom: 14px; }
+.cx-card.flush { padding: 0; overflow: hidden; }
+.cx-card-h { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.cx-card-h h2 { margin: 0; font-size: 15px; font-weight: 600; }
+.cx-line { display: grid; grid-template-columns: 70px 1fr auto auto; gap: 14px; align-items: center; padding: 10px 0; border-top: 1px solid #EDF1EE; }
+.cx-line em { font-style: normal; color: var(--mut); } .cx-line i { font-style: normal; color: var(--mut); font-size: 13px; min-width: 70px; text-align: right; }
+.cx-lv { display: inline-block; min-width: 58px; text-align: center; padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+.cx-lv.red { background: #B3261E; color: #fff; } .cx-lv.amber { background: #FBE2C4; color: #6B3205; } .cx-lv.unsure { background: #E9E7DF; color: #4A463A; } .cx-lv.green { background: #1E7A3C; color: #fff; }
+.cx-alert { background: #FFF6E0; border: 1px solid #E0B46A; border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; color: #4B3508; }
+.cx-alert.red { background: #FDECEA; border-color: #E5A5A0; color: #6E130E; }
+.cx-empty { color: var(--mut); padding: 8px 0; } .cx-empty.pad { padding: 22px 18px; }
+.cx-tabs { display: flex; gap: 4px; padding: 10px 14px; border-bottom: 1px solid var(--b); }
+.cx-tabs button { border: 0; background: none; padding: 7px 14px; border-radius: 8px; cursor: pointer; color: var(--mut); font-weight: 500; }
+.cx-tabs button.on { background: #E6F0EA; color: #0B4A37; }
+.cx-table { width: 100%; border-collapse: collapse; }
+.cx-table th { text-align: left; font-size: 12px; font-weight: 600; color: var(--mut); padding: 10px 14px; background: #F6F8F7; border-bottom: 1px solid var(--b); }
+.cx-card:not(.flush) .cx-table th, .cx-card:not(.flush) .cx-table td { padding-left: 8px; padding-right: 8px; }
+.cx-table td { padding: 12px 14px; border-bottom: 1px solid #EDF1EE; vertical-align: middle; }
+.cx-table td small { display: block; color: var(--mut); font-size: 12px; margin-top: 2px; }
+.cx-table td.sg { max-width: 280px; color: #33423A; }
+.cx-table td.act { text-align: right; }
+.cx-table tr.hot td { background: #FFF8E8; }
+.cx-table td.bar div { height: 8px; background: #E9EFEB; border-radius: 4px; width: 160px; overflow: hidden; }
+.cx-table td.bar i { display: block; height: 100%; background: var(--g); border-radius: 4px; }
+.cx-ok { color: var(--g); font-weight: 600; }
+.cx-checked { background: #EAF4EE; border: 1px solid #BBD8C7; color: #0B4A37; padding: 8px 12px; border-radius: 8px; margin-bottom: 10px; }
+.cx-foot { display: flex; gap: 10px; align-items: center; margin-top: 22px; color: var(--mut); font-size: 13px; }
+.cx-gate { min-height: 100vh; display: grid; place-items: center; background: #0B3A2C; }
+.cx-gate-card { width: 360px; background: #fff; border-radius: 14px; padding: 28px; display: grid; gap: 10px; }
+.cx-gate-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; } .cx-gate-logo span { margin-left: auto; color: var(--mut, #64736B); font-size: 13px; }
+.cx-gate-card label { font-size: 13px; font-weight: 600; }
+.cx-gate-card input { padding: 11px 12px; font-size: 16px; border: 1px solid #C9D3CD; border-radius: 8px; }
+.cx-gate-card button { padding: 11px; border: 0; border-radius: 8px; background: #0E6B4F; color: #fff; font-weight: 600; cursor: pointer; }
+.cx-gate-card p { margin: 0; font-size: 12px; color: #64736B; } .cx-gate-card a { font-size: 13px; color: #0E6B4F; }
+@media (max-width: 860px) { .cx { grid-template-columns: 1fr; } .cx-side { position: static; height: auto; flex-direction: row; flex-wrap: wrap; } .cx-kpis { grid-template-columns: 1fr 1fr; } .cx-cols { grid-template-columns: 1fr; } .cx-navlab { display: none; } }

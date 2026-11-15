@@ -1,0 +1,35 @@
+.demo-top { display: flex; gap: 10px; align-items: center; font-size: 13px; color: #5B6B63; margin: 4px 0 14px; }
+.demo-tag { border: 1.5px dashed #7F9BB5; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; color: #4B5E55; white-space: nowrap; }
+.fc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.fc { perspective: 1100px; height: 232px; }
+.fc-in { position: relative; width: 100%; height: 100%; transition: transform 700ms cubic-bezier(.22,1,.36,1); transform-style: preserve-3d; }
+.fc.on .fc-in { transform: rotateY(180deg); }
+.fc-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 18px; padding: 16px; text-align: left; border: 1px solid #D8E3DC; background: #fff; box-shadow: 0 1px 2px rgba(16,38,30,.06), 0 8px 22px rgba(16,38,30,.07); font: inherit; color: #10261E; display: flex; flex-direction: column; gap: 6px; }
+.fc-front { cursor: pointer; transition: transform 220ms cubic-bezier(.22,1,.36,1), box-shadow 220ms; }
+.fc-front:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(16,38,30,.13); }
+.fc-front b { font-family: 'Fraunces', Georgia, serif; font-size: 20px; line-height: 1.15; }
+.fc-front p, .fc-back p { margin: 0; font-size: 13.5px; line-height: 1.45; color: #4B5E55; }
+.fc-front em { margin-top: auto; font-style: normal; font-size: 12px; font-weight: 600; color: #0E6B4F; }
+.fc-n { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px; color: #0E6B4F; }
+.fc-n i { font-style: normal; font-weight: 600; font-size: 11px; background: #E3F1EA; color: #0B4A37; border-radius: 999px; padding: 2px 9px; }
+.fc-back { transform: rotateY(180deg); background: #F3F8F5; }
+.fc-exp { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; }
+.fc-act { margin-top: auto; display: flex; gap: 8px; }
+.fc-run { flex: 1; background: #0E6B4F; color: #fff; border: 0; border-radius: 12px; padding: 10px; font: inherit; font-weight: 600; font-size: 14px; cursor: pointer; transition: transform 160ms, background 160ms; }
+.fc-run:hover { background: #0B5A42; transform: translateY(-1px); }
+.fc-back-btn { background: none; border: 1px solid #C5D3CA; border-radius: 12px; padding: 10px 12px; font: inherit; font-size: 13px; cursor: pointer; color: #4B5E55; }
+.rt { margin-top: 22px; border: 1px solid #D8E3DC; border-radius: 18px; padding: 16px; background: #fff; }
+.rt-h { display: grid; gap: 2px; margin-bottom: 10px; } .rt-h span { font-size: 13px; color: #5B6B63; }
+.rt-row { padding: 10px 0; border-top: 1px solid #EAF0EC; display: grid; gap: 5px; }
+.rt-btn { text-align: left; background: #F3F8F5; border: 1px solid #D0DED5; border-radius: 10px; padding: 9px 12px; font: inherit; font-size: 15px; cursor: pointer; color: #10261E; transition: background 160ms, border-color 160ms; }
+.rt-btn:hover { background: #E3F1EA; border-color: #0E6B4F; }
+.rt-row small { color: #6B7D74; font-size: 12px; }
+.rt-out { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-size: 13.5px; animation: rtIn 400ms cubic-bezier(.22,1,.36,1) both; }
+.rt-lv { display: inline-flex; align-items: center; gap: 8px; } .rt-lv em { font-style: normal; font-size: 12px; font-weight: 600; } .rt-lv .ok { color: #1E7A3C; } .rt-lv .no { color: #B3261E; }
+@keyframes rtIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.demo-reset { margin-top: 18px; background: none; border: 1px solid #C5D3CA; border-radius: 999px; padding: 9px 18px; font: inherit; font-size: 13px; color: #4B5E55; cursor: pointer; }
+.demo-reset:hover { background: #EEF4F0; }
+/* DEMO DATA strip pinned at the top of the phone while a scenario runs */
+body.demo-on .phone::before { content: 'DEMO DATA'; display: block; position: sticky; top: 0; z-index: 5; text-align: center; font-size: 11px; font-weight: 700; letter-spacing: .1em; padding: 5px; background: #FFF4D6; color: #6B4A0B; border-bottom: 1px dashed #B7791F; }
+.ld-sec .ld-wrap.try { grid-template-columns: 1.15fr .85fr; }
+@media (prefers-reduced-motion: reduce) { .fc-in { transition: none; } .rt-out { animation: none; } }

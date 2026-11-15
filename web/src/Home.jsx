@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import rules from '../../data/rules.json'
 import { careCall } from './api'
+import { Logo } from './Side'
 import './theme.css'
 import './Home.css'
 import './result.css'
@@ -9,7 +10,7 @@ import LevelPill from './Pill'
 import { getRecent, followups, patchRecent, ago, dueAt } from './recent'
 
 const NAME = Object.fromEntries(rules.signs.map((s) => [s.id, s.name_en]))
-const startVisit = (goToScreen, type) => { localStorage.removeItem('priorCode'); goToScreen('describe', type) }
+const startVisit = (goToScreen, type) => { localStorage.removeItem('priorCode'); localStorage.removeItem('demoMode'); document.body.classList.remove('demo-on'); goToScreen('describe', type) }
 
 export default function Home({ goToScreen }) {
 
@@ -45,8 +46,7 @@ export default function Home({ goToScreen }) {
     })
   }, [])
 
-  const toggleLanguage = () => {
-    const next = language === 'EN' ? 'हि' : 'EN'
+  const setLang = (next) => {
     setLanguage(next)
     localStorage.setItem('language', next)
   }
@@ -55,16 +55,16 @@ export default function Home({ goToScreen }) {
     <div className="home">
       {/* Top row */}
       <div className="home-top">
-        <div className="home-top-left">
-          <button type="button" className="home-village-label" style={{ background: 'none', border: 0, padding: 0, cursor: 'pointer', textDecoration: 'underline', font: 'inherit' }} onClick={() => goToScreen('settings')}>{m.homeAsha}</button>
+        <div className="home-brand"><Logo size={28} /> Asha Sethu</div>
+        <div className="seg-lang" role="group" aria-label="Language">
+          <button type="button" className={language === 'EN' ? 'on' : ''} onClick={() => setLang('EN')}>EN</button>
+          <button type="button" className={language !== 'EN' ? 'on' : ''} onClick={() => setLang('हि')}>हि</button>
         </div>
-        <button
-          className="language-toggle"
-          onClick={toggleLanguage}
-        >
-          EN | हि
-        </button>
       </div>
+      <button type="button" className="home-who" onClick={() => goToScreen('settings')}>
+        <i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><circle cx="12" cy="8" r="4" /><path d="M4 21c1-5 15-5 16 0" /></svg></i>
+        {m.homeAsha}
+      </button>
 
       {/* Header and label */}
       <div className="home-header-section">
@@ -136,6 +136,7 @@ export default function Home({ goToScreen }) {
             </svg>
           </div>
           <div className="tile-label">Mother</div>
+          <div className="tile-sub">Danger signs in a mother</div>
         </button>
 
         <button
@@ -148,6 +149,7 @@ export default function Home({ goToScreen }) {
             </svg>
           </div>
           <div className="tile-label">Newborn</div>
+          <div className="tile-sub">Danger signs in a baby</div>
         </button>
       </div>
 
