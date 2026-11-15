@@ -11,6 +11,7 @@ import Saved from './Saved'
 import ReviewSend from './ReviewSend'
 import HowWeMeasured from './HowWeMeasured'
 import Rules from './Rules'
+import Care from './Care'
 
 const emptyVisit = { patient: null, text: '', signs: [], checklistDone: false, unclear: false, confirmed: false, answers: [], skipped: false, saveResult: null, understoodText: null, negated: [], suggested: [], agent: null, clientId: null, noteInput: null, doneSteps: [], sendResult: null, noteText: null}
 
@@ -30,6 +31,7 @@ export default function App() {
     setScreen(screenName)
   }
 
+  if (window.location.hash === '#care') return <Care />
   if (screen === 'home') return <Home goToScreen={goToScreen} />
   if (screen === 'settings') return <Settings goToScreen={goToScreen} />
   if (screen === 'describe') return <Describe visit={visit} setVisit={setVisit} goToScreen={goToScreen} />

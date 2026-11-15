@@ -31,9 +31,16 @@ class handler(BaseHTTPRequestHandler):
             db = create_client(os.environ['SUPABASE_URL'], os.environ['SUPABASE_SERVICE_ROLE_KEY'])
             cid = b.get('client_id')
             if cid:  # same visit sent twice (retry) -> same code, no duplicate row
-                ex = db.table('visits').select('patient_code').eq('client_id', cid).execute().data
+                ex = db.table('visits').select('patient_code,family_code').eq('client_id', cid).execute().data
                 if ex:
-                    return send(self, 200, {'patient_code': ex[0]['patient_code']})
+                    return send(self, 200, {'patient_code': ex[0].get('family_code') or ex[0]['patient_code']})
+            # returning patient: keep one family code across visits
+            prior = ''.join(c for c in str(b.get('prior_code') or '').upper() if c.isalnum())[:8]
+            family = None
+            if prior:
+                p = db.table('visits').select('patient_code,family_code').or_(f'patient_code.eq.{prior},family_code.eq.{prior}').limit(1).execute().data
+                if p:
+                    family = p[0].get('family_code') or p[0]['patient_code']
             row = {
                 'client_id': cid,
                 'patient_type': b['patient_type'],
@@ -48,9 +55,10 @@ class handler(BaseHTTPRequestHandler):
             }
             for _ in range(8):
                 row['patient_code'] = ''.join(secrets.choice(ALPHABET) for _ in range(4))
+                row['family_code'] = family or row['patient_code']
                 try:
                     db.table('visits').insert(row).execute()
-                    return send(self, 200, {'patient_code': row['patient_code']})
+                    return send(self, 200, {'patient_code': row['family_code']})
                 except Exception as e:
                     if '23505' in str(e) or 'duplicate' in str(e).lower():
                         continue

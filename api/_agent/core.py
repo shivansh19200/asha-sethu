@@ -12,6 +12,26 @@ LEVEL_WORD = {'RED': 'Red', 'AMBER': 'Amber', 'UNSURE': 'Unsure', 'GREEN': 'Gree
 ANS_WORD = {'yes': 'Yes', 'no': 'No', 'unsure': 'Not sure'}
 
 
+SIGN_NAME = {x['id']: x['name_en'] for x in json.loads((Path(__file__).resolve().parents[2] / 'data' / 'rules.json').read_text(encoding='utf-8'))['signs']}
+# a sign seen on an earlier visit makes these questions come first (order only, never the level)
+HISTORY_LINKS = {'m_headache': ['m_vision'], 'm_swelling': ['m_vision', 'm_headache'], 'm_fever': ['m_foul_discharge']}
+
+
+def clean_history(h):
+    out = []
+    for v in (h if isinstance(h, list) else [])[:3]:
+        if isinstance(v, dict) and isinstance(v.get('signs'), list):
+            days = v.get('days_ago')
+            out.append({'signs': [x for x in v['signs'] if isinstance(x, str) and x in SIGN_NAME],
+                        'days_ago': days if isinstance(days, int) and days >= 0 else 0})
+    return [v for v in out if v['signs']]
+
+
+def history_signs(st):
+    hs = {x for v in st.get('history', []) for x in v['signs']}
+    return hs | {y for x in hs for y in HISTORY_LINKS.get(x, [])}
+
+
 def new_state(req):
     answers = [{'qid': a['qid'], 'answer': a['answer'], 'sign': QMAP[a['qid']]['sign']}
                for a in req.get('answers', []) if a.get('qid') in QMAP and a.get('answer') in ANS_WORD]
@@ -21,6 +41,7 @@ def new_state(req):
         'answers': answers,
         'unclear': bool(req.get('unclear')), 'checklist_done': bool(req.get('checklist_done')),
         'show_now': bool(req.get('show_now')),
+        'history': clean_history(req.get('history')),
         'trace': [t for t in req.get('trace', []) if isinstance(t, dict) and t.get('key')],
         'suggestion': req.get('suggestion') if req.get('suggestion') in LEVEL_WORD else None, 'escalated': False, 'stop': False, 'pending': None, 'next': None,
         'steps': 0, 'drafts': [], 'model_ok': bool(os.environ.get('GROQ_API_KEY')) and req.get('use_model', True),
@@ -57,7 +78,8 @@ def candidates(st):
         reach = max(RANK[q['level_if_yes']], RANK[floor_for(st, extra=[q['sign']])])
         if reach > RANK[cur]:
             out.append((reach, q))
-    out.sort(key=lambda x: -x[0])
+    hs = history_signs(st)
+    out.sort(key=lambda x: (-x[0], 0 if x[1]['sign'] in hs else 1))
     return [q for _, q in out]
 
 
@@ -210,6 +232,12 @@ def act(st):
 
 def prepare(st):
     """Heard / Asked lines come from the worker's own inputs. Added once, in order."""
+    if st.get('history'):
+        last = st['history'][0]
+        d = last['days_ago']
+        when = 'today' if d == 0 else (f'{d} day ago' if d == 1 else f'{d} days ago')
+        names = ', '.join(SIGN_NAME[x] for x in last['signs'][:3])
+        add(st, 'history', f"Checked history: {names} on last visit ({when})", 'rules')
     yes_signs = {a['sign'] for a in st['answers'] if a['answer'] == 'yes'}
     heard = [s for s in st['signs'] if s not in yes_signs]
     if heard:

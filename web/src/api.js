@@ -14,6 +14,8 @@ async function postJson(url, body) {
 
 // Saves to the server; on failure keeps a copy on the phone and retries later.
 export async function saveVisit(body) {
+  const prior = localStorage.getItem('priorCode')
+  if (prior) body = { ...body, prior_code: prior }
   try { const d = await postJson('/api/visits', body); return { ok: true, code: d.patient_code } }
   catch { write(VKEY, [...read(VKEY), body]); return { ok: false, code: null } }
 }
@@ -34,6 +36,19 @@ export async function syncPending() {
   write(SKEY, sends)
 }
 
+// Care-team and history calls (one endpoint). Returns null if the server is down.
+export async function careCall(body) {
+  try { return await postJson('/api/care', body) } catch { return null }
+}
+
+const histCache = {}
+async function getHistory() {
+  const code = localStorage.getItem('priorCode')
+  if (!code) return []
+  if (!histCache[code]) { const d = await careCall({ action: 'history', code }); histCache[code] = d ? d.visits : [] }
+  return histCache[code]
+}
+
 // write_note() + fill_record() on the server. Returns null if the server is down.
 export async function getNote(payload) {
   try { return await postJson('/api/note', payload) } catch { return null }
@@ -50,7 +65,8 @@ export async function callAgent(visit, showNow) {
     checklist_done: visit.checklistDone,
     show_now: showNow,
     suggestion: prev.suggestion || null,
-    trace: prev.trace || []
+    trace: prev.trace || [],
+    history: await getHistory()
   }
   try {
     const ctl = new AbortController()

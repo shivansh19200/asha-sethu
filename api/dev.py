@@ -1,13 +1,10 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import hello, visits, understand, agent, note, referral
+import visits, understand, agent, note, referral, care
 
-ROUTES = {'/understand': understand, '/agent': agent, '/note': note, '/referral': referral}
+ROUTES = {'/understand': understand, '/agent': agent, '/note': note, '/referral': referral, '/care': care}
 
 
 class Router(BaseHTTPRequestHandler):
-    def do_GET(self):
-        hello.handler.do_GET(self)
-
     def do_POST(self):
         mod = next((m for p, m in ROUTES.items() if self.path.startswith(p)), visits)
         mod.handler.do_POST(self)

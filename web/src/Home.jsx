@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import rules from '../../data/rules.json'
+import { careCall } from './api'
 import './theme.css'
 import './Home.css'
 import './result.css'
 import { M } from './more'
 import LevelPill from './Pill'
 import { getRecent, followups, patchRecent, ago, dueAt } from './recent'
+
+const NAME = Object.fromEntries(rules.signs.map((s) => [s.id, s.name_en]))
+const startVisit = (goToScreen, type) => { localStorage.removeItem('priorCode'); goToScreen('describe', type) }
 
 export default function Home({ goToScreen }) {
 
@@ -15,7 +20,30 @@ export default function Home({ goToScreen }) {
   const [tick, setTick] = useState(0)
   const recent = getRecent()
   const fu = followups()
-  const markReached = (id) => { patchRecent(id, { reached: true }); setTick(tick + 1) }
+  const setFollowup = (v, status) => {
+    patchRecent(v.id, status === 'reached' ? { reached: true, followup: status } : { followup: status })
+    if (v.code) careCall({ action: 'followup', code: v.code, status })
+    setTick(tick + 1)
+  }
+  const [q, setQ] = useState('')
+  const [found, setFound] = useState(null)
+  const lookup = async () => {
+    const code = q.trim().toUpperCase()
+    if (!code) return
+    const d = await careCall({ action: 'history', code })
+    setFound({ code, visits: d ? d.visits : null })
+  }
+  const begin = () => { localStorage.setItem('priorCode', found.code); goToScreen('describe', found.visits[0].patient_type) }
+  // ask the server which referrals the doctor has received
+  useEffect(() => {
+    const codes = getRecent().filter((v) => v.code && v.sent && !v.received).map((v) => v.code)
+    if (!codes.length) return
+    careCall({ action: 'status', codes }).then((d) => {
+      if (!d) return
+      getRecent().forEach((v) => { if (d.received[v.code] && !v.received) patchRecent(v.id, { received: true }) })
+      setTick((t) => t + 1)
+    })
+  }, [])
 
   const toggleLanguage = () => {
     const next = language === 'EN' ? 'हि' : 'EN'
@@ -28,7 +56,7 @@ export default function Home({ goToScreen }) {
       {/* Top row */}
       <div className="home-top">
         <div className="home-top-left">
-          <button type="button" className="home-village-label" style={{ background: 'none', border: 0, padding: 0, cursor: 'pointer', textDecoration: 'underline', font: 'inherit' }} onClick={() => goToScreen('settings')}>{[localStorage.getItem('ashaName'), localStorage.getItem('village')].filter(Boolean).join(', ') || m.homeAsha}</button>
+          <button type="button" className="home-village-label" style={{ background: 'none', border: 0, padding: 0, cursor: 'pointer', textDecoration: 'underline', font: 'inherit' }} onClick={() => goToScreen('settings')}>{m.homeAsha}</button>
         </div>
         <button
           className="language-toggle"
@@ -100,7 +128,7 @@ export default function Home({ goToScreen }) {
       <div className="home-tiles">
         <button
           className="tile"
-          onClick={() => goToScreen('describe', 'mother')}
+          onClick={() => startVisit(goToScreen, 'mother')}
         >
           <div className="tile-illustration">
             <svg viewBox="0 0 64 64">
@@ -112,7 +140,7 @@ export default function Home({ goToScreen }) {
 
         <button
           className="tile"
-          onClick={() => goToScreen('describe', 'newborn')}
+          onClick={() => startVisit(goToScreen, 'newborn')}
         >
           <div className="tile-illustration">
             <svg viewBox="0 0 64 64">
@@ -138,6 +166,27 @@ export default function Home({ goToScreen }) {
           )}
         </div>
 
+        <div className="sx-section" style={{ marginTop: 18 }}>Seen before? Look up by patient code</div>
+        <div className="sx-rowcard">
+          <div style={{ display: 'flex', gap: 8 }}>
+            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="4-letter code" maxLength={8} style={{ flex: 1, padding: 10, fontSize: 16, textTransform: 'uppercase', border: '1px solid var(--bd)', borderRadius: 10 }} />
+            <button type="button" className="sx-btn sm line" onClick={lookup}>Look up</button>
+          </div>
+          {found && found.visits === null && <div className="sx-small" style={{ marginTop: 8 }}>Could not reach the server.</div>}
+          {found && found.visits && found.visits.length === 0 && <div className="sx-small" style={{ marginTop: 8 }}>No visits found for {found.code}.</div>}
+          {found && found.visits && found.visits.length > 0 && (
+            <div style={{ marginTop: 10 }}>
+              {found.visits.map((v, i) => (
+                <div key={i} className="sx-rowtop" style={{ marginBottom: 6 }}>
+                  <span className="sx-small" style={{ textTransform: 'none', letterSpacing: 0, fontSize: 13 }}>{v.days_ago === 0 ? 'Today' : `${v.days_ago} d ago`}: {v.signs.map((x) => NAME[x] || x).join(', ') || 'no signs'}</span>
+                  <LevelPill level={v.level} lang={lang} />
+                </div>
+              ))}
+              <button type="button" className="sx-btn" onClick={begin}>Start a visit for this patient</button>
+            </div>
+          )}
+        </div>
+
         <div className="sx-section" style={{ marginTop: 18 }}>{m.recent}</div>
         {recent.length === 0 && (
           <div className="sx-empty">
@@ -148,7 +197,7 @@ export default function Home({ goToScreen }) {
           </div>
         )}
         <div className="sx-list">
-          {recent.slice(0, 5).map((v, i) => {
+          {recent.slice(0, 8).map((v, i) => {
             const open = v.level === 'RED' || v.level === 'AMBER'
             const overdue = open && !v.reached && Date.now() > dueAt(v)
             return (
@@ -162,12 +211,17 @@ export default function Home({ goToScreen }) {
                 </div>
                 {open && (
                   <div className="sx-rowmeta">
+                    {v.received && <span className="sx-chip" style={{ fontSize: 11 }}>✓ Doctor received</span>}
                     {v.reached ? (
                       <span className="sx-chip" style={{ fontSize: 11 }}>{m.reachedDone}</span>
                     ) : (
                       <>
                         {overdue && <span className="home-overdue-pill">{m.overdueN(1)}</span>}
-                        <button type="button" className="sx-btn sm line" onClick={() => markReached(v.id)}>{m.reached}</button>
+                        {v.followup === 'could_not_go' && <span className="sx-chip" style={{ fontSize: 11 }}>Could not go</span>}
+                        {v.followup === 'not_yet' && <span className="sx-chip" style={{ fontSize: 11 }}>Not yet</span>}
+                        <button type="button" className="sx-btn sm line" onClick={() => setFollowup(v, 'reached')}>Reached</button>
+                        <button type="button" className="sx-btn sm line" onClick={() => setFollowup(v, 'not_yet')}>Not yet</button>
+                        <button type="button" className="sx-btn sm line" onClick={() => setFollowup(v, 'could_not_go')}>Could not go</button>
                       </>
                     )}
                   </div>
