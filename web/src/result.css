@@ -1,0 +1,21 @@
+.sx-portrait { display: inline-block; flex: none; border-radius: 999px; overflow: hidden; background: var(--sky); border: 1px solid var(--bd); }
+.sx-qhead { display: flex; align-items: center; gap: 14px; margin: 8px 0 12px; }
+.sx-qtext { font-size: 22px; font-weight: 500; min-height: 170px; display: flex; align-items: center; }
+
+.sx-banner { margin: 0 -20px 6px; padding: 24px 20px; animation: reveal 560ms ease-out both; }
+.lv-red { background: #B3261E; color: #fff; }
+.lv-amber, .lv-unsure { background: var(--ambbg); color: var(--ambink); }
+.lv-green { background: #1E7A3C; color: #fff; }
+.sx-banner-icon { display: inline-block; animation: pop 520ms cubic-bezier(.2,.9,.3,1.2) 400ms both; }
+.sx-banner-word { font-size: 26px; font-weight: 500; margin-top: 6px; animation: up 420ms cubic-bezier(.2,.7,.2,1) 560ms both; }
+.sx-banner-act { font-size: 18px; margin-top: 4px; animation: up 420ms cubic-bezier(.2,.7,.2,1) 640ms both; }
+
+.sx-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
+.sx-step { display: flex; gap: 10px; animation: up 420ms cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(700ms + var(--i, 0) * 350ms); }
+.sx-step-tick { color: var(--acc); flex: none; padding-top: 2px; }
+.sx-tag { display: inline-flex; align-items: center; gap: 4px; margin-top: 4px; padding: 3px 8px; border-radius: 999px; background: var(--sky); color: var(--skyink); font-size: 11px; font-weight: 500; }
+.sx-foot { font-size: 11px; color: var(--mut); text-align: center; margin-top: 14px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sx-banner, .sx-banner-icon, .sx-banner-word, .sx-banner-act, .sx-step { animation: none; }
+}

@@ -3,8 +3,10 @@ import Home from './Home'
 import Settings from './Settings'
 import Describe from './Describe'
 import Confirm from './Confirm'
+import Question from './Question'
+import Result from './Result'
 
-const emptyVisit = { patient: null, text: '', signs: [], checklistDone: false, unclear: false, confirmed: false }
+const emptyVisit = { patient: null, text: '', signs: [], checklistDone: false, unclear: false, confirmed: false, answers: [], skipped: false }
 
 export default function App() {
   const [screen, setScreen] = useState('home')
@@ -20,6 +22,8 @@ export default function App() {
   if (screen === 'settings') return <Settings goToScreen={goToScreen} />
   if (screen === 'describe') return <Describe visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
   if (screen === 'confirm') return <Confirm visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
+  if (screen === 'question') return <Question visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
+  if (screen === 'result') return <Result visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
 
   // Placeholder screens for question, result, note, send (pieces 3 and 4)
   const placeholderScreens = {

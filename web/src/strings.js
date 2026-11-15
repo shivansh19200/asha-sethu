@@ -18,7 +18,19 @@ export const T = {
     add: 'Add a sign',
     confirm: 'Confirm',
     remove: 'Remove',
-    back: 'Back'
+    back: 'Back',
+    q: 'Question', yes: 'Yes', no: 'No', notSure: 'Not sure', showNow: 'Show result now',
+    did: 'What the assistant did', review: 'Review and send',
+    foot: 'This is an alert aid, not a diagnosis.',
+    lvRED: 'Red', lvAMBER: 'Amber', lvGREEN: 'Green', lvUNSURE: 'Unsure',
+    actRED: 'Go to the hospital now.', actAMBER: 'Go to the health centre today.',
+    actUNSURE: 'Could not rule out danger. Check the list again or ask a doctor.',
+    actGREEN: 'No danger signs found. Watch at home.',
+    tagRules: 'From rules (review pending)', tagWorker: 'Worker confirmed', tagAI: 'AI suggested', tagDone: 'Done',
+    heardN: (n) => `Heard ${n} sign${n > 1 ? 's' : ''}`,
+    asked: 'Asked', a_yes: 'Yes', a_no: 'No', a_unsure: 'Not sure',
+    escalated: 'Escalated Red', levelSet: 'Danger level set', early: 'Result shown before all questions were answered',
+    notDone: 'Checklist not finished', unclearStep: 'Something was unclear', allClear: 'Checklist finished, no signs found'
   },
   hi: {
     mother: 'माँ',
@@ -39,6 +51,18 @@ export const T = {
     add: 'लक्षण जोड़ें',
     confirm: 'पुष्टि करें',
     remove: 'हटाएँ',
-    back: 'वापस'
+    back: 'वापस',
+    q: 'प्रश्न', yes: 'हाँ', no: 'नहीं', notSure: 'पता नहीं', showNow: 'अभी परिणाम दिखाएँ',
+    did: 'सहायक ने क्या किया', review: 'समीक्षा करें और भेजें',
+    foot: 'यह चेतावनी सहायक है, निदान नहीं।',
+    lvRED: 'लाल', lvAMBER: 'पीला', lvGREEN: 'हरा', lvUNSURE: 'अनिश्चित',
+    actRED: 'अभी अस्पताल जाएँ।', actAMBER: 'आज स्वास्थ्य केंद्र जाएँ।',
+    actUNSURE: 'ख़तरे से इनकार नहीं कर सकते। सूची फिर देखें या डॉक्टर से पूछें।',
+    actGREEN: 'कोई ख़तरे का लक्षण नहीं मिला। घर पर निगरानी रखें।',
+    tagRules: 'नियमों से (समीक्षा लंबित)', tagWorker: 'कार्यकर्ता ने पुष्टि की', tagAI: 'AI ने सुझाया', tagDone: 'हो गया',
+    heardN: (n) => `${n} लक्षण मिले`,
+    asked: 'पूछा', a_yes: 'हाँ', a_no: 'नहीं', a_unsure: 'पता नहीं',
+    escalated: 'लाल स्तर पर भेजा', levelSet: 'ख़तरे का स्तर तय', early: 'सभी प्रश्नों से पहले परिणाम दिखाया',
+    notDone: 'सूची पूरी नहीं हुई', unclearStep: 'कुछ साफ़ नहीं था', allClear: 'सूची पूरी, कोई लक्षण नहीं'
   }
 }
