@@ -48,11 +48,11 @@ def test_clean_checklist_all_no_is_green():
     assert r['level'] == 'GREEN'
 
 
-def test_mother_fever_then_foul_discharge_goes_red():
+def test_mother_fever_then_foul_discharge_goes_red_stays_amber():
     r = go('mother', ['m_fever'])
     assert r['level'] == 'AMBER'
     r = go('mother', ['m_fever'], [{'qid': 'q_m_foul_discharge', 'answer': 'yes'}])
-    assert r['level'] == 'RED' and r['status'] == 'done'
+    assert r['level'] == 'AMBER'
 
 
 def test_not_sure_answer_is_never_green():

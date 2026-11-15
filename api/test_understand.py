@@ -36,6 +36,10 @@ def test_ambiguous_negation_keeps_sign():
     r = t('fever no cough')
     assert 'nb_fever' in r['signs'] and r['unclear'] is True
 
+def test_longer_phrase_negation():
+    r = t('no severe headache', 'mother')
+    assert r['signs'] == [] and r['negated'] == ['m_headache']
+
 
 if __name__ == '__main__':
     for name, fn in list(globals().items()):

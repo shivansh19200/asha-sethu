@@ -36,8 +36,17 @@ def test_combination_raises_level():
 def test_mother_fever_alone_is_amber():
     assert floor_level(["m_fever"], checklist_done=False) == "AMBER"
 
-def test_mother_foul_discharge_is_red():
-    assert floor_level(["m_foul_discharge"], checklist_done=False) == "RED"
+def test_foul_discharge_is_amber_per_reviewer():
+    assert floor_level(["m_foul_discharge"], checklist_done=False) == "AMBER"
+
+def test_every_sign_has_one_question_at_the_same_level():
+    import json
+    from pathlib import Path
+    from rules import load_rules
+    lv = {s["id"]: s["level"] for s in load_rules()["signs"]}
+    qs = json.loads((Path(__file__).resolve().parent.parent / "data" / "questions.json").read_text(encoding="utf-8"))["questions"]
+    assert sorted(q["sign"] for q in qs) == sorted(lv)
+    assert all(q["level_if_yes"] == lv[q["sign"]] for q in qs)
 
 def test_adding_a_sign_never_lowers_level():
     import itertools

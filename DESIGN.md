@@ -52,7 +52,7 @@ Urgency colours (fixed, both modes): RED fill `#B3261E` with white text. AMBER u
 - Tile (Mother, Newborn): `--card` background, `1.5px solid var(--bds)`, radius 18px, illustration 38px at top-left, label 16px / 500 at the bottom.
 - Chip: `--sky` background, `--skyink` text, 11px, pill.
 - Level pill: icon + word. Red: alert-triangle + "Red". Amber: alert-circle + "Amber". Green: check-circle + "Green". Unsure: help-circle + "Unsure", using `--ambbg` / `--ambink`. Unsure is never shown as Green.
-- Source tag (in "What the assistant did"): a chip with one of four words: "AI suggested", "Worker confirmed", "From rules (review pending)", "Done". Same chip style as above, no new colours. Each tag has its own Tabler outline icon (sparkles is NOT allowed; use bulb, user-check, book, circle-check). Words carry the meaning, not the icon.
+- Source tag (in "What the assistant did"): a chip with one of four words: "AI suggested", "Worker confirmed", "From rules (doctor reviewed)", "Done". Same chip style as above, no new colours. Each tag has its own Tabler outline icon (sparkles is NOT allowed; use bulb, user-check, book, circle-check). Words carry the meaning, not the icon.
 - Checklist row (Describe screen): `--card`, `1.5px solid var(--bds)`, radius 14px, min height 56px, sign name left, a square tick box right. Groups have a section label.
 - Patient code: small label 11px `--mut`, shown as a short random code (for example K7M2). No names and no initials anywhere.
 - Row (inbox): `--card`, `1px solid var(--bd)`, radius 14px, padding 12px 14px.

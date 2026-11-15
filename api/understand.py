@@ -70,6 +70,7 @@ def analyse(text, patient):
         if not toks:
             continue
         matches = sorted({(sid, i, j) for sid in ids for p in PHRASES[sid] for (i, j) in find_spans(toks, p)}, key=lambda m: (m[1], -m[2]))
+        matches = [m for m in matches if not any(o != m and o[0] == m[0] and o[1] <= m[1] and m[2] <= o[2] for o in matches)]
         covered = {k for _, i, j in matches for k in range(i, j)}
         attached = {m: 0 for m in matches}
 

@@ -39,7 +39,9 @@ export const TOPIC = {
   nb_sleepy: ['Alertness', 'सुस्ती'], nb_yellow: ['Colour', 'रंग'], nb_cord: ['Cord', 'नाल'], nb_no_cry: ['Cry', 'रोना'],
   m_headache: ['Headache', 'सिरदर्द'], m_vision: ['Vision', 'नज़र'], m_fits: ['Fits', 'दौरे'], m_bleeding: ['Bleeding', 'खून'],
   m_fever_discharge: ['Fever', 'बुखार'], m_belly_pain: ['Pain', 'दर्द'], m_breathless: ['Breathing', 'साँस'],
-  m_baby_less: ['Movement', 'हलचल'], m_swelling: ['Swelling', 'सूजन'], m_water: ['Waters', 'पानी'], m_fever: ['Fever', 'बुखार'], m_foul_discharge: ['Discharge', 'स्राव'],
+  m_baby_less: ['Movement', 'हलचल'], m_swelling: ['Swelling', 'सूजन'], m_water: ['Waters', 'पानी'], m_fever: ['Fever', 'बुखार'], m_foul_discharge: ['Discharge', 'स्राव'],   nb_chest_indrawing: ['Breathing', 'साँस'], nb_skin_pus: ['Skin', 'त्वचा'], nb_eye_pus: ['Eyes', 'आँखें'], nb_loose_stools: ['Stools', 'दस्त'],
+  m_faint: ['Fainting', 'बेहोशी'], m_vag_bleed_preg: ['Bleeding', 'खून'], m_early_labour: ['Labour', 'प्रसव'], m_pale_weak: ['Weakness', 'कमज़ोरी'],
+  m_urine_burning: ['Urine', 'पेशाब'], m_breast: ['Breast', 'स्तन'], m_stitches: ['Stitches', 'टाँके'], m_vomiting: ['Vomiting', 'उल्टी'],
 }
 
 export const levelOf = (visit) => (visit.agent && visit.agent.status === 'done' ? visit.agent.level : currentLevel(visit))
