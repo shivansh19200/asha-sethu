@@ -16,6 +16,7 @@ export default function Confirm({ visit, setVisit, goToScreen }) {
   const name = (s) => (lang === 'hi' ? s.name_hi : s.name_en)
   const [showAll, setShowAll] = useState(false)
   const [busy, setBusy] = useState(false)
+  const [other, setOther] = useState(null)   // the text sounds like the OTHER patient (mother vs newborn)
 
   // Typed signs are ADDED to ticked signs; text never removes a tick.
   // If the server fails, the text counts as unclear, so it can never end up GREEN by accident.
@@ -39,6 +40,12 @@ export default function Confirm({ visit, setVisit, goToScreen }) {
           understoodText: text
         }))
         if (u.unclear && u.signs.length === 0 && !(u.suggested || []).length) setShowAll(true)
+        setOther(null)
+        if (u.signs.length === 0 && !(u.suggested || []).length) {
+          const o = patient === 'mother' ? 'newborn' : 'mother'
+          fetch('/api/understand', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text, patient: o }) })
+            .then((r) => r.json()).then((x) => { if (live && ((x.signs || []).length || (x.suggested || []).length)) setOther(o) }).catch(() => {})
+        }
         setBusy(false)
       })
     return () => { live = false }
@@ -64,6 +71,13 @@ export default function Confirm({ visit, setVisit, goToScreen }) {
           <div className="sx-section sx-in" style={{ '--i': 3 }}>{t.heard}</div>
           <div className="sx-transcript">{visit.text}</div>
         </>
+      )}
+
+      {other && (
+        <div role="alert" style={{ margin: '12px 0', padding: '12px 14px', borderRadius: 14, background: '#FFF4D6', color: '#7A5200', fontSize: 15, lineHeight: 1.45 }}>
+          This sounds like a <b>{other === 'newborn' ? 'newborn' : 'mother'}</b>, but you started a {patient === 'newborn' ? 'newborn' : 'mother'} visit.
+          <div><button type="button" className="sx-fill" style={{ marginTop: 10 }} onClick={() => { setOther(null); setVisit((v) => ({ ...v, patient: other, signs: [], suggested: [], negated: [], understoodText: '' })) }}>Switch to {other === 'newborn' ? 'newborn' : 'mother'} visit</button></div>
+        </div>
       )}
 
       <div className="sx-section sx-in" style={{ '--i': 4 }}>{t.found}</div>
