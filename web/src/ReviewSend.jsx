@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { patchRecent } from './recent'
 import './theme.css'
 import './screens.css'
 import './result.css'
@@ -33,6 +34,7 @@ export default function ReviewSend({ visit, setVisit, goToScreen }) {
   const send = async () => {
     setBusy(true)
     const r = await sendReferral(visit.clientId)
+    if (r.ok) patchRecent(visit.clientId, { sent: true })
     const step = r.ok ? 'Referral sent' : 'Referral waiting for signal. It will send automatically.'
     setVisit((v) => ({ ...v, noteText: notes, sendResult: { sent: true, ok: r.ok }, doneSteps: [...(v.doneSteps || []), { text: step, tag: 'done' }] }))
     goToScreen('saved')

@@ -49,3 +49,18 @@
 .sx-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 8px; }
 .sx-table th, .sx-table td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--bd); vertical-align: top; }
 .sx-table th { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .06em; color: var(--acc); }
+
+
+/* level pill + rows (Mission 7) */
+.sx-pill { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 74px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; }
+.sx-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.sx-rowcard { background: var(--card); border: 1px solid var(--bd); border-radius: 14px; padding: 12px 14px; animation: up 420ms cubic-bezier(.2,.7,.2,1) both; }
+.sx-rowtop { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
+.sx-rowmeta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+.sx-why { font-size: 14px; color: var(--mut); margin: 10px 0 14px; }
+.sx-why b { color: var(--ink); font-weight: 500; }
+.sx-empty { text-align: center; padding: 14px 0 6px; }
+.sx-empty svg { width: 84px; height: 84px; }
+.sx-btn.sm { min-height: 40px; font-size: 14px; width: auto; padding: 0 14px; margin: 0; }
+.sx-btn.line { border-color: var(--pri); color: var(--pri); }
+@media (prefers-reduced-motion: reduce) { .sx-rowcard { animation: none; } }

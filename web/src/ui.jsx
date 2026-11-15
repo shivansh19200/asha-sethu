@@ -1,6 +1,6 @@
 import React from 'react'
 import { T } from './strings'
-import path from 'path';
+//import path from 'path';
 
 export const getLang = () => (localStorage.getItem('language') === 'हि' ? 'hi' : 'en')
 

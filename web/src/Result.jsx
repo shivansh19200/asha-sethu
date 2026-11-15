@@ -8,6 +8,7 @@ import { T } from './strings'
 import { Icon, TopRow, getLang, patientLabel } from './ui'
 import { levelOf } from './floor'
 import { StepList } from './Steps'
+import { M } from './more'
 
 const ICON = { RED: 'alert-triangle', AMBER: 'alert-circle', GREEN: 'check-circle', UNSURE: 'help-circle' }
 const TAGMAP = { ai_suggested: 'ai', worker_confirmed: 'worker', rules: 'rules', done: 'done' }
@@ -35,6 +36,16 @@ export default function Result({ visit, goToScreen }) {
   const base = fromAgent ? visit.agent.trace.map((x) => [x.text, TAGMAP[x.tag] || 'rules']) : local
   const steps = [...base, ...(visit.doneSteps || []).map((x) => [x.text, 'done'])]
 
+  const m = M[lang]
+  const lvOf = Object.fromEntries(rules.signs.map((s) => [s.id, s.level]))
+  const presentIds = [...new Set([...visit.signs, ...visit.answers.filter((a) => a.answer === 'yes').map((a) => a.sign)])]
+  const setters = presentIds.filter((id) => lvOf[id] === level).map((id) => sname[id])
+  const why = level === 'UNSURE' ? m.whyUnsure : level === 'GREEN' ? m.whyGreen : setters.length ? setters.join(', ') : m.whyRaised
+  const copyAlert = async () => {
+    const text = m.alertTpl(m.patient[patient], presentIds.map((id) => sname[id]).join(', ') || '-')
+    try { navigator.share ? await navigator.share({ text }) : await navigator.clipboard.writeText(text) } catch { /* cancelled */ }
+  }
+
   return (
     <div className="sx-screen">
       <TopRow label={patientLabel(patient, lang)} onBack={() => goToScreen('home')} lang={lang} />
@@ -44,6 +55,9 @@ export default function Result({ visit, goToScreen }) {
         <div className="sx-banner-word">{t['lv' + level]}</div>
         <div className="sx-banner-act">{t['act' + level]}</div>
       </div>
+
+      <div className="sx-why"><b>{m.whyLabel}:</b> {why}</div>
+      {level === 'RED' && <button type="button" className="sx-btn" onClick={copyAlert}>{m.copyAlert}</button>}
 
       <div className="sx-section">{t.found}</div>
       <div className="sx-chips">

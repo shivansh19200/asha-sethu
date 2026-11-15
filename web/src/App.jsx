@@ -10,6 +10,7 @@ import NoteRecord from './NoteRecord'
 import Saved from './Saved'
 import ReviewSend from './ReviewSend'
 import HowWeMeasured from './HowWeMeasured'
+import Rules from './Rules'
 
 const emptyVisit = { patient: null, text: '', signs: [], checklistDone: false, unclear: false, confirmed: false, answers: [], skipped: false, saveResult: null, understoodText: null, negated: [], suggested: [], agent: null, clientId: null, noteInput: null, doneSteps: [], sendResult: null, noteText: null}
 
@@ -39,6 +40,7 @@ export default function App() {
   if (screen === 'saved') return <Saved visit={visit} goToScreen={goToScreen} />   
   if (screen === 'review') return <ReviewSend visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
   if (screen === 'measure') return <HowWeMeasured goToScreen={goToScreen} />
+  if (screen === 'rules') return <Rules goToScreen={goToScreen} />
 
   // Placeholder screens for question, result, note, send (pieces 3 and 4)
   const placeholderScreens = {

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { addRecent } from './recent'
 import rules from '../../data/rules.json'
 import './theme.css'
 import './screens.css'
@@ -54,6 +55,8 @@ export default function NoteRecord({ visit, setVisit, goToScreen }) {
       asha_name: asha,
       village
     })
+
+    addRecent({ id: cid.current, code: r.code, level, patient, ts: Date.now(), sent: false, reached: false })
     const text = r.ok ? 'Saved the visit record' : 'Saved the visit on this phone (will send when signal returns)'
     setVisit((v) => ({
       ...v,

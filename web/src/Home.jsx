@@ -1,11 +1,21 @@
 import React, { useState } from 'react'
-import path from 'path';
 import './theme.css'
 import './Home.css'
+import './result.css'
+import { M } from './more'
+import LevelPill from './Pill'
+import { getRecent, followups, patchRecent, ago, dueAt } from './recent'
 
 export default function Home({ goToScreen }) {
 
   const [language, setLanguage] = useState(localStorage.getItem('language') || 'EN')
+
+  const lang = language === 'EN' ? 'en' : 'hi'
+  const m = M[lang]
+  const [tick, setTick] = useState(0)
+  const recent = getRecent()
+  const fu = followups()
+  const markReached = (id) => { patchRecent(id, { reached: true }); setTick(tick + 1) }
 
   const toggleLanguage = () => {
     const next = language === 'EN' ? 'हि' : 'EN'
@@ -18,7 +28,7 @@ export default function Home({ goToScreen }) {
       {/* Top row */}
       <div className="home-top">
         <div className="home-top-left">
-          <div className="home-village-label" style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => goToScreen('settings')}>ASHA name and village</div>
+          <button type="button" className="home-village-label" style={{ background: 'none', border: 0, padding: 0, cursor: 'pointer', textDecoration: 'underline', font: 'inherit' }} onClick={() => goToScreen('settings')}>{[localStorage.getItem('ashaName'), localStorage.getItem('village')].filter(Boolean).join(', ') || m.homeAsha}</button>
         </div>
         <button
           className="language-toggle"
@@ -113,17 +123,58 @@ export default function Home({ goToScreen }) {
         </button>
       </div>
 
-      {/* Bottom row */}
+      {/* Follow-ups and recent visits (real data from this phone) */}
       <div className="home-bottom">
         <div className="home-followups">
-          <span className="home-followups-text">2 follow-ups</span>
-          <span className="home-overdue-pill">
-            <svg className="home-overdue-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
-            1 overdue
-          </span>
+          <span className="home-followups-text">{fu.open.length ? m.followups(fu.open.length) : m.allGood}</span>
+          {fu.overdue.length > 0 && (
+            <span className="home-overdue-pill">
+              <svg className="home-overdue-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              {m.overdueN(fu.overdue.length)}
+            </span>
+          )}
+        </div>
+
+        <div className="sx-section" style={{ marginTop: 18 }}>{m.recent}</div>
+        {recent.length === 0 && (
+          <div className="sx-empty">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mom" /></svg>
+            <svg viewBox="0 0 64 64" aria-hidden="true" style={{ width: 56, height: 56 }}><use href="#baby" /></svg>
+            <div style={{ fontWeight: 500 }}>{m.noVisits}</div>
+            <div className="sx-small" style={{ textTransform: 'none', letterSpacing: 0, fontSize: 14 }}>{m.noVisitsHint}</div>
+          </div>
+        )}
+        <div className="sx-list">
+          {recent.slice(0, 5).map((v, i) => {
+            const open = v.level === 'RED' || v.level === 'AMBER'
+            const overdue = open && !v.reached && Date.now() > dueAt(v)
+            return (
+              <div key={v.id} className="sx-rowcard" style={{ animationDelay: `${i * 80}ms` }}>
+                <div className="sx-rowtop">
+                  <span style={{ fontWeight: 500 }}>{m.patient[v.patient]} · {v.code ? `${m.code} ${v.code}` : m.onPhone}</span>
+                  <LevelPill level={v.level} lang={lang} />
+                </div>
+                <div className="sx-small" style={{ textTransform: 'none', letterSpacing: 0, fontSize: 12 }}>
+                  {ago(v.ts, lang)}{v.sent ? ` · ${m.referralSent}` : ''}
+                </div>
+                {open && (
+                  <div className="sx-rowmeta">
+                    {v.reached ? (
+                      <span className="sx-chip" style={{ fontSize: 11 }}>{m.reachedDone}</span>
+                    ) : (
+                      <>
+                        {overdue && <span className="home-overdue-pill">{m.overdueN(1)}</span>}
+                        <button type="button" className="sx-btn sm line" onClick={() => markReached(v.id)}>{m.reached}</button>
+                      </>
+                    )}
+                  </div>
+                )}
+              </div>
+            )
+          })}
         </div>
       </div>
     </div>
