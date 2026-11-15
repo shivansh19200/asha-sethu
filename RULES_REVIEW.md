@@ -31,9 +31,15 @@ All levels are provisional until a named doctor signs off. Never describe these 
 | m_vision | mother | RED | MCP card | 0.1.0 | pending | none |
 | m_fits | mother | RED | MCP card | 0.1.0 | pending | none |
 | m_bleeding | mother | RED | ICMR | 0.1.0 | pending | none |
-| m_fever_discharge | mother | RED | ICMR | 0.1.0 | pending | none |
 | m_belly_pain | mother | RED | TO VERIFY | 0.1.0 | pending | none |
 | m_breathless | mother | RED | MCP card | 0.1.0 | pending | none |
 | m_baby_less | mother | RED | ICMR | 0.1.0 | pending | none |
 | m_swelling | mother | AMBER | MCP card | 0.1.0 | pending | none |
 | m_water | mother | RED | MCP card | 0.1.0 | pending | none |
+| m_fever | mother | AMBER | Job Aid (fever >102 F; TO VERIFY) | 0.2.0 | pending | none |
+| m_foul_discharge | mother | RED | Job Aid | 0.2.0 | pending | none |
+
+## Version 0.2.0 changes
+- Split m_fever_discharge into m_fever (AMBER, provisional) and m_foul_discharge (RED).
+- Added an empty `combinations` list; floor = highest of sign levels and any combination whose signs are all present.
+- Doctor to decide: level for plain fever, and whether any combinations (for example fever plus another sign) should raise the level.

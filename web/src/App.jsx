@@ -9,7 +9,7 @@ import Result from './Result'
 import NoteRecord from './NoteRecord'
 import Saved from './Saved'
 
-const emptyVisit = { patient: null, text: '', signs: [], checklistDone: false, unclear: false, confirmed: false, answers: [], skipped: false, saveResult: null, understoodText: null, negated: [], suggested: []}
+const emptyVisit = { patient: null, text: '', signs: [], checklistDone: false, unclear: false, confirmed: false, answers: [], skipped: false, saveResult: null, understoodText: null, negated: [], suggested: [], agent: null}
 
 export default function App() {
   const [screen, setScreen] = useState('home')

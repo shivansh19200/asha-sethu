@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "status": "Clinical review pending. Sources were found from search snippets and still need a person to open each document and confirm page numbers.",
   "level_order": [
     "GREEN",
@@ -419,24 +419,62 @@
       "note": ""
     },
     {
-      "id": "m_fever_discharge",
+      "id": "m_fever",
       "patient": "mother",
-      "name_en": "Fever with foul-smelling discharge",
-      "name_hi": "बुखार के साथ बदबूदार स्राव",
+      "name_en": "Fever",
+      "name_hi": "बुखार",
+      "level": "AMBER",
+      "phrases": {
+        "en": [
+          "fever",
+          "high fever",
+          "feels hot",
+          "body is hot",
+          "running a temperature"
+        ],
+        "hinglish": [
+          "bukhar",
+          "bukhaar",
+          "tez bukhar",
+          "badan garam",
+          "badan garam hai"
+        ],
+        "hi": [
+          "बुखार",
+          "तेज़ बुखार",
+          "शरीर गरम है"
+        ]
+      },
+      "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), mother: fever more than 102 degree F, foul smelling discharge, losing consciousness (refer; printed p.7, verify page)",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
+      "note": "TO VERIFY. Job Aid refer threshold is fever more than 102 F; the app has no thermometer, so plain 'fever' is provisional AMBER until a doctor decides."
+    },
+    {
+      "id": "m_foul_discharge",
+      "patient": "mother",
+      "name_en": "Foul-smelling discharge",
+      "name_hi": "बदबूदार स्राव",
       "level": "RED",
       "phrases": {
         "en": [
-          "fever with foul discharge",
-          "smelly discharge with fever",
-          "foul smelling discharge"
+          "foul smelling discharge",
+          "foul discharge",
+          "smelly discharge",
+          "bad smelling discharge",
+          "discharge with bad smell"
         ],
         "hinglish": [
-          "bukhar aur badbudar paani",
+          "badbudar srav",
           "badbu wala discharge",
-          "badbu aa rahi"
+          "badbu aa rahi",
+          "badboo wala srav",
+          "bukhar aur badbudar paani"
         ],
         "hi": [
-          "बुखार और बदबूदार स्राव",
+          "बदबूदार स्राव",
+          "बदबू वाला स्राव",
           "बदबू वाला पानी"
         ]
       },
@@ -444,7 +482,7 @@
       "review_status": "pending",
       "reviewed_by": null,
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
-      "note": "Official number: fever more than 102 F. The app asks 'fever' and needs no thermometer."
+      "note": "Job Aid lists foul smelling discharge as a refer sign on its own, so RED. Doctor to confirm."
     },
     {
       "id": "m_belly_pain",
@@ -588,5 +626,6 @@
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/Revised%20India%20MCP%20Card%20English_(28-05-2018).pdf",
       "note": ""
     }
-  ]
+  ],
+  "combinations": []
 }

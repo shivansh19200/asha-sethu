@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "questions": [
     {
       "id": "q_nb_not_feeding",
@@ -114,14 +114,6 @@
       "threshold_note": ""
     },
     {
-      "id": "q_m_fever_discharge",
-      "sign": "m_fever_discharge",
-      "text_en": "Does the mother have fever with foul-smelling discharge?",
-      "text_hi": "क्या माँ को बुखार के साथ बदबूदार स्राव है?",
-      "level_if_yes": "RED",
-      "threshold_note": "Job Aid: fever more than 102 degree F. App uses 'fever', no thermometer."
-    },
-    {
       "id": "q_m_belly_pain",
       "sign": "m_belly_pain",
       "text_en": "Does the mother have severe belly pain?",
@@ -158,6 +150,22 @@
       "sign": "m_water",
       "text_en": "Is water leaking before the due time?",
       "text_hi": "क्या समय से पहले पानी बह रहा है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_fever",
+      "sign": "m_fever",
+      "text_en": "Does the mother have fever?",
+      "text_hi": "क्या माँ को बुखार है?",
+      "level_if_yes": "AMBER",
+      "threshold_note": "Job Aid refer threshold is fever more than 102 F. App asks plain fever, no thermometer."
+    },
+    {
+      "id": "q_m_foul_discharge",
+      "sign": "m_foul_discharge",
+      "text_en": "Is there foul-smelling discharge?",
+      "text_hi": "क्या बदबूदार स्राव है?",
       "level_if_yes": "RED",
       "threshold_note": ""
     }

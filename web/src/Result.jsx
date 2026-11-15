@@ -6,30 +6,33 @@ import './screens.css'
 import './result.css'
 import { T } from './strings'
 import { Icon, TopRow, getLang, patientLabel } from './ui'
-import { currentLevel } from './floor'
+import { levelOf } from './floor'
 
 const ICON = { RED: 'alert-triangle', AMBER: 'alert-circle', GREEN: 'check-circle', UNSURE: 'help-circle' }
 const TAG = { ai: ['bulb', 'tagAI'], worker: ['user-check', 'tagWorker'], rules: ['book', 'tagRules'], done: ['check-circle', 'tagDone'] }
+const TAGMAP = { ai_suggested: 'ai', worker_confirmed: 'worker', rules: 'rules', done: 'done' }
 
 export default function Result({ visit, goToScreen }) {
   const lang = getLang()
   const t = T[lang]
   const patient = visit.patient === 'mother' ? 'mother' : 'newborn'
-  const level = currentLevel(visit)
+  const level = levelOf(visit)
   const sname = Object.fromEntries(rules.signs.map((s) => [s.id, lang === 'hi' ? s.name_hi : s.name_en]))
   const qtext = Object.fromEntries(questions.questions.map((q) => [q.id, lang === 'hi' ? q.text_hi : q.text_en]))
 
-  // Plain-language trace. Mission 4 replaces this with the agent's own trace.
+  // Steps come from the agent. If the server was down, build a simple local version.
+  const local = []
   const yesSigns = new Set(visit.answers.filter((a) => a.answer === 'yes').map((a) => a.sign))
   const heard = visit.signs.filter((id) => !yesSigns.has(id))
-  const steps = []
-  if (heard.length) steps.push([`${t.heardN(heard.length)}: ${heard.map((id) => sname[id]).join(', ')}`, 'worker'])
-  visit.answers.forEach((a) => steps.push([`${t.asked}: ${qtext[a.qid]} ${t['a_' + a.answer]}`, 'worker']))
-  if (visit.skipped) steps.push([t.early, 'rules'])
-  if (level === 'RED') steps.push([t.escalated, 'rules'])
-  else if (level === 'AMBER') steps.push([`${t.levelSet}: ${t.lvAMBER}`, 'rules'])
-  else if (level === 'UNSURE') steps.push([!visit.checklistDone && !visit.signs.length ? t.notDone : t.unclearStep, 'rules'])
-  else steps.push([t.allClear, 'rules'])
+  if (heard.length) local.push([`${t.heardN(heard.length)}: ${heard.map((id) => sname[id]).join(', ')}`, 'worker'])
+  visit.answers.forEach((a) => local.push([`${t.asked}: ${qtext[a.qid]} ${t['a_' + a.answer]}`, 'worker']))
+  if (visit.skipped) local.push([t.early, 'rules'])
+  if (level === 'RED') local.push([t.escalated, 'rules'])
+  else if (level === 'AMBER') local.push([`${t.levelSet}: ${t.lvAMBER}`, 'rules'])
+  else if (level === 'UNSURE') local.push([!visit.checklistDone && !visit.signs.length ? t.notDone : t.unclearStep, 'rules'])
+  else local.push([t.allClear, 'rules'])
+  const fromAgent = visit.agent && visit.agent.trace && visit.agent.trace.length
+  const steps = fromAgent ? visit.agent.trace.map((x) => [x.text, TAGMAP[x.tag] || 'rules']) : local
 
   return (
     <div className="sx-screen">

@@ -27,6 +27,12 @@ def floor_level(signs, unclear=False, checklist_done=False, rules=None):
             continue
         if RANK[levels[sid]] > RANK[best]:
             best = levels[sid]
+    
+    present = set(signs)
+    for c in rules.get("combinations", []):
+        if set(c["signs"]) <= present and RANK[c["level"]] > RANK[best]:
+            best = c["level"]
+    
     if best == "GREEN" and (unclear or not checklist_done):
         return "UNSURE"
     if unclear and RANK[best] < RANK["UNSURE"]:

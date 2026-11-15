@@ -5,7 +5,7 @@ import './screens.css'
 import './result.css'
 import { T } from './strings'
 import { Icon, TopRow, getLang, patientLabel } from './ui'
-import { currentLevel } from './floor'
+import { levelOf } from './floor'
 import { saveVisit } from './api'
 //import crypto from 'crypto';
 
@@ -16,7 +16,7 @@ export default function NoteRecord({ visit, setVisit, goToScreen }) {
   const lang = getLang()
   const t = T[lang]
   const patient = visit.patient === 'mother' ? 'mother' : 'newborn'
-  const level = currentLevel(visit)
+  const level = levelOf(visit)
   const nameEn = Object.fromEntries(rules.signs.map((s) => [s.id, s.name_en]))
 
   const [age, setAge] = useState({ years: '', months: '', weeks: '', days: '' })

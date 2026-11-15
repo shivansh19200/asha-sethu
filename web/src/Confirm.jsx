@@ -49,7 +49,7 @@ export default function Confirm({ visit, setVisit, goToScreen }) {
   const dismiss = (id) => setVisit((v) => ({ ...v, suggested: v.suggested.filter((x) => x !== id) }))
   const pending = (visit.suggested || []).filter((id) => byId[id])
   const add = (id) => setVisit((v) => ({ ...v, signs: v.signs.includes(id) ? v.signs : [...v.signs, id] }))
-  const confirm = () => { setVisit((v) => ({ ...v, confirmed: true })); goToScreen('question') }
+  const confirm = () => { setVisit((v) => ({ ...v, confirmed: true, agent: null})); goToScreen('question') }
   const addable = all.filter((s) => !visit.signs.includes(s.id))
 
   return (

@@ -41,3 +41,5 @@ export const TOPIC = {
   m_fever_discharge: ['Fever', 'बुखार'], m_belly_pain: ['Pain', 'दर्द'], m_breathless: ['Breathing', 'साँस'],
   m_baby_less: ['Movement', 'हलचल'], m_swelling: ['Swelling', 'सूजन'], m_water: ['Waters', 'पानी'], m_fever: ['Fever', 'बुखार'], m_foul_discharge: ['Discharge', 'स्राव'],
 }
+
+export const levelOf = (visit) => (visit.agent && visit.agent.status === 'done' ? visit.agent.level : currentLevel(visit))
