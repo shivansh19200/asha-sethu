@@ -1,0 +1,165 @@
+{
+  "version": "0.1.0",
+  "questions": [
+    {
+      "id": "q_nb_not_feeding",
+      "sign": "nb_not_feeding",
+      "text_en": "Is the baby feeding less than usual?",
+      "text_hi": "क्या बच्चा रोज़ से कम दूध पी रहा है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_nb_fever",
+      "sign": "nb_fever",
+      "text_en": "Does the baby's body feel hot?",
+      "text_hi": "क्या बच्चे का शरीर गर्म लग रहा है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_nb_cold",
+      "sign": "nb_cold",
+      "text_en": "Does the baby's body feel very cold?",
+      "text_hi": "क्या बच्चे का शरीर बहुत ठंडा लग रहा है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_nb_fast_breathing",
+      "sign": "nb_fast_breathing",
+      "text_en": "Is the baby breathing fast?",
+      "text_hi": "क्या बच्चा तेज़ सांस ले रहा है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_nb_diff_breathing",
+      "sign": "nb_diff_breathing",
+      "text_en": "Is the baby struggling to breathe?",
+      "text_hi": "क्या बच्चे को सांस लेने में तकलीफ़ हो रही है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_nb_fits",
+      "sign": "nb_fits",
+      "text_en": "Has the baby had fits or jerking?",
+      "text_hi": "क्या बच्चे को दौरे या झटके आए हैं?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_nb_sleepy",
+      "sign": "nb_sleepy",
+      "text_en": "Is the baby very sleepy or hard to wake?",
+      "text_hi": "क्या बच्चा बहुत सुस्त है या जगाने पर नहीं जागता?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_nb_yellow",
+      "sign": "nb_yellow",
+      "text_en": "Are the baby's palms or soles yellow?",
+      "text_hi": "क्या बच्चे की हथेली या तलवे पीले हैं?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_nb_cord",
+      "sign": "nb_cord",
+      "text_en": "Is there pus or redness at the cord?",
+      "text_hi": "क्या नाभि में मवाद या लालिमा है?",
+      "level_if_yes": "AMBER",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_nb_no_cry",
+      "sign": "nb_no_cry",
+      "text_en": "Did the baby not cry at birth?",
+      "text_hi": "क्या बच्चा जन्म के समय नहीं रोया?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_headache",
+      "sign": "m_headache",
+      "text_en": "Does the mother have a severe headache?",
+      "text_hi": "क्या माँ को तेज़ सिरदर्द है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_vision",
+      "sign": "m_vision",
+      "text_en": "Does the mother have blurred vision?",
+      "text_hi": "क्या माँ को धुंधला दिख रहा है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_fits",
+      "sign": "m_fits",
+      "text_en": "Has the mother had fits?",
+      "text_hi": "क्या माँ को दौरे पड़े हैं?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_bleeding",
+      "sign": "m_bleeding",
+      "text_en": "Is the mother bleeding heavily?",
+      "text_hi": "क्या माँ को बहुत ज़्यादा खून बह रहा है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_fever_discharge",
+      "sign": "m_fever_discharge",
+      "text_en": "Does the mother have fever with foul-smelling discharge?",
+      "text_hi": "क्या माँ को बुखार के साथ बदबूदार स्राव है?",
+      "level_if_yes": "RED",
+      "threshold_note": "Job Aid: fever more than 102 degree F. App uses 'fever', no thermometer."
+    },
+    {
+      "id": "q_m_belly_pain",
+      "sign": "m_belly_pain",
+      "text_en": "Does the mother have severe belly pain?",
+      "text_hi": "क्या माँ के पेट में तेज़ दर्द है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_breathless",
+      "sign": "m_breathless",
+      "text_en": "Is the mother short of breath?",
+      "text_hi": "क्या माँ की सांस फूल रही है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_baby_less",
+      "sign": "m_baby_less",
+      "text_en": "Is the baby moving less than usual?",
+      "text_hi": "क्या पेट में बच्चा रोज़ से कम हिल रहा है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_swelling",
+      "sign": "m_swelling",
+      "text_en": "Is there swelling of the face or hands?",
+      "text_hi": "क्या चेहरे या हाथों में सूजन है?",
+      "level_if_yes": "AMBER",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_water",
+      "sign": "m_water",
+      "text_en": "Is water leaking before the due time?",
+      "text_hi": "क्या समय से पहले पानी बह रहा है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    }
+  ]
+}

@@ -1,0 +1,592 @@
+{
+  "version": "0.1.0",
+  "status": "Clinical review pending. Sources were found from search snippets and still need a person to open each document and confirm page numbers.",
+  "level_order": [
+    "GREEN",
+    "UNSURE",
+    "AMBER",
+    "RED"
+  ],
+  "signs": [
+    {
+      "id": "nb_not_feeding",
+      "patient": "newborn",
+      "name_en": "Not feeding",
+      "name_hi": "दूध नहीं पी रहा",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "not feeding",
+          "won't feed",
+          "not drinking milk",
+          "refusing milk",
+          "not sucking"
+        ],
+        "hinglish": [
+          "doodh nahi pee raha",
+          "doodh nahi pi raha",
+          "feed nahi kar raha",
+          "chhaati nahi pakad raha"
+        ],
+        "hi": [
+          "दूध नहीं पी रहा",
+          "दूध नहीं पीता",
+          "स्तन नहीं पकड़ रहा"
+        ]
+      },
+      "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), 'Refer newborn if: Not able to feed' (printed p.8, verify page)",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
+      "note": ""
+    },
+    {
+      "id": "nb_fever",
+      "patient": "newborn",
+      "name_en": "Fever or very hot body",
+      "name_hi": "बुखार या बहुत गर्म शरीर",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "fever",
+          "very hot",
+          "body is hot",
+          "feels warm"
+        ],
+        "hinglish": [
+          "bukhar",
+          "badan garam",
+          "garam lag raha"
+        ],
+        "hi": [
+          "बुखार",
+          "शरीर गर्म है",
+          "बदन गर्म"
+        ]
+      },
+      "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), 'Refer newborn if: Feels hot or cold to touch' (printed p.8, verify page)",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
+      "note": "Leaflet and IMNCI give temperature thresholds; the app asks 'feels hot' and needs no thermometer."
+    },
+    {
+      "id": "nb_cold",
+      "patient": "newborn",
+      "name_en": "Very cold body",
+      "name_hi": "बहुत ठंडा शरीर",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "very cold",
+          "cold body",
+          "body is cold",
+          "feels cold"
+        ],
+        "hinglish": [
+          "badan thanda",
+          "bahut thanda"
+        ],
+        "hi": [
+          "शरीर ठंडा",
+          "बहुत ठंडा"
+        ]
+      },
+      "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), 'Refer newborn if: Feels hot or cold to touch' (printed p.8, verify page)",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
+      "note": ""
+    },
+    {
+      "id": "nb_fast_breathing",
+      "patient": "newborn",
+      "name_en": "Fast breathing",
+      "name_hi": "तेज़ सांस",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "fast breathing",
+          "breathing fast",
+          "breathing quickly"
+        ],
+        "hinglish": [
+          "tez saans",
+          "saans tez chal rahi"
+        ],
+        "hi": [
+          "तेज़ सांस",
+          "सांस तेज़ चल रही है"
+        ]
+      },
+      "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), 'Breathing is fast or difficult' (printed p.8, verify page); HBNC leaflet (NHM Assam copy) (more than 60 breaths per minute)",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
+      "note": "Official number is 60 breaths per minute. The app does not count breaths."
+    },
+    {
+      "id": "nb_diff_breathing",
+      "patient": "newborn",
+      "name_en": "Difficulty breathing",
+      "name_hi": "सांस लेने में तकलीफ़",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "difficulty breathing",
+          "struggling to breathe",
+          "chest pulling in",
+          "grunting"
+        ],
+        "hinglish": [
+          "saans lene mein dikkat",
+          "saans nahi le pa raha"
+        ],
+        "hi": [
+          "सांस लेने में तकलीफ",
+          "सांस नहीं ले पा रहा"
+        ]
+      },
+      "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), 'Breathing is fast or difficult' (printed p.8, verify page)",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
+      "note": ""
+    },
+    {
+      "id": "nb_fits",
+      "patient": "newborn",
+      "name_en": "Fits",
+      "name_hi": "दौरे या झटके",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "fits",
+          "seizure",
+          "convulsion"
+        ],
+        "hinglish": [
+          "daura",
+          "jhatke",
+          "jhatke aa rahe"
+        ],
+        "hi": [
+          "दौरा",
+          "झटके",
+          "मिर्गी जैसे झटके"
+        ]
+      },
+      "source": "TO VERIFY: convulsions appear in the IMNCI young infant chart (refer urgently). Not seen in the Job Aid page checked. Find the ASHA HBNC module page.",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "",
+      "note": ""
+    },
+    {
+      "id": "nb_sleepy",
+      "patient": "newborn",
+      "name_en": "Very sleepy or limp",
+      "name_hi": "बहुत सुस्त या ढीला",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "very sleepy",
+          "unusually sleepy",
+          "limp",
+          "floppy",
+          "hard to wake",
+          "not waking"
+        ],
+        "hinglish": [
+          "bahut sust",
+          "uth nahi raha",
+          "dheela pad gaya"
+        ],
+        "hi": [
+          "बहुत सुस्त",
+          "जाग नहीं रहा",
+          "ढीला पड़ गया"
+        ]
+      },
+      "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), 'Weak cry or limp' (printed p.8, verify page); HBNC leaflet (NHM Assam copy) (excessive sleepiness and lethargic)",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
+      "note": ""
+    },
+    {
+      "id": "nb_yellow",
+      "patient": "newborn",
+      "name_en": "Yellow palms or soles",
+      "name_hi": "हथेली या तलवे पीले",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "yellow palms",
+          "yellow soles",
+          "yellow skin",
+          "jaundice"
+        ],
+        "hinglish": [
+          "hatheli peeli",
+          "talwe peele",
+          "peela pad gaya"
+        ],
+        "hi": [
+          "हथेली पीली",
+          "तलवे पीले",
+          "पीलिया"
+        ]
+      },
+      "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), 'Yellowness of palms and soles' (printed p.8, verify page); IMNCI young infant chart lists it as severe jaundice, refer urgently",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
+      "note": "Changed from AMBER to RED after checking sources."
+    },
+    {
+      "id": "nb_cord",
+      "patient": "newborn",
+      "name_en": "Pus or redness at the cord",
+      "name_hi": "नाभि में मवाद या लालिमा",
+      "level": "AMBER",
+      "phrases": {
+        "en": [
+          "pus at cord",
+          "cord is red",
+          "cord redness",
+          "cord discharge",
+          "navel pus"
+        ],
+        "hinglish": [
+          "nabhi mein mawad",
+          "nabhi lal",
+          "nabhi se pani"
+        ],
+        "hi": [
+          "नाभि में मवाद",
+          "नाभि लाल",
+          "नाभि से पानी"
+        ]
+      },
+      "source": "HBNC leaflet (NHM Assam copy): pus from umbilicus, or swelling and redness around it, listed as a danger sign to refer. IMNCI chart calls red or pus-draining umbilicus 'local bacterial infection' (home care, follow-up in 2 days).",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://nhm.assam.gov.in/sites/default/files/swf_utility_folder/departments/nhm_lipl_in_oid_6/menu/document/hbnc_leaflet_revised_eng.pdf",
+      "note": "Sources differ. Kept AMBER (health centre today). Doctor to decide."
+    },
+    {
+      "id": "nb_no_cry",
+      "patient": "newborn",
+      "name_en": "No cry at birth",
+      "name_hi": "जन्म पर रोया नहीं",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "did not cry at birth",
+          "no cry at birth",
+          "not crying at birth"
+        ],
+        "hinglish": [
+          "paida hote hi roya nahi",
+          "janm par roya nahi"
+        ],
+        "hi": [
+          "जन्म पर रोया नहीं",
+          "पैदा होते ही नहीं रोया"
+        ]
+      },
+      "source": "TO VERIFY: not found in the Job Aid or leaflet checked. Find the ASHA HBNC module page on birth asphyxia.",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "",
+      "note": ""
+    },
+    {
+      "id": "m_headache",
+      "patient": "mother",
+      "name_en": "Severe headache",
+      "name_hi": "तेज़ सिरदर्द",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "severe headache",
+          "terrible headache",
+          "very bad headache"
+        ],
+        "hinglish": [
+          "tez sir dard",
+          "bahut sir dard",
+          "sar dard bahut"
+        ],
+        "hi": [
+          "तेज़ सिरदर्द",
+          "बहुत सिर दर्द"
+        ]
+      },
+      "source": "MoHFW Mother and Child Protection (MCP) Card (2018): 'Headache, blurring of vision, fits and swelling all over the body'; ICMR antenatal management guideline: severe headache, blurring of vision, convulsion",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/Revised%20India%20MCP%20Card%20English_(28-05-2018).pdf",
+      "note": ""
+    },
+    {
+      "id": "m_vision",
+      "patient": "mother",
+      "name_en": "Blurred vision",
+      "name_hi": "धुंधला दिखना",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "blurred vision",
+          "blurry vision",
+          "cannot see clearly",
+          "seeing spots"
+        ],
+        "hinglish": [
+          "dhundhla dikh raha",
+          "nazar dhundhli",
+          "saaf nahi dikh raha"
+        ],
+        "hi": [
+          "धुंधला दिख रहा",
+          "नज़र धुंधली"
+        ]
+      },
+      "source": "MoHFW Mother and Child Protection (MCP) Card (2018): 'Headache, blurring of vision, fits and swelling all over the body'; ICMR antenatal management guideline",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/Revised%20India%20MCP%20Card%20English_(28-05-2018).pdf",
+      "note": ""
+    },
+    {
+      "id": "m_fits",
+      "patient": "mother",
+      "name_en": "Fits",
+      "name_hi": "दौरे",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "fits",
+          "seizure",
+          "convulsion"
+        ],
+        "hinglish": [
+          "daura",
+          "jhatke",
+          "behosh hokar jhatke"
+        ],
+        "hi": [
+          "दौरा",
+          "झटके",
+          "बेहोशी के साथ झटके"
+        ]
+      },
+      "source": "MoHFW Mother and Child Protection (MCP) Card (2018): 'Headache, blurring of vision, fits and swelling all over the body'; ICMR antenatal management guideline",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/Revised%20India%20MCP%20Card%20English_(28-05-2018).pdf",
+      "note": ""
+    },
+    {
+      "id": "m_bleeding",
+      "patient": "mother",
+      "name_en": "Heavy bleeding",
+      "name_hi": "बहुत ज़्यादा खून बहना",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "heavy bleeding",
+          "bleeding a lot",
+          "soaking pads",
+          "lots of blood"
+        ],
+        "hinglish": [
+          "bahut khoon",
+          "zyada khoon beh raha",
+          "khoon band nahi ho raha"
+        ],
+        "hi": [
+          "बहुत खून",
+          "ज़्यादा खून बह रहा",
+          "खून नहीं रुक रहा"
+        ]
+      },
+      "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), mother check 'Bleeding, consciousness and temperature' (verify page); ICMR antenatal management guideline: vaginal bleeding, refer to CHC or higher",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
+      "note": ""
+    },
+    {
+      "id": "m_fever_discharge",
+      "patient": "mother",
+      "name_en": "Fever with foul-smelling discharge",
+      "name_hi": "बुखार के साथ बदबूदार स्राव",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "fever with foul discharge",
+          "smelly discharge with fever",
+          "foul smelling discharge"
+        ],
+        "hinglish": [
+          "bukhar aur badbudar paani",
+          "badbu wala discharge",
+          "badbu aa rahi"
+        ],
+        "hi": [
+          "बुखार और बदबूदार स्राव",
+          "बदबू वाला पानी"
+        ]
+      },
+      "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), mother: fever more than 102 degree F, foul smelling discharge, losing consciousness (refer; printed p.7, verify page)",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
+      "note": "Official number: fever more than 102 F. The app asks 'fever' and needs no thermometer."
+    },
+    {
+      "id": "m_belly_pain",
+      "patient": "mother",
+      "name_en": "Severe belly pain",
+      "name_hi": "पेट में तेज़ दर्द",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "severe belly pain",
+          "severe stomach pain",
+          "terrible abdominal pain"
+        ],
+        "hinglish": [
+          "pet mein tez dard",
+          "pet dard bahut",
+          "pet mein bahut dard"
+        ],
+        "hi": [
+          "पेट में तेज़ दर्द",
+          "पेट में बहुत दर्द"
+        ]
+      },
+      "source": "TO VERIFY: not found in the MCP card or Job Aid pages checked. Severe abdominal pain appears in international lists (for example CDC). Find the ASHA module page.",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "",
+      "note": ""
+    },
+    {
+      "id": "m_breathless",
+      "patient": "mother",
+      "name_en": "Breathlessness",
+      "name_hi": "सांस फूलना",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "breathless",
+          "short of breath",
+          "cannot breathe",
+          "difficulty breathing"
+        ],
+        "hinglish": [
+          "saans phool rahi",
+          "saans nahi aa rahi",
+          "saans lene mein dikkat"
+        ],
+        "hi": [
+          "सांस फूल रही",
+          "सांस नहीं आ रही"
+        ]
+      },
+      "source": "MoHFW Mother and Child Protection (MCP) Card (2018): 'Severe anemia with or without breathlessness' (partial match). TO VERIFY for the ASHA module page.",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/Revised%20India%20MCP%20Card%20English_(28-05-2018).pdf",
+      "note": ""
+    },
+    {
+      "id": "m_baby_less",
+      "patient": "mother",
+      "name_en": "Baby moving less",
+      "name_hi": "बच्चा कम हिल रहा",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "baby moving less",
+          "baby not moving",
+          "less fetal movement"
+        ],
+        "hinglish": [
+          "bachcha kam hil raha",
+          "bachcha hil nahi raha",
+          "baby kam move kar raha"
+        ],
+        "hi": [
+          "बच्चा कम हिल रहा",
+          "बच्चा हिल नहीं रहा"
+        ]
+      },
+      "source": "ICMR antenatal management guideline: decreased or absent fetal movements after 28 weeks; MoHFW Mother and Child Protection (MCP) Card (2018) records fetal movements as normal, reduced or absent",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://www.icmr.gov.in/icmrobject/uploads/STWs/1771568619_ante-natalmanagementofnormalpregnancy-7.pdf",
+      "note": ""
+    },
+    {
+      "id": "m_swelling",
+      "patient": "mother",
+      "name_en": "Swelling of face or hands",
+      "name_hi": "चेहरे या हाथों में सूजन",
+      "level": "AMBER",
+      "phrases": {
+        "en": [
+          "swollen face",
+          "swollen hands",
+          "swelling of face",
+          "puffy face"
+        ],
+        "hinglish": [
+          "chehre par sujan",
+          "haathon mein sujan",
+          "sujan aa gayi"
+        ],
+        "hi": [
+          "चेहरे पर सूजन",
+          "हाथों में सूजन"
+        ]
+      },
+      "source": "MoHFW Mother and Child Protection (MCP) Card (2018): 'swelling all over the body' is listed together with headache, blurred vision and fits",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/Revised%20India%20MCP%20Card%20English_(28-05-2018).pdf",
+      "note": "Card says swelling all over the body. Face or hands alone kept AMBER. Doctor to decide."
+    },
+    {
+      "id": "m_water",
+      "patient": "mother",
+      "name_en": "Water leaking early",
+      "name_hi": "समय से पहले पानी बहना",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "water leaking",
+          "water broke early",
+          "fluid leaking"
+        ],
+        "hinglish": [
+          "paani beh raha",
+          "paani leak ho raha",
+          "samay se pehle paani"
+        ],
+        "hi": [
+          "पानी बह रहा",
+          "समय से पहले पानी"
+        ]
+      },
+      "source": "MoHFW Mother and Child Protection (MCP) Card (2018): 'Bursting of water bag without labour pains / preterm labour pains (<37 weeks)'; ICMR antenatal management guideline: leaking of watery fluid",
+      "review_status": "pending",
+      "reviewed_by": null,
+      "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/Revised%20India%20MCP%20Card%20English_(28-05-2018).pdf",
+      "note": ""
+    }
+  ]
+}
