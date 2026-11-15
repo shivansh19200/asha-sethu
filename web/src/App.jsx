@@ -1,30 +1,28 @@
 import React, { useState } from 'react'
 import Home from './Home'
 import Settings from './Settings'
+import Describe from './Describe'
+import Confirm from './Confirm'
+
+const emptyVisit = { patient: null, text: '', signs: [], checklistDone: false, unclear: false, confirmed: false }
 
 export default function App() {
   const [screen, setScreen] = useState('home')
+  const [visit, setVisit] = useState(emptyVisit)
 
-  const goToScreen = (screenName) => {
+  // goToScreen('describe', 'mother') starts a fresh visit for that patient type.
+  const goToScreen = (screenName, patient) => {
+    if (patient) setVisit({ ...emptyVisit, patient })
     setScreen(screenName)
   }
 
-  const goBack = () => {
-    setScreen('home')
-  }
+  if (screen === 'home') return <Home goToScreen={goToScreen} />
+  if (screen === 'settings') return <Settings goToScreen={goToScreen} />
+  if (screen === 'describe') return <Describe visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
+  if (screen === 'confirm') return <Confirm visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
 
-  if (screen === 'home') {
-    return <Home goToScreen={goToScreen} />
-  }
-
-  if (screen === 'settings') {
-    return <Settings goToScreen={goToScreen} />
-  }
-
-  // Placeholder screens for describe, confirm, question, result, note, send
+  // Placeholder screens for question, result, note, send (pieces 3 and 4)
   const placeholderScreens = {
-    describe: 'Describe',
-    confirm: 'Confirm',
     question: 'Question',
     result: 'Result',
     note: 'Note and Record',
@@ -34,21 +32,14 @@ export default function App() {
   return (
     <div style={{ padding: '20px' }}>
       <button
-        onClick={goBack}
-        style={{
-          marginBottom: '20px',
-          padding: '10px 15px',
-          backgroundColor: 'transparent',
-          border: 'none',
-          color: 'var(--acc)',
-          cursor: 'pointer',
-          fontSize: '16px'
-        }}
+        onClick={() => goToScreen('confirm')}
+        style={{ marginBottom: '20px', padding: '10px 15px', backgroundColor: 'transparent', border: 'none', color: 'var(--acc)', cursor: 'pointer', fontSize: '16px' }}
       >
         ← Back
       </button>
       <h1>{placeholderScreens[screen]}</h1>
       <p>Screen placeholder for {screen}</p>
+      <p>Signs: {visit.signs.join(', ') || 'none'} | checklist done: {String(visit.checklistDone)} | unclear: {String(visit.unclear)}</p>
     </div>
   )
 }

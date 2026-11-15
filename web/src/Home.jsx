@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
+import path from 'path';
 import './theme.css'
 import './Home.css'
 
 export default function Home({ goToScreen }) {
-  const [language, setLanguage] = useState('EN')
+
+  const [language, setLanguage] = useState(localStorage.getItem('language') || 'EN')
 
   const toggleLanguage = () => {
-    setLanguage(language === 'EN' ? 'हि' : 'EN')
+    const next = language === 'EN' ? 'हि' : 'EN'
+    setLanguage(next)
+    localStorage.setItem('language', next)
   }
 
   return (
@@ -86,7 +90,7 @@ export default function Home({ goToScreen }) {
       <div className="home-tiles">
         <button
           className="tile"
-          onClick={() => goToScreen('describe')}
+          onClick={() => goToScreen('describe', 'mother')}
         >
           <div className="tile-illustration">
             <svg viewBox="0 0 64 64">
@@ -98,7 +102,7 @@ export default function Home({ goToScreen }) {
 
         <button
           className="tile"
-          onClick={() => goToScreen('describe')}
+          onClick={() => goToScreen('describe', 'newborn')}
         >
           <div className="tile-illustration">
             <svg viewBox="0 0 64 64">
