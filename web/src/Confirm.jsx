@@ -27,17 +27,27 @@ export default function Confirm({ visit, setVisit, goToScreen }) {
     setBusy(true)
     fetch('/api/understand', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text, patient }) })
       .then((r) => { if (!r.ok) throw new Error('bad'); return r.json() })
-      .catch(() => ({ signs: [], negated: [], unclear: true }))
+      .catch(() => ({ signs: [], negated: [], suggested: [], unclear: true }))
       .then((u) => {
         if (!live) return
-        setVisit((v) => ({ ...v, signs: Array.from(new Set([...v.signs, ...u.signs])), negated: u.negated, unclear: u.unclear, understoodText: text }))
-        if (u.unclear && u.signs.length === 0) setShowAll(true)
+        setVisit((v) => ({
+          ...v,
+          signs: Array.from(new Set([...v.signs, ...u.signs])),
+          suggested: (u.suggested || []).filter((id) => !v.signs.includes(id) && !u.signs.includes(id)),
+          negated: u.negated,
+          unclear: u.unclear,
+          understoodText: text
+        }))
+        if (u.unclear && u.signs.length === 0 && !(u.suggested || []).length) setShowAll(true)
         setBusy(false)
       })
     return () => { live = false }
   }, [visit.text])
 
   const remove = (id) => setVisit((v) => ({ ...v, signs: v.signs.filter((x) => x !== id) }))
+  const accept = (id) => setVisit((v) => ({ ...v, signs: v.signs.includes(id) ? v.signs : [...v.signs, id], suggested: v.suggested.filter((x) => x !== id) }))
+  const dismiss = (id) => setVisit((v) => ({ ...v, suggested: v.suggested.filter((x) => x !== id) }))
+  const pending = (visit.suggested || []).filter((id) => byId[id])
   const add = (id) => setVisit((v) => ({ ...v, signs: v.signs.includes(id) ? v.signs : [...v.signs, id] }))
   const confirm = () => { setVisit((v) => ({ ...v, confirmed: true })); goToScreen('question') }
   const addable = all.filter((s) => !visit.signs.includes(s.id))
@@ -69,6 +79,22 @@ export default function Confirm({ visit, setVisit, goToScreen }) {
         ))}
       </div>
 
+      {pending.length > 0 && (
+        <>
+          <div className="sx-section">{t.tagAI}</div>
+          <div className="sx-chips">
+            {pending.map((id) => (
+              <span key={id} className="sx-chip sx-suggest">
+                {name(byId[id])}
+                <span className="sx-tag"><Icon name="bulb" size={14} />{t.tagAI}</span>
+                <button type="button" aria-label={t.add} onClick={() => accept(id)}><Icon name="plus" size={14} /></button>
+                <button type="button" aria-label={t.remove} onClick={() => dismiss(id)}><Icon name="x" size={14} /></button>
+              </span>
+            ))}
+          </div>
+        </>
+      )}
+
       <button type="button" className="sx-btn" onClick={() => setShowAll(!showAll)}>
         <Icon name="plus" size={20} /> {t.add}
       </button>
@@ -81,7 +107,7 @@ export default function Confirm({ visit, setVisit, goToScreen }) {
         </div>
       )}
 
-      <button type="button" className="sx-fill" disabled={busy} onClick={confirm}>{t.confirm}</button>
+            <button type="button" className="sx-fill" disabled={busy || pending.length > 0} onClick={confirm}>{t.confirm}</button>
     </div>
   )
 }

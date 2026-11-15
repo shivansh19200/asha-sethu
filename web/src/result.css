@@ -42,3 +42,6 @@
   background: var(--sky); color: var(--skyink); border: 1.5px solid var(--bds); animation: pop 520ms cubic-bezier(.2,.9,.3,1.2) both; }
 .sx-seal.wait { background: var(--card); color: var(--mut); }
 @media (prefers-reduced-motion: reduce) { .sx-seal { animation: none; } }
+
+.sx-suggest { border: 1.5px dashed var(--bds); }
+.sx-suggest .sx-tag { margin: 0; background: var(--card); }

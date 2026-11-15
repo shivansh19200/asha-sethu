@@ -21,6 +21,7 @@ export default function NoteRecord({ visit, setVisit, goToScreen }) {
 
   const [age, setAge] = useState({ years: '', months: '', weeks: '', days: '' })
   const [feeding, setFeeding] = useState('')
+  const [other, setOther] = useState('')
   const [advised, setAdvised] = useState(t['act' + level])
   const [referral, setReferral] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -41,6 +42,7 @@ export default function NoteRecord({ visit, setVisit, goToScreen }) {
     `Danger level: ${T.en['lv' + level]}`,
     `Signs present: ${visit.signs.map((id) => nameEn[id]).join('; ') || 'none'}`,
     `Asked and absent: ${absent.join('; ') || 'none'}`,
+    ...(other.trim() ? [`Other concern: ${other.trim()}`] : []),
     `Advice: ${advised}`,
     `ASHA: ${asha || '-'}, ${village || '-'}`,
     `Date: ${new Date().toLocaleString('en-IN')}`,
@@ -57,7 +59,7 @@ export default function NoteRecord({ visit, setVisit, goToScreen }) {
       signs: visit.signs,
       answers: visit.answers,
       level,
-      record: { feeding, advised, referral_made: referral, age_text: ageText, checklist_done: visit.checklistDone, unclear: visit.unclear, skipped: visit.skipped },
+      record: { feeding, other_concern: other, advised, referral_made: referral, age_text: ageText, checklist_done: visit.checklistDone, unclear: visit.unclear, skipped: visit.skipped },
       asha_name: asha,
       village
     })
@@ -89,6 +91,9 @@ export default function NoteRecord({ visit, setVisit, goToScreen }) {
 
       <div className="sx-section">{t.feeding}</div>
       <input className="sx-input" value={feeding} onChange={(e) => setFeeding(e.target.value)} />
+
+      <div className="sx-section">{t.other}</div>
+      <input className="sx-input" value={other} onChange={(e) => setOther(e.target.value)} />
 
       <div className="sx-section">{t.advised}</div>
       <input className="sx-input" value={advised} onChange={(e) => setAdvised(e.target.value)} />
