@@ -1,5 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import hello, visits
+import hello, visits, understand
 
 
 class Router(BaseHTTPRequestHandler):
@@ -7,7 +7,8 @@ class Router(BaseHTTPRequestHandler):
         hello.handler.do_GET(self)
 
     def do_POST(self):
-        visits.handler.do_POST(self)
+        mod = understand if self.path.startswith('/understand') else visits
+        mod.handler.do_POST(self)
 
 
 if __name__ == '__main__':

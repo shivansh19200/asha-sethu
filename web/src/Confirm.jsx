@@ -1,16 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import rules from '../../data/rules.json'
 import './theme.css'
 import './screens.css'
+import './result.css'
 import { T } from './strings'
 import { Icon, TopRow, SignRow, getLang, patientLabel } from './ui'
-
-// Mission 3 replaces this with the real understanding step (api/understand.py).
-// Until then: any typed text we could not turn into signs counts as unclear,
-// so the result can never become GREEN by accident.
-function understand(text) {
-  return { signs: [], unclear: text.trim().length > 0 }
-}
+//import { headers } from 'next/headers';
 
 export default function Confirm({ visit, setVisit, goToScreen }) {
   const lang = getLang()
@@ -20,21 +15,31 @@ export default function Confirm({ visit, setVisit, goToScreen }) {
   const byId = Object.fromEntries(all.map((s) => [s.id, s]))
   const name = (s) => (lang === 'hi' ? s.name_hi : s.name_en)
   const [showAll, setShowAll] = useState(false)
+  const [busy, setBusy] = useState(false)
+
+  // Typed signs are ADDED to ticked signs; text never removes a tick.
+  // If the server fails, the text counts as unclear, so it can never end up GREEN by accident.
+  useEffect(() => {
+    const text = visit.text.trim()
+    if (visit.understoodText === text) return
+    if (!text) { setVisit((v) => ({ ...v, understoodText: '', negated: [], unclear: false })); return }
+    let live = true
+    setBusy(true)
+    fetch('/api/understand', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text, patient }) })
+      .then((r) => { if (!r.ok) throw new Error('bad'); return r.json() })
+      .catch(() => ({ signs: [], negated: [], unclear: true }))
+      .then((u) => {
+        if (!live) return
+        setVisit((v) => ({ ...v, signs: Array.from(new Set([...v.signs, ...u.signs])), negated: u.negated, unclear: u.unclear, understoodText: text }))
+        if (u.unclear && u.signs.length === 0) setShowAll(true)
+        setBusy(false)
+      })
+    return () => { live = false }
+  }, [visit.text])
 
   const remove = (id) => setVisit((v) => ({ ...v, signs: v.signs.filter((x) => x !== id) }))
   const add = (id) => setVisit((v) => ({ ...v, signs: v.signs.includes(id) ? v.signs : [...v.signs, id] }))
-
-  const confirm = () => {
-    const u = understand(visit.text)
-    setVisit((v) => ({
-      ...v,
-      signs: Array.from(new Set([...v.signs, ...u.signs])),
-      unclear: u.unclear,
-      confirmed: true
-    }))
-    goToScreen('question')
-  }
-
+  const confirm = () => { setVisit((v) => ({ ...v, confirmed: true })); goToScreen('question') }
   const addable = all.filter((s) => !visit.signs.includes(s.id))
 
   return (
@@ -76,7 +81,7 @@ export default function Confirm({ visit, setVisit, goToScreen }) {
         </div>
       )}
 
-      <button type="button" className="sx-fill" onClick={confirm}>{t.confirm}</button>
+      <button type="button" className="sx-fill" disabled={busy} onClick={confirm}>{t.confirm}</button>
     </div>
   )
 }
