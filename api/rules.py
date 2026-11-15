@@ -38,3 +38,8 @@ def floor_level(signs, unclear=False, checklist_done=False, rules=None):
     if unclear and RANK[best] < RANK["UNSURE"]:
         return "UNSURE"
     return best
+
+from http.server import BaseHTTPRequestHandler
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(404); self.end_headers()
