@@ -18,7 +18,7 @@ export default function Home({ goToScreen }) {
       {/* Top row */}
       <div className="home-top">
         <div className="home-top-left">
-          <div className="home-village-label">ASHA name and village</div>
+          <div className="home-village-label" style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => goToScreen('settings')}>ASHA name and village</div>
         </div>
         <button
           className="language-toggle"

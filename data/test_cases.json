@@ -1,0 +1,2015 @@
+{
+ "version": "1.0",
+ "rules_version": "0.3.0",
+ "note": "Expected levels follow rules.json. A doctor should check the RED cases.",
+ "cases": [
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "urgent"
+   ],
+   "text": "baby had fits",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fits"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb001"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "urgent"
+   ],
+   "text": "newborn did not cry at birth",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_no_cry"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb002"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "urgent",
+    "hinglish"
+   ],
+   "text": "bachche ko daura pad raha hai",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fits"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb003"
+  },
+  {
+   "patient": "newborn",
+   "language": "hi",
+   "types": [
+    "urgent"
+   ],
+   "text": "बच्चे को झटके आ रहे हैं",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fits"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb004"
+  },
+  {
+   "patient": "newborn",
+   "language": "hi",
+   "types": [
+    "urgent"
+   ],
+   "text": "जन्म पर रोया नहीं",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_no_cry"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb005"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "multi"
+   ],
+   "text": "baby body is very cold and not feeding",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_cold",
+    "nb_not_feeding"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb006"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "multi",
+    "hinglish"
+   ],
+   "text": "badan thanda hai aur doodh nahi pee raha",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_cold",
+    "nb_not_feeding"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb007"
+  },
+  {
+   "patient": "newborn",
+   "language": "hi",
+   "types": [
+    "multi"
+   ],
+   "text": "सांस तेज़ चल रही है और शरीर गर्म है",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fast_breathing",
+    "nb_fever"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb008"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "multi",
+    "urgent"
+   ],
+   "text": "chest pulling in with every breath, baby is struggling to breathe",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_chest_indrawing",
+    "nb_diff_breathing"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb009"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "multi"
+   ],
+   "text": "baby feels warm and is very sleepy",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fever",
+    "nb_sleepy"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb010"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [],
+   "text": "baby is very sleepy and will not wake",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_sleepy"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "nb011"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "hinglish"
+   ],
+   "text": "bachcha bahut sust hai, uth nahi raha",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_sleepy"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "nb012"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [],
+   "text": "pus at cord and cord is red",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_cord"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "nb013"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "hinglish"
+   ],
+   "text": "nabhi lal hai",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_cord"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "nb014"
+  },
+  {
+   "patient": "newborn",
+   "language": "hi",
+   "types": [],
+   "text": "हथेली पीली है",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_yellow"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "nb015"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [],
+   "text": "baby has loose stools",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_loose_stools"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "nb016"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "multi",
+    "hinglish"
+   ],
+   "text": "patle dast ho rahe hain aur aankh mein mawad",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_eye_pus",
+    "nb_loose_stools"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "nb017"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "multi"
+   ],
+   "text": "not feeding and breathing fast",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fast_breathing",
+    "nb_not_feeding"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "nb018"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "negated"
+   ],
+   "text": "no fever, but baby is not feeding",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_not_feeding"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "nb019"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "negated",
+    "hinglish"
+   ],
+   "text": "bukhar nahi lekin saans tez chal rahi",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fast_breathing"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "nb020"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "negated",
+    "green"
+   ],
+   "text": "no fever, not having fits",
+   "ticked": [],
+   "checklist_done": true,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "GREEN",
+   "note": "",
+   "id": "nb021"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "negated",
+    "hinglish",
+    "green"
+   ],
+   "text": "bukhar nahi hai",
+   "ticked": [],
+   "checklist_done": true,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "GREEN",
+   "note": "",
+   "id": "nb022"
+  },
+  {
+   "patient": "newborn",
+   "language": "hi",
+   "types": [
+    "negated",
+    "green"
+   ],
+   "text": "बुखार नहीं है",
+   "ticked": [],
+   "checklist_done": true,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "GREEN",
+   "note": "",
+   "id": "nb023"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "negated",
+    "green",
+    "free-wording"
+   ],
+   "text": "baby is feeding well and looks fine",
+   "ticked": [],
+   "checklist_done": true,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "GREEN",
+   "note": "Free wording: the rules cannot recognise it, so the system says UNSURE. Expected GREEN is the truth, UNSURE is the safe miss.",
+   "id": "nb024"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "contradictory",
+    "ticklist"
+   ],
+   "text": "no fits",
+   "ticked": [
+    "nb_fits"
+   ],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fits"
+   ],
+   "expected_level": "RED",
+   "note": "Ticked sign wins over typed text.",
+   "id": "nb025"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "contradictory"
+   ],
+   "text": "no fever",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {
+    "nb_fever": "yes"
+   },
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "RED",
+   "note": "Typed no fever, then answered yes to the fever question.",
+   "id": "nb026"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "misspelled"
+   ],
+   "text": "baby is not feedng",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_not_feeding"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "nb027"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "misspelled",
+    "hinglish"
+   ],
+   "text": "bachche ko dauraa pad raha hai",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fits"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb028"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "misspelled",
+    "hinglish"
+   ],
+   "text": "badan garm hai",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fever"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb029"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "misspelled",
+    "hinglish"
+   ],
+   "text": "doodh nahi pii raha",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_not_feeding"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "nb030"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "missing"
+   ],
+   "text": "baby seems off",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "UNSURE",
+   "note": "",
+   "id": "nb031"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "missing",
+    "hinglish"
+   ],
+   "text": "bachcha theek nahi lag raha",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "UNSURE",
+   "note": "",
+   "id": "nb032"
+  },
+  {
+   "patient": "newborn",
+   "language": "hi",
+   "types": [
+    "missing"
+   ],
+   "text": "बच्चा ठीक नहीं लग रहा",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "UNSURE",
+   "note": "",
+   "id": "nb033"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "missing",
+    "ticklist"
+   ],
+   "text": "",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": true,
+   "expected_signs": [],
+   "expected_level": "UNSURE",
+   "note": "",
+   "id": "nb034"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "missing"
+   ],
+   "text": "baby is not feeding",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": true,
+   "expected_signs": [
+    "nb_not_feeding"
+   ],
+   "expected_level": "AMBER",
+   "note": "Result shown early: AMBER at least, never GREEN.",
+   "id": "nb035"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "ticklist"
+   ],
+   "text": "",
+   "ticked": [
+    "nb_cord"
+   ],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_cord"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "nb036"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "ticklist",
+    "urgent"
+   ],
+   "text": "",
+   "ticked": [
+    "nb_no_cry"
+   ],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_no_cry"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb037"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "ticklist",
+    "green"
+   ],
+   "text": "",
+   "ticked": [],
+   "checklist_done": true,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "GREEN",
+   "note": "",
+   "id": "nb038"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "history",
+    "urgent"
+   ],
+   "text": "was fine yesterday, today baby is having fits",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fits"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb039"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "history",
+    "hinglish"
+   ],
+   "text": "pichli visit mein bhi doodh nahi pee raha tha, abhi bhi",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_not_feeding"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "nb040"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "urgent"
+   ],
+   "text": "she is bleeding a lot after delivery",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_bleeding"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m041"
+  },
+  {
+   "patient": "mother",
+   "language": "hinglish",
+   "types": [
+    "urgent",
+    "hinglish"
+   ],
+   "text": "bahut khoon beh raha hai",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_bleeding"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m042"
+  },
+  {
+   "patient": "mother",
+   "language": "hi",
+   "types": [
+    "urgent"
+   ],
+   "text": "ज़्यादा खून बह रहा है",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_bleeding"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m043"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "urgent"
+   ],
+   "text": "she had fits at home",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_fits"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m044"
+  },
+  {
+   "patient": "mother",
+   "language": "hinglish",
+   "types": [
+    "urgent",
+    "hinglish"
+   ],
+   "text": "daura pada tha raat ko",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_fits"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m045"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "multi",
+    "urgent"
+   ],
+   "text": "she fainted and has severe headache",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_faint",
+    "m_headache"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m046"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "urgent"
+   ],
+   "text": "water broke early, only seven months",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_water"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m047"
+  },
+  {
+   "patient": "mother",
+   "language": "hinglish",
+   "types": [
+    "urgent",
+    "hinglish"
+   ],
+   "text": "samay se pehle paani beh raha hai",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_water"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m048"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "urgent"
+   ],
+   "text": "short of breath, cannot breathe properly",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_breathless"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m049"
+  },
+  {
+   "patient": "mother",
+   "language": "hi",
+   "types": [
+    "urgent"
+   ],
+   "text": "सांस फूल रही है",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_breathless"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m050"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "urgent"
+   ],
+   "text": "bleeding during pregnancy since morning",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_vag_bleed_preg"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m051"
+  },
+  {
+   "patient": "mother",
+   "language": "hinglish",
+   "types": [
+    "urgent",
+    "hinglish"
+   ],
+   "text": "pregnancy mein khoon aa raha hai",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_vag_bleed_preg"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m052"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "urgent"
+   ],
+   "text": "labour pains before time, only seven months",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_early_labour"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m053"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "multi"
+   ],
+   "text": "severe headache and blurred vision",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_headache",
+    "m_vision"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m054"
+  },
+  {
+   "patient": "mother",
+   "language": "hinglish",
+   "types": [
+    "multi",
+    "hinglish"
+   ],
+   "text": "tez sir dard aur nazar dhundhli",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_headache",
+    "m_vision"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m055"
+  },
+  {
+   "patient": "mother",
+   "language": "hi",
+   "types": [],
+   "text": "चेहरे पर सूजन है",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_swelling"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m056"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "multi"
+   ],
+   "text": "fever and foul smelling discharge",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_fever",
+    "m_foul_discharge"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m057"
+  },
+  {
+   "patient": "mother",
+   "language": "hinglish",
+   "types": [
+    "multi",
+    "hinglish"
+   ],
+   "text": "bukhar hai aur badbu aa rahi",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_fever",
+    "m_foul_discharge"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m058"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [],
+   "text": "baby moving less since yesterday",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_baby_less"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m059"
+  },
+  {
+   "patient": "mother",
+   "language": "hinglish",
+   "types": [
+    "hinglish"
+   ],
+   "text": "bachcha kam hil raha hai",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_baby_less"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m060"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "multi"
+   ],
+   "text": "burning when passing urine and keeps vomiting",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_urine_burning",
+    "m_vomiting"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m061"
+  },
+  {
+   "patient": "mother",
+   "language": "hi",
+   "types": [],
+   "text": "पेट में तेज़ दर्द है",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_belly_pain"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m062"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "negated",
+    "green"
+   ],
+   "text": "no heavy bleeding, no fits",
+   "ticked": [],
+   "checklist_done": true,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "GREEN",
+   "note": "",
+   "id": "m063"
+  },
+  {
+   "patient": "mother",
+   "language": "hinglish",
+   "types": [
+    "negated",
+    "hinglish",
+    "green"
+   ],
+   "text": "bukhar nahi, sir dard nahi",
+   "ticked": [],
+   "checklist_done": true,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "GREEN",
+   "note": "",
+   "id": "m064"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "negated"
+   ],
+   "text": "no fever but headache",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_headache"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m065"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "contradictory",
+    "ticklist"
+   ],
+   "text": "no bleeding",
+   "ticked": [
+    "m_bleeding"
+   ],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_bleeding"
+   ],
+   "expected_level": "RED",
+   "note": "Ticked sign wins over typed text.",
+   "id": "m066"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "contradictory"
+   ],
+   "text": "no fits",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {
+    "m_fits": "yes"
+   },
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "RED",
+   "note": "Typed no fits, then answered yes to the fits question.",
+   "id": "m067"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "misspelled"
+   ],
+   "text": "severe headach and blurry vison",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_headache",
+    "m_vision"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m068"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "misspelled"
+   ],
+   "text": "she has hevy bleding",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_bleeding"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m069"
+  },
+  {
+   "patient": "mother",
+   "language": "hinglish",
+   "types": [
+    "misspelled",
+    "hinglish"
+   ],
+   "text": "paani beh rha hai",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_water"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m070"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "missing"
+   ],
+   "text": "she doesn't look well",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "UNSURE",
+   "note": "",
+   "id": "m071"
+  },
+  {
+   "patient": "mother",
+   "language": "hinglish",
+   "types": [
+    "missing",
+    "hinglish"
+   ],
+   "text": "tabiyat theek nahi hai",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "UNSURE",
+   "note": "",
+   "id": "m072"
+  },
+  {
+   "patient": "mother",
+   "language": "hi",
+   "types": [
+    "missing"
+   ],
+   "text": "तबीयत ठीक नहीं है",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "UNSURE",
+   "note": "",
+   "id": "m073"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "missing",
+    "ticklist"
+   ],
+   "text": "",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": true,
+   "expected_signs": [],
+   "expected_level": "UNSURE",
+   "note": "",
+   "id": "m074"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "missing"
+   ],
+   "text": "no fever",
+   "ticked": [],
+   "checklist_done": true,
+   "answers": {},
+   "default_answer": "unsure",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "UNSURE",
+   "note": "Every question answered Not sure.",
+   "id": "m075"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "ticklist"
+   ],
+   "text": "",
+   "ticked": [
+    "m_swelling"
+   ],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_swelling"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m076"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "ticklist",
+    "urgent"
+   ],
+   "text": "",
+   "ticked": [
+    "m_water"
+   ],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_water"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m077"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "ticklist",
+    "green"
+   ],
+   "text": "",
+   "ticked": [],
+   "checklist_done": true,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "GREEN",
+   "note": "",
+   "id": "m078"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "history",
+    "urgent"
+   ],
+   "text": "first visit last week was fine, today heavy bleeding",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_bleeding"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m079"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "history",
+    "multi"
+   ],
+   "text": "same as last visit, fever and headache",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_fever",
+    "m_headache"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m080"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "adversarial"
+   ],
+   "text": "baby is playing and sleeping fine, oh and yesterday had fits once",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fits"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb081"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "adversarial"
+   ],
+   "text": "feeding is good, mother says no problem, but the body is very cold to touch",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_cold"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb082"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "adversarial"
+   ],
+   "text": "all normal, just feels warm",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fever"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb083"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "adversarial",
+    "hinglish"
+   ],
+   "text": "sab theek hai bas thoda bukhar hai",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fever"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb084"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "adversarial",
+    "hinglish"
+   ],
+   "text": "doodh pi raha hai achhe se, par jhatke aa rahe the raat ko",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fits"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb085"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "adversarial",
+    "negated"
+   ],
+   "text": "no fever, no cough, baby fine; did not cry at birth though",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_no_cry"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb086"
+  },
+  {
+   "patient": "newborn",
+   "language": "hi",
+   "types": [
+    "adversarial"
+   ],
+   "text": "डॉक्टर ने कहा सब ठीक है, पर बच्चे को दौरा पड़ा",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fits"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb087"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "adversarial"
+   ],
+   "text": "baby seems okay, chest pulling in a little",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_chest_indrawing",
+    "nb_diff_breathing"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb088"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "adversarial",
+    "multi"
+   ],
+   "text": "jaundice and fits, otherwise happy baby",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fits",
+    "nb_yellow"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb089"
+  },
+  {
+   "patient": "newborn",
+   "language": "en",
+   "types": [
+    "adversarial"
+   ],
+   "text": "not sure, may be feeding less. also body is hot",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "nb_fever"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "nb090"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "adversarial",
+    "multi"
+   ],
+   "text": "I feel fine mostly, small headache, and heavy bleeding since morning",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_bleeding",
+    "m_headache"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m091"
+  },
+  {
+   "patient": "mother",
+   "language": "hinglish",
+   "types": [
+    "adversarial",
+    "hinglish"
+   ],
+   "text": "sab theek hai bas zyada khoon beh raha hai",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_bleeding"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m092"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "adversarial",
+    "negated"
+   ],
+   "text": "no swelling, no fever, she fainted yesterday",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_faint"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m093"
+  },
+  {
+   "patient": "mother",
+   "language": "hi",
+   "types": [
+    "adversarial"
+   ],
+   "text": "बाकी सब ठीक है पर सांस फूल रही है",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_breathless"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m094"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "adversarial"
+   ],
+   "text": "baby kicking fine, but water leaking since night",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_water"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m095"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "adversarial"
+   ],
+   "text": "normal delivery, no problem, only fits last night",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_fits"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m096"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "adversarial"
+   ],
+   "text": "she says she is fine but short of breath on stairs",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_breathless"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m097"
+  },
+  {
+   "patient": "mother",
+   "language": "hinglish",
+   "types": [
+    "adversarial",
+    "hinglish"
+   ],
+   "text": "nothing wrong, pregnancy mein khoon aaya tha",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_vag_bleed_preg"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m098"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "adversarial"
+   ],
+   "text": "headache for two days, nothing else, no bleeding",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_headache"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m099"
+  },
+  {
+   "patient": "mother",
+   "language": "en",
+   "types": [
+    "adversarial",
+    "multi"
+   ],
+   "text": "fever, headache and swelling of face",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_fever",
+    "m_headache",
+    "m_swelling"
+   ],
+   "expected_level": "AMBER",
+   "note": "",
+   "id": "m100"
+  },
+  {
+   "patient": "newborn",
+   "language": "hi",
+   "types": [
+    "negated",
+    "green"
+   ],
+   "text": "बुखार नहीं है, झटके नहीं आ रहे",
+   "ticked": [],
+   "checklist_done": true,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "GREEN",
+   "note": "",
+   "id": "nb101"
+  },
+  {
+   "patient": "mother",
+   "language": "hi",
+   "types": [
+    "negated",
+    "green"
+   ],
+   "text": "बुखार नहीं है, सिरदर्द नहीं है",
+   "ticked": [],
+   "checklist_done": true,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "GREEN",
+   "note": "",
+   "id": "m102"
+  },
+  {
+   "patient": "mother",
+   "language": "hinglish",
+   "types": [
+    "history",
+    "hinglish"
+   ],
+   "text": "pichli visit mein sab theek tha, aaj daura pada",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {},
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [
+    "m_fits"
+   ],
+   "expected_level": "RED",
+   "note": "",
+   "id": "m103"
+  },
+  {
+   "patient": "newborn",
+   "language": "hinglish",
+   "types": [
+    "contradictory",
+    "hinglish"
+   ],
+   "text": "bukhar nahi hai",
+   "ticked": [],
+   "checklist_done": false,
+   "answers": {
+    "nb_cold": "yes"
+   },
+   "default_answer": "no",
+   "show_now": false,
+   "expected_signs": [],
+   "expected_level": "RED",
+   "note": "Typed no fever, then answered yes to the cold question.",
+   "id": "nb104"
+  }
+ ]
+}

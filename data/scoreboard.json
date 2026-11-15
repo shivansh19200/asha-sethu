@@ -1,0 +1,146 @@
+{
+ "run_at": "2026-11-15 20:25",
+ "mode": "offline, no AI model",
+ "rules_version": "0.3.0",
+ "baseline": {
+  "cases": 104,
+  "level_accuracy": 0.529,
+  "red_total": 55,
+  "red_caught": 32,
+  "red_missed": 23,
+  "false_negative_rate": 0.435,
+  "false_negatives": 37,
+  "red_or_amber_total": 85,
+  "false_positive_rate": 0.082,
+  "over_referrals": 4,
+  "unsure_rate": 0.0,
+  "avg_steps": 0.0
+ },
+ "ours": {
+  "cases": 104,
+  "level_accuracy": 0.99,
+  "red_total": 55,
+  "red_caught": 55,
+  "red_missed": 0,
+  "false_negative_rate": 0.0,
+  "false_negatives": 0,
+  "red_or_amber_total": 85,
+  "false_positive_rate": 0.0,
+  "over_referrals": 0,
+  "unsure_rate": 0.096,
+  "avg_steps": 5.39
+ },
+ "by_language": {
+  "en": {
+   "baseline": {
+    "cases": 61,
+    "level_accuracy": 0.82,
+    "red_total": 33,
+    "red_caught": 32,
+    "red_missed": 1,
+    "false_negative_rate": 0.059,
+    "false_negatives": 3,
+    "red_or_amber_total": 51,
+    "false_positive_rate": 0.143,
+    "over_referrals": 4,
+    "unsure_rate": 0.0,
+    "avg_steps": 0.0
+   },
+   "ours": {
+    "cases": 61,
+    "level_accuracy": 0.984,
+    "red_total": 33,
+    "red_caught": 33,
+    "red_missed": 0,
+    "false_negative_rate": 0.0,
+    "false_negatives": 0,
+    "red_or_amber_total": 51,
+    "false_positive_rate": 0.0,
+    "over_referrals": 0,
+    "unsure_rate": 0.098,
+    "avg_steps": 4.92
+   }
+  },
+  "hi": {
+   "baseline": {
+    "cases": 15,
+    "level_accuracy": 0.2,
+    "red_total": 7,
+    "red_caught": 0,
+    "red_missed": 7,
+    "false_negative_rate": 1.0,
+    "false_negatives": 10,
+    "red_or_amber_total": 10,
+    "false_positive_rate": 0.0,
+    "over_referrals": 0,
+    "unsure_rate": 0.0,
+    "avg_steps": 0.0
+   },
+   "ours": {
+    "cases": 15,
+    "level_accuracy": 1.0,
+    "red_total": 7,
+    "red_caught": 7,
+    "red_missed": 0,
+    "false_negative_rate": 0.0,
+    "false_negatives": 0,
+    "red_or_amber_total": 10,
+    "false_positive_rate": 0.0,
+    "over_referrals": 0,
+    "unsure_rate": 0.133,
+    "avg_steps": 7.6
+   }
+  },
+  "hinglish": {
+   "baseline": {
+    "cases": 28,
+    "level_accuracy": 0.071,
+    "red_total": 15,
+    "red_caught": 0,
+    "red_missed": 15,
+    "false_negative_rate": 1.0,
+    "false_negatives": 24,
+    "red_or_amber_total": 24,
+    "false_positive_rate": 0.0,
+    "over_referrals": 0,
+    "unsure_rate": 0.0,
+    "avg_steps": 0.0
+   },
+   "ours": {
+    "cases": 28,
+    "level_accuracy": 1.0,
+    "red_total": 15,
+    "red_caught": 15,
+    "red_missed": 0,
+    "false_negative_rate": 0.0,
+    "false_negatives": 0,
+    "red_or_amber_total": 24,
+    "false_positive_rate": 0.0,
+    "over_referrals": 0,
+    "unsure_rate": 0.071,
+    "avg_steps": 5.25
+   }
+  }
+ },
+ "failures": [
+  {
+   "id": "nb024",
+   "language": "en",
+   "text": "baby is feeding well and looks fine",
+   "expected": "GREEN",
+   "got": "UNSURE",
+   "expected_signs": [],
+   "found_signs": []
+  }
+ ],
+ "floor_test_1": {
+  "passed": 104,
+  "total": 104,
+  "failed_ids": []
+ },
+ "floor_test_2": {
+  "passed": 104,
+  "total": 104,
+  "failed_ids": []
+ }
+}

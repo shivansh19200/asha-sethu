@@ -9,7 +9,7 @@ except Exception:
     pass
 
 RULES_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'rules.json')
-ALIAS = {'nahin': 'nahi', 'nhi': 'nahi', 'nahii': 'nahi', 'nai': 'nahi'}
+ALIAS = {'nahin': 'nahi', 'nhi': 'nahi', 'nahii': 'nahi', 'nai': 'nahi', 'rha': 'raha', 'rhi': 'rahi', 'rhe': 'rahe'}
 
 
 def norm(s):
@@ -52,7 +52,10 @@ def tok_match(a, b):
     if a == b:
         return True
     # typo tolerance only for longer Latin words (so 'not' never matches 'now')
-    return a.isascii() and b.isascii() and len(a) >= 5 and len(b) >= 5 and SequenceMatcher(None, a, b).ratio() >= 0.8
+    if not (a.isascii() and b.isascii()):
+        return False
+    r = SequenceMatcher(None, a, b).ratio()
+    return (len(a) >= 5 and len(b) >= 5 and r >= 0.8) or (len(a) >= 4 and len(b) >= 4 and r >= 0.85)
 
 
 def find_spans(toks, ptoks):

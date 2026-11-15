@@ -135,6 +135,8 @@ export default function Settings({ goToScreen }) {
           </button>
         </div>
       </div>
+
+      <button className="settings-back" onClick={() => goToScreen('measure')}>How we measured</button>
     </div>
   )
 }
