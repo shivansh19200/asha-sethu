@@ -1,7 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import visits, understand, agent, note, referral, care
+import visits, understand, agent, note, referral, care, transcribe
 
-ROUTES = {'/understand': understand, '/agent': agent, '/note': note, '/referral': referral, '/care': care}
+ROUTES = {'/understand': understand, '/agent': agent, '/note': note, '/referral': referral, '/care': care, '/transcribe': transcribe}
 
 
 class Router(BaseHTTPRequestHandler):

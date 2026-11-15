@@ -125,8 +125,9 @@ def analyse(text, patient):
     return {'signs': present, 'negated': negated, 'unclear': unclear}
 
 
+_ERR = ['']
 GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions'
-GROQ_MODEL = os.environ.get('GROQ_MODEL', 'llama-3.3-70b-versatile')
+GROQ_MODEL = os.environ.get('GROQ_MODEL', 'openai/gpt-oss-20b')
 
 
 def _catalog(patient):
@@ -138,7 +139,9 @@ def ai_analyse(text, patient):
     """Ask Groq to map the description to the CLOSEST danger signs in rules.json.
     Returns None on any failure or after 6 seconds, so the caller falls back to rules-only."""
     key = os.environ.get('GROQ_API_KEY')
+    _ERR[0] = ''
     if not key:
+        _ERR[0] = 'no GROQ_API_KEY in this deployment'
         return None
     signs = _catalog(patient)
     ids = {s['id'] for s in signs}
@@ -159,18 +162,22 @@ def ai_analyse(text, patient):
         'response_format': {'type': 'json_object'},
         'messages': [{'role': 'system', 'content': system}, {'role': 'user', 'content': text}],
     }
+    if 'gpt-oss' in GROQ_MODEL:   # reasoning model: keep thinking short so the JSON answer fits
+        body['reasoning_effort'] = 'low'
+        body['max_tokens'] = 1000
     req = urllib.request.Request(
         GROQ_URL, data=json.dumps(body).encode(),
         headers={'Authorization': 'Bearer ' + key, 'Content-Type': 'application/json', 'User-Agent': 'asha-sethu/0.1'})
     try:
-        with urllib.request.urlopen(req, timeout=6) as r:
+        with urllib.request.urlopen(req, timeout=8) as r:
             out = json.loads(json.loads(r.read())['choices'][0]['message']['content'])
         return {
             'present': [i for i in out.get('present', []) if i in ids],   # drop anything not in rules.json
             'negated': [i for i in out.get('negated', []) if i in ids],
             'unclear': bool(out.get('unclear', False)),
         }
-    except Exception:
+    except Exception as e:
+        _ERR[0] = (type(e).__name__ + ': ' + str(e))[:200]
         return None
 
 
@@ -180,6 +187,8 @@ def understand(text, patient):
     a['suggested'] = []
     a['ai_used'] = False
     ai = ai_analyse(text, patient) if text.strip() else None
+    if not ai and text.strip():
+        a['ai_error'] = _ERR[0]
     if ai:
         a['ai_used'] = True
         known = set(a['signs']) | set(a['negated'])
