@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import rules from '../../data/rules.json'
 import './theme.css'
 import './screens.css'
 import './result.css'
 import { T } from './strings'
-import { Icon, TopRow, getLang, patientLabel } from './ui'
+import { TopRow, getLang, patientLabel } from './ui'
 import { levelOf } from './floor'
-import { saveVisit } from './api'
+import { saveVisit, getNote } from './api'
 //import crypto from 'crypto';
 
 const num = (s) => Math.max(0, parseInt(s, 10) || 0)
@@ -17,37 +17,28 @@ export default function NoteRecord({ visit, setVisit, goToScreen }) {
   const t = T[lang]
   const patient = visit.patient === 'mother' ? 'mother' : 'newborn'
   const level = levelOf(visit)
-  const nameEn = Object.fromEntries(rules.signs.map((s) => [s.id, s.name_en]))
+  const sname = Object.fromEntries(rules.signs.map((s) => [s.id, lang === 'hi' ? s.name_hi : s.name_en]))
 
   const [age, setAge] = useState({ years: '', months: '', weeks: '', days: '' })
   const [feeding, setFeeding] = useState('')
   const [other, setOther] = useState('')
   const [advised, setAdvised] = useState(t['act' + level])
-  const [referral, setReferral] = useState(false)
   const [busy, setBusy] = useState(false)
   const cid = useRef(window.crypto.randomUUID())
 
   const setPart = (k) => (e) => setAge((a) => ({ ...a, [k]: e.target.value }))
   const totalDays = num(age.years) * 365 + num(age.months) * 30 + num(age.weeks) * 7 + num(age.days)
   const ageText = PARTS.map(([k, w]) => (num(age[k]) ? `${num(age[k])} ${w}${num(age[k]) > 1 ? 's' : ''}` : null)).filter(Boolean).join(' ')
-
   const asha = localStorage.getItem('ashaName') || ''
   const village = localStorage.getItem('village') || ''
-  const absent = visit.answers.filter((a) => a.answer === 'no').map((a) => nameEn[a.sign])
+  const when = new Date().toLocaleString('en-IN')
 
-  // Only confirmed facts go in the note. Mission 5 replaces this with write_note().
-  const buildNote = (code) => [
-    'REFERRAL NOTE',
-    `Patient: ${T.en[patient]}${ageText ? `, ${ageText}` : ''}${code ? `, code ${code}` : ''}`,
-    `Danger level: ${T.en['lv' + level]}`,
-    `Signs present: ${visit.signs.map((id) => nameEn[id]).join('; ') || 'none'}`,
-    `Asked and absent: ${absent.join('; ') || 'none'}`,
-    ...(other.trim() ? [`Other concern: ${other.trim()}`] : []),
-    `Advice: ${advised}`,
-    `ASHA: ${asha || '-'}, ${village || '-'}`,
-    `Date: ${new Date().toLocaleString('en-IN')}`,
-    'This is an alert aid, not a diagnosis.'
-  ].join('\n')
+  // fill_record (Python) pre-fills fields from what was said and answered. Nothing is saved here.
+  useEffect(() => {
+    getNote({ patient, signs: visit.signs, answers: visit.answers.map(({ qid, answer }) => ({ qid, answer })), level, when }).then((r) => {
+      if (r && r.record && r.record.feeding) setFeeding((f) => f || r.record.feeding)
+    })
+  }, [])
 
   const save = async () => {
     setBusy(true)
@@ -59,25 +50,32 @@ export default function NoteRecord({ visit, setVisit, goToScreen }) {
       signs: visit.signs,
       answers: visit.answers,
       level,
-      record: { feeding, other_concern: other, advised, referral_made: referral, age_text: ageText, checklist_done: visit.checklistDone, unclear: visit.unclear, skipped: visit.skipped },
+      record: { feeding, other_concern: other, advised, referral_made: false, age_text: ageText, checklist_done: visit.checklistDone, unclear: visit.unclear, skipped: visit.skipped },
       asha_name: asha,
       village
     })
-    setVisit((v) => ({ ...v, saveResult: { ok: r.ok, code: r.code, note: buildNote(r.code) } }))
-    goToScreen('saved')
+    const text = r.ok ? 'Saved the visit record' : 'Saved the visit on this phone (will send when signal returns)'
+    setVisit((v) => ({
+      ...v,
+      clientId: cid.current,
+      saveResult: { ok: r.ok, code: r.code },
+      noteInput: { age, other, asha, village, when },
+      doneSteps: [...(v.doneSteps || []), { text, tag: 'done' }]
+    }))
+    goToScreen('review')
   }
-
-  const yn = (val, label) => (
-    <button type="button" className={`sx-btn${referral === val ? ' on' : ''}`} onClick={() => setReferral(val)}>
-      {referral === val && <Icon name="check" size={18} />}{label}
-    </button>
-  )
 
   return (
     <div className="sx-screen">
       <TopRow label={patientLabel(patient, lang)} onBack={() => goToScreen('result')} lang={lang} />
       <h1 className="sx-header sx-in" style={{ '--i': 1 }}>{t.noteHeader}</h1>
       <div className="sx-label sx-in" style={{ '--i': 2 }}>{t.noteLabel}</div>
+
+      <div className="sx-section">{t.found}</div>
+      <div className="sx-chips">
+        {visit.signs.length === 0 && <span className="sx-small">{t.none}</span>}
+        {visit.signs.map((id) => <span key={id} className="sx-chip">{sname[id]}</span>)}
+      </div>
 
       <div className="sx-section">{t.age}</div>
       <div className="sx-grid">
@@ -97,12 +95,6 @@ export default function NoteRecord({ visit, setVisit, goToScreen }) {
 
       <div className="sx-section">{t.advised}</div>
       <input className="sx-input" value={advised} onChange={(e) => setAdvised(e.target.value)} />
-
-      <div className="sx-section">{t.referralMade}</div>
-      <div className="sx-seg">{yn(true, t.yes)}{yn(false, t.no)}</div>
-
-      <div className="sx-section">{t.noteText}</div>
-      <pre className="sx-note">{buildNote(null)}</pre>
 
       <button type="button" className="sx-fill" disabled={busy || totalDays === 0} onClick={save}>{t.saveBtn}</button>
     </div>

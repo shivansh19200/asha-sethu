@@ -7,9 +7,9 @@ import './result.css'
 import { T } from './strings'
 import { Icon, TopRow, getLang, patientLabel } from './ui'
 import { levelOf } from './floor'
+import { StepList } from './Steps'
 
 const ICON = { RED: 'alert-triangle', AMBER: 'alert-circle', GREEN: 'check-circle', UNSURE: 'help-circle' }
-const TAG = { ai: ['bulb', 'tagAI'], worker: ['user-check', 'tagWorker'], rules: ['book', 'tagRules'], done: ['check-circle', 'tagDone'] }
 const TAGMAP = { ai_suggested: 'ai', worker_confirmed: 'worker', rules: 'rules', done: 'done' }
 
 export default function Result({ visit, goToScreen }) {
@@ -32,7 +32,8 @@ export default function Result({ visit, goToScreen }) {
   else if (level === 'UNSURE') local.push([!visit.checklistDone && !visit.signs.length ? t.notDone : t.unclearStep, 'rules'])
   else local.push([t.allClear, 'rules'])
   const fromAgent = visit.agent && visit.agent.trace && visit.agent.trace.length
-  const steps = fromAgent ? visit.agent.trace.map((x) => [x.text, TAGMAP[x.tag] || 'rules']) : local
+  const base = fromAgent ? visit.agent.trace.map((x) => [x.text, TAGMAP[x.tag] || 'rules']) : local
+  const steps = [...base, ...(visit.doneSteps || []).map((x) => [x.text, 'done'])]
 
   return (
     <div className="sx-screen">
@@ -51,17 +52,7 @@ export default function Result({ visit, goToScreen }) {
       </div>
 
       <div className="sx-section">{t.did}</div>
-      <div className="sx-steps">
-        {steps.map(([text, tag], i) => (
-          <div key={i} className="sx-step" style={{ '--i': i }}>
-            <span className="sx-step-tick"><Icon name="check" size={18} /></span>
-            <div>
-              <div>{text}</div>
-              <span className="sx-tag"><Icon name={TAG[tag][0]} size={14} />{t[TAG[tag][1]]}</span>
-            </div>
-          </div>
-        ))}
-      </div>
+      <StepList steps={steps} t={t} />
 
       <button type="button" className="sx-fill" onClick={() => goToScreen('note')}>{t.review}</button>
       <div className="sx-foot">{t.foot}</div>

@@ -35,7 +35,8 @@ export const T = {
     feeding: 'Feeding', advised: 'Advised action', referralMade: 'Referral made', noteText: 'Referral note',
     saveBtn: 'Confirm and save', saved: 'Saved', savedPhone: 'Saved on this phone. It will send when signal returns.',
     codeLbl: 'Patient code', share: 'Share', print: 'Print', done: 'Done',
-    years: 'years', months: 'months', savedTitle: 'Saved', waitTitle: 'Saved on phone', other: 'Other concern'
+    years: 'years', months: 'months', savedTitle: 'Saved', waitTitle: 'Saved on phone', other: 'Other concern',
+    reviewLabel: 'Check the referral, then send', sendBtn: 'Send referral', finishBtn: 'Finish', sentTitle: 'Referral sent'
   },
   hi: {
     mother: 'माँ',
@@ -73,6 +74,7 @@ export const T = {
     feeding: 'दूध पिलाना', advised: 'सुझाई गई कार्रवाई', referralMade: 'रेफ़र किया गया', noteText: 'रेफ़रल नोट',
     saveBtn: 'पुष्टि करें और सहेजें', saved: 'सहेजा गया', savedPhone: 'इस फ़ोन में सहेजा गया। सिग्नल आने पर भेजा जाएगा।',
     codeLbl: 'रोगी कोड', share: 'साझा करें', print: 'प्रिंट', done: 'पूरा',
-    years: 'साल', months: 'महीने', savedTitle: 'सहेजा गया', waitTitle: 'फ़ोन में सहेजा', other: 'कोई और चिंता'
+    years: 'साल', months: 'महीने', savedTitle: 'सहेजा गया', waitTitle: 'फ़ोन में सहेजा', other: 'कोई और चिंता',
+    reviewLabel: 'रेफ़रल जाँचें, फिर भेजें', sendBtn: 'रेफ़रल भेजा जाए', finishBtn: 'पूरा करें', sentTitle: 'रेफ़रल भेजा गया'
   }
 }
