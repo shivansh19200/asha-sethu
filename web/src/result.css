@@ -27,3 +27,18 @@
 .sx-note { white-space: pre-wrap; font: inherit; font-size: 14px; background: var(--card); border: 1px solid var(--bd); border-radius: 14px; padding: 12px 14px; margin: 0 0 14px; }
 .sx-fill:disabled { opacity: .5; cursor: not-allowed; }
 @media print { .sx-top, .sx-btn, .sx-fill, fieldset { display: none; } }
+
+.sx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 10px; }
+.sx-field .sx-small { display: block; margin-bottom: 4px; }
+.sx-field .sx-input { margin-bottom: 0; }
+
+/* press + selected feedback */
+.sx-btn:active, .sx-row:active { background: var(--sky); }
+.sx-btn.on, .sx-row.on { background: var(--sky); border-color: var(--pri); }
+.sx-btn.on { color: var(--skyink); }
+
+.sx-center { text-align: center; }
+.sx-seal { width: 96px; height: 96px; margin: 24px auto 16px; border-radius: 999px; display: grid; place-items: center;
+  background: var(--sky); color: var(--skyink); border: 1.5px solid var(--bds); animation: pop 520ms cubic-bezier(.2,.9,.3,1.2) both; }
+.sx-seal.wait { background: var(--card); color: var(--mut); }
+@media (prefers-reduced-motion: reduce) { .sx-seal { animation: none; } }

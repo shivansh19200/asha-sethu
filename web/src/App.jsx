@@ -7,8 +7,9 @@ import Confirm from './Confirm'
 import Question from './Question'
 import Result from './Result'
 import NoteRecord from './NoteRecord'
+import Saved from './Saved'
 
-const emptyVisit = { patient: null, text: '', signs: [], checklistDone: false, unclear: false, confirmed: false, answers: [], skipped: false }
+const emptyVisit = { patient: null, text: '', signs: [], checklistDone: false, unclear: false, confirmed: false, answers: [], skipped: false, saveResult: null}
 
 export default function App() {
   const [screen, setScreen] = useState('home')
@@ -32,7 +33,8 @@ export default function App() {
   if (screen === 'confirm') return <Confirm visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
   if (screen === 'question') return <Question visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
   if (screen === 'result') return <Result visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
-  if (screen === 'note') return <NoteRecord visit={visit} goToScreen={goToScreen} />
+  if (screen === 'note') return <NoteRecord visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
+  if (screen === 'saved') return <Saved visit={visit} goToScreen={goToScreen} />
 
   // Placeholder screens for question, result, note, send (pieces 3 and 4)
   const placeholderScreens = {

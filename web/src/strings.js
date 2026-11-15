@@ -34,7 +34,8 @@ export const T = {
     noteHeader: 'Note and record', noteLabel: 'Check the details, then save', age: 'Age', days: 'days', weeks: 'weeks',
     feeding: 'Feeding', advised: 'Advised action', referralMade: 'Referral made', noteText: 'Referral note',
     saveBtn: 'Confirm and save', saved: 'Saved', savedPhone: 'Saved on this phone. It will send when signal returns.',
-    codeLbl: 'Patient code', share: 'Share', print: 'Print', done: 'Done'
+    codeLbl: 'Patient code', share: 'Share', print: 'Print', done: 'Done',
+    years: 'years', months: 'months', savedTitle: 'Saved', waitTitle: 'Saved on phone'
   },
   hi: {
     mother: 'माँ',
@@ -71,6 +72,7 @@ export const T = {
     noteHeader: 'नोट और रिकॉर्ड', noteLabel: 'जानकारी जाँचें, फिर सहेजें', age: 'उम्र', days: 'दिन', weeks: 'सप्ताह',
     feeding: 'दूध पिलाना', advised: 'सुझाई गई कार्रवाई', referralMade: 'रेफ़र किया गया', noteText: 'रेफ़रल नोट',
     saveBtn: 'पुष्टि करें और सहेजें', saved: 'सहेजा गया', savedPhone: 'इस फ़ोन में सहेजा गया। सिग्नल आने पर भेजा जाएगा।',
-    codeLbl: 'रोगी कोड', share: 'साझा करें', print: 'प्रिंट', done: 'पूरा'
+    codeLbl: 'रोगी कोड', share: 'साझा करें', print: 'प्रिंट', done: 'पूरा',
+    years: 'साल', months: 'महीने', savedTitle: 'सहेजा गया', waitTitle: 'फ़ोन में सहेजा'
   }
 }
