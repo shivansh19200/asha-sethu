@@ -1,6 +1,6 @@
 {
-  "version": "0.2.0",
-  "status": "Clinical review pending. Sources were found from search snippets and still need a person to open each document and confirm page numbers.",
+  "version": "0.3.0",
+  "status": "Levels reviewed by one gynaecologist on 15 November 2026. No paediatric review yet. Source page numbers still need to be confirmed against the documents. Not clinically validated.",
   "level_order": [
     "GREEN",
     "UNSURE",
@@ -13,7 +13,7 @@
       "patient": "newborn",
       "name_en": "Not feeding",
       "name_hi": "दूध नहीं पी रहा",
-      "level": "RED",
+      "level": "AMBER",
       "phrases": {
         "en": [
           "not feeding",
@@ -35,10 +35,11 @@
         ]
       },
       "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), 'Refer newborn if: Not able to feed' (printed p.8, verify page)",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
-      "note": ""
+      "note": "",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "nb_fever",
@@ -65,10 +66,11 @@
         ]
       },
       "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), 'Refer newborn if: Feels hot or cold to touch' (printed p.8, verify page)",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
-      "note": "Leaflet and IMNCI give temperature thresholds; the app asks 'feels hot' and needs no thermometer."
+      "note": "Leaflet and IMNCI give temperature thresholds; the app asks 'feels hot' and needs no thermometer.",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "nb_cold",
@@ -93,17 +95,18 @@
         ]
       },
       "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), 'Refer newborn if: Feels hot or cold to touch' (printed p.8, verify page)",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
-      "note": ""
+      "note": "",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "nb_fast_breathing",
       "patient": "newborn",
       "name_en": "Fast breathing",
       "name_hi": "तेज़ सांस",
-      "level": "RED",
+      "level": "AMBER",
       "phrases": {
         "en": [
           "fast breathing",
@@ -120,17 +123,18 @@
         ]
       },
       "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), 'Breathing is fast or difficult' (printed p.8, verify page); HBNC leaflet (NHM Assam copy) (more than 60 breaths per minute)",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
-      "note": "Official number is 60 breaths per minute. The app does not count breaths."
+      "note": "Sheet row N4: Agree and Change-to both ticked, \"amber\" written. Written level used.",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "nb_diff_breathing",
       "patient": "newborn",
       "name_en": "Difficulty breathing",
       "name_hi": "सांस लेने में तकलीफ़",
-      "level": "RED",
+      "level": "AMBER",
       "phrases": {
         "en": [
           "difficulty breathing",
@@ -148,10 +152,11 @@
         ]
       },
       "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), 'Breathing is fast or difficult' (printed p.8, verify page)",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
-      "note": ""
+      "note": "",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "nb_fits",
@@ -177,17 +182,18 @@
         ]
       },
       "source": "TO VERIFY: convulsions appear in the IMNCI young infant chart (refer urgently). Not seen in the Job Aid page checked. Find the ASHA HBNC module page.",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "",
-      "note": ""
+      "note": "",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "nb_sleepy",
       "patient": "newborn",
       "name_en": "Very sleepy or limp",
       "name_hi": "बहुत सुस्त या ढीला",
-      "level": "RED",
+      "level": "AMBER",
       "phrases": {
         "en": [
           "very sleepy",
@@ -209,17 +215,18 @@
         ]
       },
       "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), 'Weak cry or limp' (printed p.8, verify page); HBNC leaflet (NHM Assam copy) (excessive sleepiness and lethargic)",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
-      "note": ""
+      "note": "Sheet row N7: no box ticked, \"amber\" written. Written level used.",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "nb_yellow",
       "patient": "newborn",
       "name_en": "Yellow palms or soles",
       "name_hi": "हथेली या तलवे पीले",
-      "level": "RED",
+      "level": "AMBER",
       "phrases": {
         "en": [
           "yellow palms",
@@ -239,10 +246,11 @@
         ]
       },
       "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), 'Yellowness of palms and soles' (printed p.8, verify page); IMNCI young infant chart lists it as severe jaundice, refer urgently",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
-      "note": "Changed from AMBER to RED after checking sources."
+      "note": "Changed from AMBER to RED after checking sources.",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "nb_cord",
@@ -270,10 +278,11 @@
         ]
       },
       "source": "HBNC leaflet (NHM Assam copy): pus from umbilicus, or swelling and redness around it, listed as a danger sign to refer. IMNCI chart calls red or pus-draining umbilicus 'local bacterial infection' (home care, follow-up in 2 days).",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://nhm.assam.gov.in/sites/default/files/swf_utility_folder/departments/nhm_lipl_in_oid_6/menu/document/hbnc_leaflet_revised_eng.pdf",
-      "note": "Sources differ. Kept AMBER (health centre today). Doctor to decide."
+      "note": "Sources differ. Kept AMBER (health centre today). Doctor to decide.",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "nb_no_cry",
@@ -297,45 +306,58 @@
         ]
       },
       "source": "TO VERIFY: not found in the Job Aid or leaflet checked. Find the ASHA HBNC module page on birth asphyxia.",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "",
-      "note": ""
+      "note": "",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "m_headache",
       "patient": "mother",
-      "name_en": "Severe headache",
-      "name_hi": "तेज़ सिरदर्द",
-      "level": "RED",
+      "name_en": "Headache",
+      "name_hi": "सिरदर्द",
+      "level": "AMBER",
       "phrases": {
         "en": [
           "severe headache",
           "terrible headache",
-          "very bad headache"
+          "very bad headache",
+          "headache",
+          "head ache",
+          "head is paining",
+          "head hurts"
         ],
         "hinglish": [
           "tez sir dard",
           "bahut sir dard",
-          "sar dard bahut"
+          "sar dard bahut",
+          "sir dard",
+          "sar dard",
+          "sir mein dard",
+          "sar mein dard"
         ],
         "hi": [
           "तेज़ सिरदर्द",
-          "बहुत सिर दर्द"
+          "बहुत सिर दर्द",
+          "सिरदर्द",
+          "सिर दर्द",
+          "सिर में दर्द"
         ]
       },
       "source": "MoHFW Mother and Child Protection (MCP) Card (2018): 'Headache, blurring of vision, fits and swelling all over the body'; ICMR antenatal management guideline: severe headache, blurring of vision, convulsion",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/Revised%20India%20MCP%20Card%20English_(28-05-2018).pdf",
-      "note": ""
+      "note": "Sheet rows M1 (severe, AMBER) and M2 (plain, AMBER) have the same level, so they are one sign: Headache.",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "m_vision",
       "patient": "mother",
       "name_en": "Blurred vision",
       "name_hi": "धुंधला दिखना",
-      "level": "RED",
+      "level": "AMBER",
       "phrases": {
         "en": [
           "blurred vision",
@@ -354,10 +376,11 @@
         ]
       },
       "source": "MoHFW Mother and Child Protection (MCP) Card (2018): 'Headache, blurring of vision, fits and swelling all over the body'; ICMR antenatal management guideline",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/Revised%20India%20MCP%20Card%20English_(28-05-2018).pdf",
-      "note": ""
+      "note": "",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "m_fits",
@@ -383,10 +406,11 @@
         ]
       },
       "source": "MoHFW Mother and Child Protection (MCP) Card (2018): 'Headache, blurring of vision, fits and swelling all over the body'; ICMR antenatal management guideline",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/Revised%20India%20MCP%20Card%20English_(28-05-2018).pdf",
-      "note": ""
+      "note": "",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "m_bleeding",
@@ -416,7 +440,7 @@
       "review_status": "pending",
       "reviewed_by": null,
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
-      "note": ""
+      "note": "Sheet row M5: no box ticked and nothing written, so no verdict. Kept RED."
     },
     {
       "id": "m_fever",
@@ -446,17 +470,18 @@
         ]
       },
       "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), mother: fever more than 102 degree F, foul smelling discharge, losing consciousness (refer; printed p.7, verify page)",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
-      "note": "TO VERIFY. Job Aid refer threshold is fever more than 102 F; the app has no thermometer, so plain 'fever' is provisional AMBER until a doctor decides."
+      "note": "Reviewer answer: plain fever in a mother is AMBER.",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "m_foul_discharge",
       "patient": "mother",
       "name_en": "Foul-smelling discharge",
       "name_hi": "बदबूदार स्राव",
-      "level": "RED",
+      "level": "AMBER",
       "phrases": {
         "en": [
           "foul smelling discharge",
@@ -479,17 +504,18 @@
         ]
       },
       "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), mother: fever more than 102 degree F, foul smelling discharge, losing consciousness (refer; printed p.7, verify page)",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/English-Job%20Aid%20for%20ASHA%20on%20HBYC.pdf",
-      "note": "Job Aid lists foul smelling discharge as a refer sign on its own, so RED. Doctor to confirm."
+      "note": "Sheet row M7 (fever with foul discharge) is AMBER and fever and discharge are separate signs, so discharge alone is AMBER.",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "m_belly_pain",
       "patient": "mother",
       "name_en": "Severe belly pain",
       "name_hi": "पेट में तेज़ दर्द",
-      "level": "RED",
+      "level": "AMBER",
       "phrases": {
         "en": [
           "severe belly pain",
@@ -507,10 +533,11 @@
         ]
       },
       "source": "TO VERIFY: not found in the MCP card or Job Aid pages checked. Severe abdominal pain appears in international lists (for example CDC). Find the ASHA module page.",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "",
-      "note": ""
+      "note": "Sheet row M8: Change-to ticked, \"amber\" written.",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "m_breathless",
@@ -536,17 +563,18 @@
         ]
       },
       "source": "MoHFW Mother and Child Protection (MCP) Card (2018): 'Severe anemia with or without breathlessness' (partial match). TO VERIFY for the ASHA module page.",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/Revised%20India%20MCP%20Card%20English_(28-05-2018).pdf",
-      "note": ""
+      "note": "",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "m_baby_less",
       "patient": "mother",
       "name_en": "Baby moving less",
       "name_hi": "बच्चा कम हिल रहा",
-      "level": "RED",
+      "level": "AMBER",
       "phrases": {
         "en": [
           "baby moving less",
@@ -564,10 +592,11 @@
         ]
       },
       "source": "ICMR antenatal management guideline: decreased or absent fetal movements after 28 weeks; MoHFW Mother and Child Protection (MCP) Card (2018) records fetal movements as normal, reduced or absent",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://www.icmr.gov.in/icmrobject/uploads/STWs/1771568619_ante-natalmanagementofnormalpregnancy-7.pdf",
-      "note": ""
+      "note": "Sheet row M10: no box ticked, \"amber\" written. Written level used.",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "m_swelling",
@@ -593,10 +622,11 @@
         ]
       },
       "source": "MoHFW Mother and Child Protection (MCP) Card (2018): 'swelling all over the body' is listed together with headache, blurred vision and fits",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/Revised%20India%20MCP%20Card%20English_(28-05-2018).pdf",
-      "note": "Card says swelling all over the body. Face or hands alone kept AMBER. Doctor to decide."
+      "note": "Card says swelling all over the body. Face or hands alone kept AMBER. Doctor to decide.",
+      "reviewed_on": "2026-11-15"
     },
     {
       "id": "m_water",
@@ -621,11 +651,444 @@
         ]
       },
       "source": "MoHFW Mother and Child Protection (MCP) Card (2018): 'Bursting of water bag without labour pains / preterm labour pains (<37 weeks)'; ICMR antenatal management guideline: leaking of watery fluid",
-      "review_status": "pending",
-      "reviewed_by": null,
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/Revised%20India%20MCP%20Card%20English_(28-05-2018).pdf",
-      "note": ""
+      "note": "",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "nb_chest_indrawing",
+      "patient": "newborn",
+      "name_en": "Chest drawing in with each breath",
+      "name_hi": "सांस के साथ छाती का अंदर धँसना",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "chest drawing in",
+          "chest indrawing",
+          "chest pulling in",
+          "ribs pulling in",
+          "chest going in"
+        ],
+        "hinglish": [
+          "seena andar dhans raha",
+          "seena andar ja raha",
+          "pasli andar dhans rahi",
+          "chhati andar dhas rahi"
+        ],
+        "hi": [
+          "छाती अंदर धँस रही",
+          "सीना अंदर धँस रहा",
+          "छाती का अंदर धँसना"
+        ]
+      },
+      "source": "IMNCI chart (named on the review sheet; document and page to verify)",
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
+      "reviewed_on": "2026-11-15",
+      "source_url": null,
+      "note": "Added on the reviewer's sheet (ticked Add) at the suggested level."
+    },
+    {
+      "id": "nb_skin_pus",
+      "patient": "newborn",
+      "name_en": "Skin boils or pus spots",
+      "name_hi": "त्वचा पर फुंसियाँ या मवाद",
+      "level": "AMBER",
+      "phrases": {
+        "en": [
+          "skin boils",
+          "boils on skin",
+          "pus spots",
+          "pus on skin",
+          "skin pustules"
+        ],
+        "hinglish": [
+          "phunsi",
+          "phunsiyan",
+          "chamdi par mawad",
+          "skin par phunsi"
+        ],
+        "hi": [
+          "फुंसियाँ",
+          "त्वचा पर फुंसियाँ",
+          "त्वचा पर मवाद"
+        ]
+      },
+      "source": "IMNCI chart (named on the review sheet; document and page to verify)",
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
+      "reviewed_on": "2026-11-15",
+      "source_url": null,
+      "note": "Added on the reviewer's sheet (ticked Add) at the suggested level."
+    },
+    {
+      "id": "nb_eye_pus",
+      "patient": "newborn",
+      "name_en": "Swollen eyes or pus from the eyes",
+      "name_hi": "आँख में सूजन या मवाद",
+      "level": "AMBER",
+      "phrases": {
+        "en": [
+          "swollen eyes",
+          "pus from the eyes",
+          "pus in eyes",
+          "eye discharge",
+          "eyes swollen",
+          "sticky eyes"
+        ],
+        "hinglish": [
+          "aankh mein mawad",
+          "aankh se mawad",
+          "aankh sooj gayi",
+          "aankhein sooji hui",
+          "aankh mein sujan"
+        ],
+        "hi": [
+          "आँख में मवाद",
+          "आँख में सूजन",
+          "आँखें सूजी हुई"
+        ]
+      },
+      "source": "IMNCI chart (named on the review sheet; document and page to verify)",
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
+      "reviewed_on": "2026-11-15",
+      "source_url": null,
+      "note": "Added on the reviewer's sheet (ticked Add) at the suggested level."
+    },
+    {
+      "id": "nb_loose_stools",
+      "patient": "newborn",
+      "name_en": "Loose or watery stools",
+      "name_hi": "पतले या पानी जैसे दस्त",
+      "level": "AMBER",
+      "phrases": {
+        "en": [
+          "loose stools",
+          "watery stools",
+          "loose motions",
+          "loose motion",
+          "diarrhoea",
+          "diarrhea",
+          "watery motions"
+        ],
+        "hinglish": [
+          "patle dast",
+          "pani jaise dast",
+          "dast lag gaye",
+          "patli potty"
+        ],
+        "hi": [
+          "पतले दस्त",
+          "पानी जैसे दस्त",
+          "दस्त"
+        ]
+      },
+      "source": "IMNCI chart (named on the review sheet; document and page to verify)",
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
+      "reviewed_on": "2026-11-15",
+      "source_url": null,
+      "note": "Added on the reviewer's sheet (ticked Add) at the suggested level."
+    },
+    {
+      "id": "m_faint",
+      "patient": "mother",
+      "name_en": "Fainting or loss of consciousness",
+      "name_hi": "बेहोशी",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "fainting",
+          "fainted",
+          "loss of consciousness",
+          "lost consciousness",
+          "unconscious",
+          "passed out",
+          "blacked out"
+        ],
+        "hinglish": [
+          "behosh",
+          "behoshi",
+          "behosh ho gayi",
+          "chakkar khakar gir gayi"
+        ],
+        "hi": [
+          "बेहोशी",
+          "बेहोश",
+          "बेहोश हो गई"
+        ]
+      },
+      "source": "MoHFW HBNC/HBYC Job Aid for ASHA (2018), mother section (named on the review sheet; page to verify)",
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
+      "reviewed_on": "2026-11-15",
+      "source_url": null,
+      "note": "Added on the reviewer's sheet (ticked Add) at the suggested level."
+    },
+    {
+      "id": "m_vag_bleed_preg",
+      "patient": "mother",
+      "name_en": "Bleeding from the vagina during pregnancy",
+      "name_hi": "गर्भावस्था में योनि से खून आना",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "bleeding during pregnancy",
+          "bleeding in pregnancy",
+          "vaginal bleeding in pregnancy",
+          "vaginal bleeding during pregnancy",
+          "spotting in pregnancy"
+        ],
+        "hinglish": [
+          "pregnancy mein khoon",
+          "garbhavastha mein khoon",
+          "pregnancy mein bleeding",
+          "khoon aa raha pregnancy"
+        ],
+        "hi": [
+          "गर्भावस्था में खून आना",
+          "गर्भावस्था में योनि से खून"
+        ]
+      },
+      "source": "ICMR antenatal guideline (named on the review sheet; page to verify)",
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
+      "reviewed_on": "2026-11-15",
+      "source_url": null,
+      "note": "Added on the reviewer's sheet (ticked Add) at the suggested level."
+    },
+    {
+      "id": "m_early_labour",
+      "patient": "mother",
+      "name_en": "Labour pains before the ninth month",
+      "name_hi": "नौवें महीने से पहले प्रसव का दर्द",
+      "level": "RED",
+      "phrases": {
+        "en": [
+          "labour pains before ninth month",
+          "early labour pains",
+          "labour pains before time",
+          "premature labour",
+          "preterm labour"
+        ],
+        "hinglish": [
+          "samay se pehle dard",
+          "pehle se prasav dard",
+          "nauve mahine se pehle dard",
+          "pehle labour pain"
+        ],
+        "hi": [
+          "नौवें महीने से पहले प्रसव का दर्द",
+          "समय से पहले प्रसव पीड़ा",
+          "समय से पहले दर्द"
+        ]
+      },
+      "source": "MCP card: before 37 weeks (named on the review sheet; page to verify)",
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
+      "reviewed_on": "2026-11-15",
+      "source_url": null,
+      "note": "Added on the reviewer's sheet (ticked Add) at the suggested level."
+    },
+    {
+      "id": "m_pale_weak",
+      "patient": "mother",
+      "name_en": "Very pale or very weak",
+      "name_hi": "बहुत पीला या बहुत कमज़ोर",
+      "level": "AMBER",
+      "phrases": {
+        "en": [
+          "very pale",
+          "looks very pale",
+          "very weak",
+          "extremely weak",
+          "severe weakness",
+          "pale and weak"
+        ],
+        "hinglish": [
+          "bahut peeli",
+          "bahut kamzor",
+          "bahut kamjor",
+          "khoon ki kami",
+          "peeli padh gayi"
+        ],
+        "hi": [
+          "बहुत पीला",
+          "बहुत कमज़ोर",
+          "बहुत कमजोर"
+        ]
+      },
+      "source": "MCP card: severe anaemia (named on the review sheet; page to verify)",
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
+      "reviewed_on": "2026-11-15",
+      "source_url": null,
+      "note": "Added on the reviewer's sheet (ticked Add) at the suggested level."
+    },
+    {
+      "id": "m_urine_burning",
+      "patient": "mother",
+      "name_en": "Burning or pain when passing urine",
+      "name_hi": "पेशाब में जलन या दर्द",
+      "level": "AMBER",
+      "phrases": {
+        "en": [
+          "burning urine",
+          "burning when passing urine",
+          "pain when passing urine",
+          "pain while urinating",
+          "burning while urinating",
+          "burning during urination"
+        ],
+        "hinglish": [
+          "peshab mein jalan",
+          "peshab mein dard",
+          "peshab karte waqt jalan",
+          "peshab me jalan"
+        ],
+        "hi": [
+          "पेशाब में जलन",
+          "पेशाब में दर्द"
+        ]
+      },
+      "source": "Added by the reviewer. No document source yet.",
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
+      "reviewed_on": "2026-11-15",
+      "source_url": null,
+      "note": "Added on the reviewer's sheet (ticked Add) at the suggested level."
+    },
+    {
+      "id": "m_breast",
+      "patient": "mother",
+      "name_en": "Painful, swollen or red breast",
+      "name_hi": "स्तन में दर्द, सूजन या लालिमा",
+      "level": "AMBER",
+      "phrases": {
+        "en": [
+          "painful breast",
+          "swollen breast",
+          "red breast",
+          "breast pain",
+          "breast swelling",
+          "breast is red"
+        ],
+        "hinglish": [
+          "stan mein dard",
+          "stan mein sujan",
+          "stan laal",
+          "stan sooja hua"
+        ],
+        "hi": [
+          "स्तन में दर्द",
+          "स्तन में सूजन",
+          "स्तन लाल"
+        ]
+      },
+      "source": "Added by the reviewer. No document source yet.",
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
+      "reviewed_on": "2026-11-15",
+      "source_url": null,
+      "note": "Added on the reviewer's sheet (ticked Add) at the suggested level."
+    },
+    {
+      "id": "m_stitches",
+      "patient": "mother",
+      "name_en": "Pain, redness or pus at the stitches",
+      "name_hi": "टाँकों में दर्द, लालिमा या मवाद",
+      "level": "AMBER",
+      "phrases": {
+        "en": [
+          "pain at the stitches",
+          "stitches are painful",
+          "pus at the stitches",
+          "redness at the stitches",
+          "stitches red",
+          "stitch pain",
+          "infected stitches"
+        ],
+        "hinglish": [
+          "taanke mein dard",
+          "taanke mein mawad",
+          "taanke laal",
+          "tanke mein dard",
+          "taanko mein dard"
+        ],
+        "hi": [
+          "टाँकों में दर्द",
+          "टाँकों में मवाद",
+          "टाँके लाल"
+        ]
+      },
+      "source": "Added by the reviewer. No document source yet.",
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
+      "reviewed_on": "2026-11-15",
+      "source_url": null,
+      "note": "Added on the reviewer's sheet (ticked Add) at the suggested level."
+    },
+    {
+      "id": "m_vomiting",
+      "patient": "mother",
+      "name_en": "Vomiting again and again",
+      "name_hi": "लगातार उल्टी",
+      "level": "AMBER",
+      "phrases": {
+        "en": [
+          "vomiting again and again",
+          "repeated vomiting",
+          "keeps vomiting",
+          "vomiting a lot",
+          "continuous vomiting",
+          "vomiting all the time"
+        ],
+        "hinglish": [
+          "baar baar ulti",
+          "lagatar ulti",
+          "ulti ho rahi",
+          "ulti par ulti"
+        ],
+        "hi": [
+          "लगातार उल्टी",
+          "बार बार उल्टी"
+        ]
+      },
+      "source": "Added by the reviewer. No document source yet.",
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
+      "reviewed_on": "2026-11-15",
+      "source_url": null,
+      "note": "Added on the reviewer's sheet (ticked Add) at the suggested level."
     }
   ],
-  "combinations": []
+  "combinations": [
+    {
+      "id": "C1",
+      "signs": [
+        "m_fever",
+        "m_headache"
+      ],
+      "level": "AMBER",
+      "source": "Reviewer sheet row C1: Amber",
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
+      "note": "No effect while both signs are Amber. Kept so the verdict is on record."
+    },
+    {
+      "id": "C2",
+      "signs": [
+        "m_headache",
+        "m_swelling"
+      ],
+      "level": "AMBER",
+      "source": "Reviewer sheet row C2: Amber",
+      "review_status": "reviewed",
+      "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
+      "note": "No effect while both signs are Amber. Kept so the verdict is on record."
+    }
+  ]
 }

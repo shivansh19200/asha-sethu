@@ -1,12 +1,12 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "questions": [
     {
       "id": "q_nb_not_feeding",
       "sign": "nb_not_feeding",
       "text_en": "Is the baby feeding less than usual?",
       "text_hi": "क्या बच्चा रोज़ से कम दूध पी रहा है?",
-      "level_if_yes": "RED",
+      "level_if_yes": "AMBER",
       "threshold_note": ""
     },
     {
@@ -30,7 +30,7 @@
       "sign": "nb_fast_breathing",
       "text_en": "Is the baby breathing fast?",
       "text_hi": "क्या बच्चा तेज़ सांस ले रहा है?",
-      "level_if_yes": "RED",
+      "level_if_yes": "AMBER",
       "threshold_note": ""
     },
     {
@@ -38,7 +38,7 @@
       "sign": "nb_diff_breathing",
       "text_en": "Is the baby struggling to breathe?",
       "text_hi": "क्या बच्चे को सांस लेने में तकलीफ़ हो रही है?",
-      "level_if_yes": "RED",
+      "level_if_yes": "AMBER",
       "threshold_note": ""
     },
     {
@@ -54,7 +54,7 @@
       "sign": "nb_sleepy",
       "text_en": "Is the baby very sleepy or hard to wake?",
       "text_hi": "क्या बच्चा बहुत सुस्त है या जगाने पर नहीं जागता?",
-      "level_if_yes": "RED",
+      "level_if_yes": "AMBER",
       "threshold_note": ""
     },
     {
@@ -62,7 +62,7 @@
       "sign": "nb_yellow",
       "text_en": "Are the baby's palms or soles yellow?",
       "text_hi": "क्या बच्चे की हथेली या तलवे पीले हैं?",
-      "level_if_yes": "RED",
+      "level_if_yes": "AMBER",
       "threshold_note": ""
     },
     {
@@ -84,9 +84,9 @@
     {
       "id": "q_m_headache",
       "sign": "m_headache",
-      "text_en": "Does the mother have a severe headache?",
-      "text_hi": "क्या माँ को तेज़ सिरदर्द है?",
-      "level_if_yes": "RED",
+      "text_en": "Does the mother have a headache?",
+      "text_hi": "क्या माँ को सिरदर्द है?",
+      "level_if_yes": "AMBER",
       "threshold_note": ""
     },
     {
@@ -94,7 +94,7 @@
       "sign": "m_vision",
       "text_en": "Does the mother have blurred vision?",
       "text_hi": "क्या माँ को धुंधला दिख रहा है?",
-      "level_if_yes": "RED",
+      "level_if_yes": "AMBER",
       "threshold_note": ""
     },
     {
@@ -118,7 +118,7 @@
       "sign": "m_belly_pain",
       "text_en": "Does the mother have severe belly pain?",
       "text_hi": "क्या माँ के पेट में तेज़ दर्द है?",
-      "level_if_yes": "RED",
+      "level_if_yes": "AMBER",
       "threshold_note": ""
     },
     {
@@ -134,7 +134,7 @@
       "sign": "m_baby_less",
       "text_en": "Is the baby moving less than usual?",
       "text_hi": "क्या पेट में बच्चा रोज़ से कम हिल रहा है?",
-      "level_if_yes": "RED",
+      "level_if_yes": "AMBER",
       "threshold_note": ""
     },
     {
@@ -166,7 +166,103 @@
       "sign": "m_foul_discharge",
       "text_en": "Is there foul-smelling discharge?",
       "text_hi": "क्या बदबूदार स्राव है?",
+      "level_if_yes": "AMBER",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_nb_chest_indrawing",
+      "sign": "nb_chest_indrawing",
+      "text_en": "Is the baby's chest drawing in with each breath?",
+      "text_hi": "क्या हर साँस के साथ बच्चे की छाती अंदर धँस रही है?",
       "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_nb_skin_pus",
+      "sign": "nb_skin_pus",
+      "text_en": "Does the baby have skin boils or pus spots?",
+      "text_hi": "क्या बच्चे की त्वचा पर फुंसियाँ या मवाद है?",
+      "level_if_yes": "AMBER",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_nb_eye_pus",
+      "sign": "nb_eye_pus",
+      "text_en": "Are the baby's eyes swollen or draining pus?",
+      "text_hi": "क्या बच्चे की आँखों में सूजन या मवाद है?",
+      "level_if_yes": "AMBER",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_nb_loose_stools",
+      "sign": "nb_loose_stools",
+      "text_en": "Does the baby have loose or watery stools?",
+      "text_hi": "क्या बच्चे को पतले या पानी जैसे दस्त हैं?",
+      "level_if_yes": "AMBER",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_faint",
+      "sign": "m_faint",
+      "text_en": "Did the mother faint or lose consciousness?",
+      "text_hi": "क्या माँ बेहोश हुई?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_vag_bleed_preg",
+      "sign": "m_vag_bleed_preg",
+      "text_en": "Is there bleeding from the vagina during pregnancy?",
+      "text_hi": "क्या गर्भावस्था में योनि से खून आ रहा है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_early_labour",
+      "sign": "m_early_labour",
+      "text_en": "Does she have labour pains before the ninth month?",
+      "text_hi": "क्या नौवें महीने से पहले प्रसव का दर्द है?",
+      "level_if_yes": "RED",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_pale_weak",
+      "sign": "m_pale_weak",
+      "text_en": "Is the mother very pale or very weak?",
+      "text_hi": "क्या माँ बहुत पीली या बहुत कमज़ोर है?",
+      "level_if_yes": "AMBER",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_urine_burning",
+      "sign": "m_urine_burning",
+      "text_en": "Is there burning or pain when passing urine?",
+      "text_hi": "क्या पेशाब में जलन या दर्द है?",
+      "level_if_yes": "AMBER",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_breast",
+      "sign": "m_breast",
+      "text_en": "Is a breast painful, swollen or red?",
+      "text_hi": "क्या स्तन में दर्द, सूजन या लालिमा है?",
+      "level_if_yes": "AMBER",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_stitches",
+      "sign": "m_stitches",
+      "text_en": "Is there pain, redness or pus at the stitches?",
+      "text_hi": "क्या टाँकों में दर्द, लालिमा या मवाद है?",
+      "level_if_yes": "AMBER",
+      "threshold_note": ""
+    },
+    {
+      "id": "q_m_vomiting",
+      "sign": "m_vomiting",
+      "text_en": "Is she vomiting again and again?",
+      "text_hi": "क्या लगातार उल्टी हो रही है?",
+      "level_if_yes": "AMBER",
       "threshold_note": ""
     }
   ]

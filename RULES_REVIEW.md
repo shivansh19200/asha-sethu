@@ -17,29 +17,46 @@ All levels are provisional until a named doctor signs off. Never describe these 
 ## Rules table
 | id | patient | level | source (short) | version | review_status | reviewed_by |
 |---|---|---|---|---|---|---|
-| nb_not_feeding | newborn | RED | ICMR | 0.1.0 | pending | none |
-| nb_fever | newborn | RED | ICMR | 0.1.0 | pending | none |
-| nb_cold | newborn | RED | ICMR | 0.1.0 | pending | none |
-| nb_fast_breathing | newborn | RED | ICMR | 0.1.0 | pending | none |
-| nb_diff_breathing | newborn | RED | ICMR | 0.1.0 | pending | none |
-| nb_fits | newborn | RED | TO VERIFY | 0.1.0 | pending | none |
-| nb_sleepy | newborn | RED | ICMR | 0.1.0 | pending | none |
-| nb_yellow | newborn | RED | ICMR | 0.1.0 | pending | none |
-| nb_cord | newborn | AMBER | HBNC leaflet | 0.1.0 | pending | none |
-| nb_no_cry | newborn | RED | TO VERIFY | 0.1.0 | pending | none |
-| m_headache | mother | RED | MCP card | 0.1.0 | pending | none |
-| m_vision | mother | RED | MCP card | 0.1.0 | pending | none |
-| m_fits | mother | RED | MCP card | 0.1.0 | pending | none |
+| nb_not_feeding | newborn | AMBER | ICMR | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_fever | newborn | RED | ICMR | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_cold | newborn | RED | ICMR | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_fast_breathing | newborn | AMBER | ICMR | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_diff_breathing | newborn | AMBER | ICMR | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_fits | newborn | RED | TO VERIFY | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_sleepy | newborn | AMBER | ICMR | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_yellow | newborn | AMBER | ICMR | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_cord | newborn | AMBER | HBNC leaflet | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_no_cry | newborn | RED | TO VERIFY | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_headache | mother | AMBER | MCP card | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_vision | mother | AMBER | MCP card | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_fits | mother | RED | MCP card | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 | m_bleeding | mother | RED | ICMR | 0.1.0 | pending | none |
-| m_belly_pain | mother | RED | TO VERIFY | 0.1.0 | pending | none |
-| m_breathless | mother | RED | MCP card | 0.1.0 | pending | none |
-| m_baby_less | mother | RED | ICMR | 0.1.0 | pending | none |
-| m_swelling | mother | AMBER | MCP card | 0.1.0 | pending | none |
-| m_water | mother | RED | MCP card | 0.1.0 | pending | none |
-| m_fever | mother | AMBER | Job Aid (fever >102 F; TO VERIFY) | 0.2.0 | pending | none |
-| m_foul_discharge | mother | RED | Job Aid | 0.2.0 | pending | none |
+| m_fever | mother | AMBER | Job Aid (fever >102 F; TO VERIFY) | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_foul_discharge | mother | AMBER | Job Aid | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_belly_pain | mother | AMBER | TO VERIFY | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_breathless | mother | RED | MCP card | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_baby_less | mother | AMBER | ICMR | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_swelling | mother | AMBER | MCP card | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_water | mother | RED | MCP card | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_chest_indrawing | newborn | RED | IMNCI chart | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_skin_pus | newborn | AMBER | IMNCI chart | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_eye_pus | newborn | AMBER | IMNCI chart | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_loose_stools | newborn | AMBER | IMNCI chart | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_faint | mother | RED | MoHFW HBNC/HBYC Job Aid for ASHA | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_vag_bleed_preg | mother | RED | ICMR antenatal guideline | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_early_labour | mother | RED | MCP card: before 37 weeks | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_pale_weak | mother | AMBER | MCP card: severe anaemia | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_urine_burning | mother | AMBER | Added by the reviewer. No document source yet. | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_breast | mother | AMBER | Added by the reviewer. No document source yet. | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_stitches | mother | AMBER | Added by the reviewer. No document source yet. | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_vomiting | mother | AMBER | Added by the reviewer. No document source yet. | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 
-## Version 0.2.0 changes
-- Split m_fever_discharge into m_fever (AMBER, provisional) and m_foul_discharge (RED).
-- Added an empty `combinations` list; floor = highest of sign levels and any combination whose signs are all present.
-- Doctor to decide: level for plain fever, and whether any combinations (for example fever plus another sign) should raise the level.
+## Version 0.3.0: reviewer sheet applied (15 Nov 2026)
+- Reviewer: Dr Pratibha Aggarwal, gynaecologist. She allowed being named as reviewer in the README.
+- Levels lowered RED to AMBER: nb_not_feeding, nb_fast_breathing, nb_diff_breathing, nb_sleepy, nb_yellow, m_headache, m_vision, m_foul_discharge, m_belly_pain, m_baby_less.
+- Plain fever in a mother: AMBER. Fever and foul discharge: separate signs.
+- Added (she ticked Add): nb_chest_indrawing, nb_skin_pus, nb_eye_pus, nb_loose_stools, m_faint, m_vag_bleed_preg, m_early_labour, m_pale_weak, m_urine_burning, m_breast, m_stitches, m_vomiting. Not added (she ticked Do not add): weak cry (N11).
+- Combinations C1 and C2 recorded at AMBER. They change nothing while both signs are AMBER.
+- Hindi: reviewer found no corrections. The Hindi for the new signs is from her sheet; the new question sentences are ours and need a Hindi speaker to read them.
+- Sheet gaps: M5 (heavy bleeding) had no verdict, kept RED. N4 had Agree and Change both ticked, written level amber used.
+- Reviewer is a gynaecologist; the newborn rows have not had a paediatric review.
