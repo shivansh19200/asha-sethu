@@ -19,3 +19,11 @@
 @media (prefers-reduced-motion: reduce) {
   .sx-banner, .sx-banner-icon, .sx-banner-word, .sx-banner-act, .sx-step { animation: none; }
 }
+
+.sx-input { width: 100%; min-height: 56px; padding: 8px 14px; margin-bottom: 8px; border: 1.5px solid var(--bds); border-radius: 14px; background: var(--card); color: var(--ink); font: inherit; font-size: 18px; font-weight: 500; }
+.sx-seg { display: flex; gap: 8px; }
+.sx-seg .sx-btn { margin-bottom: 8px; }
+.sx-btn.on { border-color: var(--pri); }
+.sx-note { white-space: pre-wrap; font: inherit; font-size: 14px; background: var(--card); border: 1px solid var(--bd); border-radius: 14px; padding: 12px 14px; margin: 0 0 14px; }
+.sx-fill:disabled { opacity: .5; cursor: not-allowed; }
+@media print { .sx-top, .sx-btn, .sx-fill, fieldset { display: none; } }

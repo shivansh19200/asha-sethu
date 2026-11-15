@@ -30,7 +30,11 @@ export const T = {
     heardN: (n) => `Heard ${n} sign${n > 1 ? 's' : ''}`,
     asked: 'Asked', a_yes: 'Yes', a_no: 'No', a_unsure: 'Not sure',
     escalated: 'Escalated Red', levelSet: 'Danger level set', early: 'Result shown before all questions were answered',
-    notDone: 'Checklist not finished', unclearStep: 'Something was unclear', allClear: 'Checklist finished, no signs found'
+    notDone: 'Checklist not finished', unclearStep: 'Something was unclear', allClear: 'Checklist finished, no signs found',
+    noteHeader: 'Note and record', noteLabel: 'Check the details, then save', age: 'Age', days: 'days', weeks: 'weeks',
+    feeding: 'Feeding', advised: 'Advised action', referralMade: 'Referral made', noteText: 'Referral note',
+    saveBtn: 'Confirm and save', saved: 'Saved', savedPhone: 'Saved on this phone. It will send when signal returns.',
+    codeLbl: 'Patient code', share: 'Share', print: 'Print', done: 'Done'
   },
   hi: {
     mother: 'माँ',
@@ -63,6 +67,10 @@ export const T = {
     heardN: (n) => `${n} लक्षण मिले`,
     asked: 'पूछा', a_yes: 'हाँ', a_no: 'नहीं', a_unsure: 'पता नहीं',
     escalated: 'लाल स्तर पर भेजा', levelSet: 'ख़तरे का स्तर तय', early: 'सभी प्रश्नों से पहले परिणाम दिखाया',
-    notDone: 'सूची पूरी नहीं हुई', unclearStep: 'कुछ साफ़ नहीं था', allClear: 'सूची पूरी, कोई लक्षण नहीं'
+    notDone: 'सूची पूरी नहीं हुई', unclearStep: 'कुछ साफ़ नहीं था', allClear: 'सूची पूरी, कोई लक्षण नहीं',
+    noteHeader: 'नोट और रिकॉर्ड', noteLabel: 'जानकारी जाँचें, फिर सहेजें', age: 'उम्र', days: 'दिन', weeks: 'सप्ताह',
+    feeding: 'दूध पिलाना', advised: 'सुझाई गई कार्रवाई', referralMade: 'रेफ़र किया गया', noteText: 'रेफ़रल नोट',
+    saveBtn: 'पुष्टि करें और सहेजें', saved: 'सहेजा गया', savedPhone: 'इस फ़ोन में सहेजा गया। सिग्नल आने पर भेजा जाएगा।',
+    codeLbl: 'रोगी कोड', share: 'साझा करें', print: 'प्रिंट', done: 'पूरा'
   }
 }
