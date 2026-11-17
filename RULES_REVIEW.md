@@ -1,7 +1,7 @@
 # Rules review
 
-**Clinical review pending. Rules are based on official ASHA training material.**
-All levels are provisional until a named doctor signs off. Never describe these rules as clinically validated before that.
+**Levels reviewed by Dr Pratibha Aggarwal (gynaecologist) on 15 November 2026. No paediatric review yet. Not clinically validated.**
+Never describe these rules as clinically validated. Heavy bleeding (m_bleeding) is still pending and stays RED.
 
 ## How rules change
 1. Any edit to `data/rules.json` or `data/questions.json` bumps the `version`.
@@ -9,7 +9,7 @@ All levels are provisional until a named doctor signs off. Never describe these 
 3. A named reviewer is needed before `review_status` changes from pending.
 
 ## Open jobs
-- Sources were found by search. Open each linked document and confirm the page number. Four signs still say TO VERIFY: nb_fits, nb_no_cry, m_belly_pain, m_breathless (partial).
+- Sources were found by search. Open each linked document and confirm the page number. In v0.3.1 the sources for nb_fits, m_belly_pain and m_breathless were confirmed against the Safe Motherhood booklet and the MCP card copy in the project (see their source lines). One sign still says TO VERIFY: nb_no_cry (closest wording found: 'Baby unable to cry/difficult breathing', MCP card, not the same as 'did not cry at birth').
 - Hindi names, phrases and questions need a Hindi speaker to read them.
 - Doctor to confirm every level, especially the two AMBER ones (cord pus or redness, swelling of face or hands). Yellow palms or soles was moved to RED after checking the Job Aid and IMNCI chart.
 - Doctor to approve the Unsure action sentence.
@@ -22,19 +22,19 @@ All levels are provisional until a named doctor signs off. Never describe these 
 | nb_cold | newborn | RED | ICMR | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 | nb_fast_breathing | newborn | AMBER | ICMR | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 | nb_diff_breathing | newborn | AMBER | ICMR | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
-| nb_fits | newborn | RED | TO VERIFY | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_fits | newborn | RED | Safe Motherhood booklet p.17; MCP card | 0.3.1 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 | nb_sleepy | newborn | AMBER | ICMR | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 | nb_yellow | newborn | AMBER | ICMR | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 | nb_cord | newborn | AMBER | HBNC leaflet | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
-| nb_no_cry | newborn | RED | TO VERIFY | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| nb_no_cry | newborn | RED | TO VERIFY (partial: MCP card) | 0.3.1 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 | m_headache | mother | AMBER | MCP card | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 | m_vision | mother | AMBER | MCP card | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 | m_fits | mother | RED | MCP card | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 | m_bleeding | mother | RED | ICMR | 0.1.0 | pending | none |
 | m_fever | mother | AMBER | Job Aid (fever >102 F; TO VERIFY) | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 | m_foul_discharge | mother | AMBER | Job Aid | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
-| m_belly_pain | mother | AMBER | TO VERIFY | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
-| m_breathless | mother | RED | MCP card | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_belly_pain | mother | AMBER | Safe Motherhood booklet p.14 | 0.3.1 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
+| m_breathless | mother | RED | Safe Motherhood booklet pp.14-16; MCP card | 0.3.1 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 | m_baby_less | mother | AMBER | ICMR | 0.3.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 | m_swelling | mother | AMBER | MCP card | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |
 | m_water | mother | RED | MCP card | 0.1.0 | reviewed | Dr Pratibha Aggarwal (gynaecologist) |

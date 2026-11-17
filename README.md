@@ -43,7 +43,7 @@ Everything the app does is shown on screen with a tag: *AI suggested*, *Worker c
 
 ## Medical review
 
-The danger-sign levels (rules **v0.3.0**) were reviewed by **Dr Pratibha Aggarwal**, obstetrician, gynaecologist and IVF specialist with over 35 years of experience, practising in New Delhi and Gurugram. Review date: 15 November 2026.
+The danger-sign levels (rules **v0.3.1**) were reviewed by **Dr Pratibha Aggarwal**, obstetrician, gynaecologist and IVF specialist with over 35 years of experience, practising in New Delhi and Gurugram. Review date: 15 November 2026.
 
 - 32 of 33 signs carry a reviewed verdict, with a source and version.
 - One sign (heavy bleeding) is still pending and stays at **Red** until settled.
@@ -107,7 +107,7 @@ Tests: `python api/test_rules.py`, `test_agent.py`, `test_note.py`, `test_care.p
 - Prototype security. The care team code is a gate, not real security. **Real logins and audit logs come before any field use.**
 - No field pilot yet. A shadow pilot with real ASHAs is planned, not done.
 - The Hindi wording of newer questions needs a Hindi-speaking reviewer.
-- Source page numbers for four signs are still being confirmed.
+- Source page numbers are still being confirmed for most signs. One sign (no cry at birth) has no matching source wording yet.
 
 ## Credits
 

@@ -1,6 +1,6 @@
 {
-  "version": "0.3.0",
-  "status": "Levels reviewed by one gynaecologist on 15 November 2026. No paediatric review yet. Source page numbers still need to be confirmed against the documents. Not clinically validated.",
+  "version": "0.3.1",
+  "status": "Levels reviewed by one gynaecologist on 15 November 2026. No paediatric review yet. Source page numbers still need to be confirmed against the documents, except where a source line names a page. One sign (nb_no_cry) still has no matching source wording. Not clinically validated.",
   "level_order": [
     "GREEN",
     "UNSURE",
@@ -181,7 +181,7 @@
           "मिर्गी जैसे झटके"
         ]
       },
-      "source": "TO VERIFY: convulsions appear in the IMNCI young infant chart (refer urgently). Not seen in the Job Aid page checked. Find the ASHA HBNC module page.",
+      "source": "Safe Motherhood booklet (MoHFW), p.17, danger signals in a newborn, item 10: 'Seizure'. MCP card copy in project (Government of Nagaland edition), newborn danger signs: 'Convulsions'. Both read from the project copies.",
       "review_status": "reviewed",
       "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "",
@@ -305,7 +305,7 @@
           "पैदा होते ही नहीं रोया"
         ]
       },
-      "source": "TO VERIFY: not found in the Job Aid or leaflet checked. Find the ASHA HBNC module page on birth asphyxia.",
+      "source": "TO VERIFY: exact wording 'did not cry at birth' not found. Closest, read in the MCP card copy in project (Government of Nagaland edition), newborn danger signs: 'Baby unable to cry/difficult breathing'. Not the same wording. Find the ASHA HBNC module page on birth asphyxia.",
       "review_status": "reviewed",
       "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "",
@@ -532,7 +532,7 @@
           "पेट में बहुत दर्द"
         ]
       },
-      "source": "TO VERIFY: not found in the MCP card or Job Aid pages checked. Severe abdominal pain appears in international lists (for example CDC). Find the ASHA module page.",
+      "source": "Safe Motherhood booklet (MoHFW), p.14, danger signals during pregnancy: 'Severe pain in abdomen'. Read from the project copy.",
       "review_status": "reviewed",
       "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "",
@@ -562,7 +562,7 @@
           "सांस नहीं आ रही"
         ]
       },
-      "source": "MoHFW Mother and Child Protection (MCP) Card (2018): 'Severe anemia with or without breathlessness' (partial match). TO VERIFY for the ASHA module page.",
+      "source": "Safe Motherhood booklet (MoHFW): p.14 'breathlessness' (danger signals during pregnancy); p.15 'shortness of breath' (contact FRU); p.16 'Difficulty in breathing' (after delivery, contact FRU). MCP card copy in project (Government of Nagaland edition): 'Severe Anaemia with or without breathlessness'. Read from the project copies.",
       "review_status": "reviewed",
       "reviewed_by": "Dr Pratibha Aggarwal (gynaecologist)",
       "source_url": "https://hbnc-hbyc.mohfw.gov.in/assets/document/Revised%20India%20MCP%20Card%20English_(28-05-2018).pdf",
