@@ -5,14 +5,16 @@ import './tour.css'
 // Guided demo: Play highlights real elements in the real app and explains each in a tooltip.
 // Steps with `click` wait for the user to tap the highlighted control; `wait` advances by itself when an element appears.
 // the tour fills the age field for the user (4 days); age is stored as days only
+// Desktop: the app sits inside .phone. Phone: no frame, so selectors have no .phone prefix.
+const DESK = window.matchMedia('(min-width: 900px)').matches
+const P = DESK ? '.phone ' : ''
 const fillAge = () => {
-  const ins = [...document.querySelectorAll('.phone .sx-grid input')]
+  const ins = [...document.querySelectorAll(P + '.sx-grid input')]
   const days = ins[ins.length - 1]
   if (!days || days.value) return
   Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(days, '4')
   days.dispatchEvent(new Event('input', { bubbles: true }))
 }
-const P = '.phone '
 const STEPS = [
   { id: 'intro', title: 'A visit in 90 seconds', text: 'You are the ASHA. A baby, 4 days old, has refused the breast since last night. Follow the highlights. You tap, the app explains.', cta: 'Start the visit', start: true },
   { sel: P + '.sx-text, ' + P + '.sx-transcript', title: 'Describe it your way', text: 'She speaks or types what she sees, in Hindi, Hinglish or English. Here the text is already filled in.', next: true },
@@ -70,7 +72,7 @@ export default function Tour() {
         if (t) {
           if (s.enter && !s.done) { s.done = true; s.enter() }
           const r = t.getBoundingClientRect()
-          const ph = document.querySelector('.phone')?.getBoundingClientRect()
+          const ph = DESK ? document.querySelector('.phone')?.getBoundingClientRect() : { top: 0, bottom: window.innerHeight }
           if (!scrolled && ph && (r.bottom > ph.bottom - 6 || r.top < ph.top + 24)) { scrolled = true; t.scrollIntoView({ block: 'center', behavior: 'smooth' }) }
           setRect((o) => (o && o.top === r.top && o.left === r.left && o.width === r.width && o.height === r.height ? o : { top: r.top, left: r.left, width: r.width, height: r.height }))
         }
@@ -92,16 +94,18 @@ export default function Tour() {
   const left = ph.left > w + 30 ? ph.left - w - 22 : ph.right + 18
   const top = rect ? Math.min(Math.max(rect.top + rect.height / 2 - 110, 76), window.innerHeight - 280) : Math.max(96, window.innerHeight / 2 - 160)
   const dots = STEPS.length
+  // phone: full-width card, at the bottom unless the highlighted control is in the lower half
+  const tipStyle = DESK ? { left, top, width: w } : { left: 12, right: 12, ...(rect && rect.top + rect.height / 2 > window.innerHeight / 2 ? { top: 12 } : { bottom: 12 }) }
 
   return (
     <>
       {rect && step.sel && <div className={`tr-spot ${step.click ? 'pulse' : ''} ${anim ? 'anim' : ''}`} style={{ top: rect.top - 6, left: rect.left - 6, width: rect.width + 12, height: rect.height + 12 }} />}
       {!rect && <div className="tr-dim" />}
-      <div className={`tr-tip ${anim ? 'anim' : ''}`} style={{ left, top, width: w }} role="dialog" aria-live="polite">
+      <div className={`tr-tip ${anim ? 'anim' : ''}`} style={tipStyle} role="dialog" aria-live="polite">
         <div className="tr-prog"><span>{i === 0 ? 'Guided demo' : `Step ${Math.min(i, dots - 2)} of ${dots - 2}`}</span><button type="button" onClick={close} aria-label="Close the tour">Skip tour</button></div>
         <h3>{step.title}</h3>
         <p>{step.text}</p>
-        {step.click && <div className="tr-hint">Tap the highlighted button in the phone.</div>}
+        {step.click && <div className="tr-hint">{DESK ? 'Tap the highlighted button in the phone.' : 'Tap the highlighted button.'}</div>}
         {step.hint && <div className="tr-hint">Keep answering. The tour continues at the result.</div>}
         <div className="tr-bar">
           {i > 1 && !step.end && <button type="button" className="tr-ghost" onClick={() => go(i - 1)}>Back</button>}

@@ -12,6 +12,9 @@ import ReviewSend from './ReviewSend'
 import HowWeMeasured from './HowWeMeasured'
 import Rules from './Rules'
 import Care from './Care'
+import DemoPanel from './Demo'
+import { M } from './more'
+import { TopRow, getLang } from './ui'
 
 const emptyVisit = { patient: null, text: '', signs: [], checklistDone: false, unclear: false, confirmed: false, answers: [], skipped: false, saveResult: null, understoodText: null, negated: [], suggested: [], agent: null, clientId: null, noteInput: null, doneSteps: [], sendResult: null, noteText: null}
 
@@ -50,6 +53,17 @@ export default function App() {
   if (screen === 'review') return <ReviewSend visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
   if (screen === 'measure') return <HowWeMeasured goToScreen={goToScreen} />
   if (screen === 'rules') return <Rules goToScreen={goToScreen} />
+  if (screen === 'demo') {
+    const lang = getLang()
+    return (
+      <div className="sx-screen">
+        <TopRow label="" onBack={() => goToScreen('home')} lang={lang} />
+        <h1 className="sx-header sx-in" style={{ '--i': 1 }}>{M[lang].demoHeader}</h1>
+        <button type="button" className="home-demo" style={{ marginTop: 0, marginBottom: 12 }} onClick={() => window.dispatchEvent(new Event('asha-tour'))}>{M[lang].playLink}</button>
+        <div className="demo-mobile"><DemoPanel /></div>
+      </div>
+    )
+  }
 
   // Placeholder screens for question, result, note, send (pieces 3 and 4)
   const placeholderScreens = {

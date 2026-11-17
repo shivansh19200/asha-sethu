@@ -153,6 +153,8 @@ export default function Home({ goToScreen }) {
         </button>
       </div>
 
+      <button type="button" className="home-demo" onClick={() => goToScreen('demo')}>{m.demoLink}</button>
+
       {/* Follow-ups and recent visits (real data from this phone) */}
       <div className="home-bottom">
         <div className="home-followups">

@@ -8,7 +8,7 @@ export const M = {
     whyRaised: 'Raised by the assistant or a sign combination.', copyAlert: 'Copy hospital message',
     rulesHeader: 'Rules and sources', rulesLabel: 'Every sign, its level and where it comes from', source: 'Source',
     reviewed: 'Reviewed by one doctor', pending: 'Review pending', version: 'Rules version', rulesLink: 'Rules and sources',
-    measureLink: 'How we measured', homeAsha: 'ASHA name and village',
+    measureLink: 'How we measured', homeAsha: 'ASHA name and village', demoLink: 'Try the demo', demoHeader: 'Demo', playLink: 'Play guided demo',
     alertTpl: (p, signs) => `URGENT referral: ${p} with danger signs: ${signs}. Danger level: Red. Please be ready to receive. Sent from Asha Sethu (an alert aid, not a diagnosis).`
   },
   hi: {
@@ -20,7 +20,7 @@ export const M = {
     whyRaised: 'सहायक या लक्षणों के मेल से बढ़ाया गया।', copyAlert: 'अस्पताल का संदेश कॉपी करें',
     rulesHeader: 'नियम और स्रोत', rulesLabel: 'हर लक्षण, उसका स्तर और स्रोत', source: 'स्रोत',
     reviewed: 'एक डॉक्टर ने जाँचा', pending: 'समीक्षा बाकी', version: 'नियमों का संस्करण', rulesLink: 'नियम और स्रोत',
-    measureLink: 'हमने कैसे मापा', homeAsha: 'आशा का नाम और गाँव',
+    measureLink: 'हमने कैसे मापा', homeAsha: 'आशा का नाम और गाँव', demoLink: 'डेमो आज़माएँ', demoHeader: 'डेमो', playLink: 'गाइडेड डेमो चलाएँ',
     alertTpl: (p, signs) => `अति आवश्यक रेफ़रल: ${p}, ख़तरे के लक्षण: ${signs}. ख़तरे का स्तर: लाल। कृपया तैयार रहें। Asha Sethu से भेजा गया (चेतावनी सहायक, निदान नहीं)।`
   }
 }
