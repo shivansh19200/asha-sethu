@@ -173,7 +173,7 @@ export default function Home({ goToScreen }) {
         <div className="sx-section" style={{ marginTop: 18 }}>Seen before? Look up by patient code</div>
         <div className="sx-rowcard">
           <div style={{ display: 'flex', gap: 8 }}>
-            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="4-letter code" maxLength={8} style={{ flex: 1, padding: 10, fontSize: 16, textTransform: 'uppercase', border: '1px solid var(--bd)', borderRadius: 10 }} />
+            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="4-letter code" maxLength={8} style={{ flex: 1, minWidth: 0, padding: 10, fontSize: 16, textTransform: 'uppercase', border: '1px solid var(--bd)', borderRadius: 10 }} />
             <button type="button" className="sx-btn sm line" onClick={lookup}>Look up</button>
           </div>
           {found && found.visits === null && <div className="sx-small" style={{ marginTop: 8 }}>Could not reach the server.</div>}

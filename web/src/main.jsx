@@ -10,7 +10,7 @@ import './polish.css'
 // Desktop: scrolling landing page with the real app embedded in a phone frame.
 // Phone, or #care: just the app (the care page is full width).
 const care = window.location.hash === '#care'
-const desktop = window.matchMedia('(min-width: 900px)').matches
+const desktop = window.matchMedia('(min-width: 900px) and (hover: hover) and (pointer: fine)').matches
 document.body.classList.toggle('care-mode', care)
 document.body.classList.toggle('landing-mode', desktop && !care)
 try { document.body.classList.toggle('demo-on', !!localStorage.getItem('demoMode')) } catch { /* ignore */ }
