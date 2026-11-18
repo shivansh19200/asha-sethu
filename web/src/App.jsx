@@ -11,6 +11,7 @@ import Saved from './Saved'
 import ReviewSend from './ReviewSend'
 import HowWeMeasured from './HowWeMeasured'
 import Rules from './Rules'
+import Family from './Family'
 import Care from './Care'
 import DemoPanel from './Demo'
 import { M } from './more'
@@ -53,6 +54,7 @@ export default function App() {
   if (screen === 'review') return <ReviewSend visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
   if (screen === 'measure') return <HowWeMeasured goToScreen={goToScreen} />
   if (screen === 'rules') return <Rules goToScreen={goToScreen} />
+  if (screen === 'family') return <Family goToScreen={goToScreen} />
   if (screen === 'demo') {
     const lang = getLang()
     return (

@@ -8,6 +8,8 @@ import { T } from './strings'
 import { TopRow, getLang, patientLabel } from './ui'
 import { levelOf } from './floor'
 import { saveVisit, getNote } from './api'
+import { X, feedingText } from './i18n'
+import { addFam, makeRecord } from './family'
 //import crypto from 'crypto';
 
 const num = (s) => Math.max(0, parseInt(s, 10) || 0)
@@ -16,6 +18,7 @@ const PARTS = [['years', 'year'], ['months', 'month'], ['weeks', 'week'], ['days
 export default function NoteRecord({ visit, setVisit, goToScreen }) {
   const lang = getLang()
   const t = T[lang]
+  const x = X[lang]
   const patient = visit.patient === 'mother' ? 'mother' : 'newborn'
   const level = levelOf(visit)
   const sname = Object.fromEntries(rules.signs.map((s) => [s.id, lang === 'hi' ? s.name_hi : s.name_en]))
@@ -32,12 +35,13 @@ export default function NoteRecord({ visit, setVisit, goToScreen }) {
   const ageText = PARTS.map(([k, w]) => (num(age[k]) ? `${num(age[k])} ${w}${num(age[k]) > 1 ? 's' : ''}` : null)).filter(Boolean).join(' ')
   const asha = localStorage.getItem('ashaName') || ''
   const village = localStorage.getItem('village') || ''
-  const when = new Date().toLocaleString('en-IN')
+  // day/month/year, 24-hour: reads the same in both languages
+  const when = new Date().toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false })
 
   // fill_record (Python) pre-fills fields from what was said and answered. Nothing is saved here.
   useEffect(() => {
     getNote({ patient, signs: visit.signs, answers: visit.answers.map(({ qid, answer }) => ({ qid, answer })), level, when }).then((r) => {
-      if (r && r.record && r.record.feeding) setFeeding((f) => f || r.record.feeding)
+      if (r && r.record && r.record.feeding) setFeeding((f) => f || feedingText(r.record.feeding, lang))
     })
   }, [])
 
@@ -57,7 +61,9 @@ export default function NoteRecord({ visit, setVisit, goToScreen }) {
     })
 
     addRecent({ id: cid.current, code: r.code, level, patient, ts: Date.now(), sent: false, reached: false })
-    const text = r.ok ? 'Saved the visit record' : 'Saved the visit on this phone (will send when signal returns)'
+    const text = r.ok ? x.stepSaved : x.stepSavedPhone
+    // Family copy: the same record, kept on this phone, that the family can export (A1).
+    addFam(makeRecord({ id: cid.current, code: r.code, patient, signs: visit.signs, answers: visit.answers, level, ageDays: totalDays, advised, demo: !!localStorage.getItem('demoMode') }))
     setVisit((v) => ({
       ...v,
       clientId: cid.current,

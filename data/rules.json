@@ -1,6 +1,7 @@
 {
   "version": "0.3.1",
   "status": "Levels reviewed by one gynaecologist on 15 November 2026. No paediatric review yet. Source page numbers still need to be confirmed against the documents, except where a source line names a page. One sign (nb_no_cry) still has no matching source wording. Not clinically validated.",
+  "status_hi": "एक स्त्री रोग विशेषज्ञ ने 15 नवंबर 2026 को स्तर देखे हैं। अभी बाल रोग विशेषज्ञ की समीक्षा नहीं हुई है। स्रोतों के पृष्ठ नंबर अभी दस्तावेज़ों से मिलाने बाकी हैं, सिवाय वहाँ जहाँ स्रोत की पंक्ति में पृष्ठ का नाम दिया है। एक लक्षण (nb_no_cry) के लिए अभी तक स्रोत में मेल खाते शब्द नहीं मिले हैं। चिकित्सकीय रूप से प्रमाणित नहीं।",
   "level_order": [
     "GREEN",
     "UNSURE",

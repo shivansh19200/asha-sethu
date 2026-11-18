@@ -8,10 +8,12 @@ import { TopRow, getLang, patientLabel } from './ui'
 import { levelOf } from './floor'
 import { getNote, sendReferral } from './api'
 import { localNote } from './noteLocal'
+import { X } from './i18n'
 
 export default function ReviewSend({ visit, setVisit, goToScreen }) {
   const lang = getLang()
   const t = T[lang]
+  const x = X[lang]
   const patient = visit.patient === 'mother' ? 'mother' : 'newborn'
   const level = levelOf(visit)
   const ni = visit.noteInput || {}
@@ -25,7 +27,7 @@ export default function ReviewSend({ visit, setVisit, goToScreen }) {
       patient, signs: visit.signs, answers: visit.answers.map(({ qid, answer }) => ({ qid, answer })), level,
       age: ni.age || {}, other_concern: ni.other, asha_name: ni.asha, village: ni.village, when: ni.when, code: sr.code
     }
-    getNote(payload).then((r) => setNotes(r ? { en: r.note_en, hi: r.note_hi } : { en: localNote({ ...payload, age: payload.age, asha: ni.asha, village: ni.village }), hi: null }))
+    getNote(payload).then((r) => setNotes(r ? { en: r.note_en, hi: r.note_hi } : { en: localNote({ ...payload, age: payload.age, asha: ni.asha, village: ni.village }, 'en'), hi: localNote({ ...payload, age: payload.age, asha: ni.asha, village: ni.village }, 'hi') }))
   }, [])
 
   const text = notes ? (lang === 'hi' && notes.hi ? notes.hi : notes.en) : ''
@@ -35,7 +37,7 @@ export default function ReviewSend({ visit, setVisit, goToScreen }) {
     setBusy(true)
     const r = await sendReferral(visit.clientId)
     if (r.ok) patchRecent(visit.clientId, { sent: true })
-    const step = r.ok ? 'Referral sent' : 'Referral waiting for signal. It will send automatically.'
+    const step = r.ok ? x.stepSent : x.stepWait
     setVisit((v) => ({ ...v, noteText: notes, sendResult: { sent: true, ok: r.ok }, doneSteps: [...(v.doneSteps || []), { text: step, tag: 'done' }] }))
     goToScreen('saved')
   }

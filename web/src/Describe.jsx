@@ -3,6 +3,7 @@ import rules from '../../data/rules.json'
 import './theme.css'
 import './screens.css'
 import { T } from './strings'
+import { X } from './i18n'
 import { Icon, TopRow, SignRow, getLang, patientLabel } from './ui'
 
 const canRec = typeof window !== 'undefined' && !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder)
@@ -11,6 +12,7 @@ const SR = typeof window !== 'undefined' && (window.SpeechRecognition || window.
 export default function Describe({ visit, setVisit, goToScreen }) {
   const lang = getLang()
   const t = T[lang]
+  const x = X[lang]
   const patient = visit.patient === 'mother' ? 'mother' : 'newborn'
   const signs = rules.signs.filter((s) => s.patient === patient)
 
@@ -37,15 +39,15 @@ export default function Describe({ visit, setVisit, goToScreen }) {
         stream.getTracks().forEach((x) => x.stop())
         setListening(false)
         const blob = new Blob(chunks, { type: mr.mimeType || mime || 'audio/webm' })
-        if (blob.size < 1500) { setMicErr('Did not hear anything. Tap the mic and speak closer.'); return }
+        if (blob.size < 1500) { setMicErr(x.micQuiet); return }
         setBusy(true)
         try {
           const b64 = await new Promise((res) => { const r = new FileReader(); r.onloadend = () => res(String(r.result).split(',')[1]); r.readAsDataURL(blob) })
           const resp = await fetch('/api/transcribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ audio: b64, mime: blob.type, lang }) })
           const j = await resp.json()
           if (j.text) addText(j.text)
-          else setMicErr(j.error ? 'Voice problem: ' + j.error : 'Did not catch that. Please try again or type.')
-        } catch (e) { setMicErr('Could not reach the server. Please type instead.') }
+          else setMicErr(j.error ? x.voiceProblem + j.error : x.noCatch)
+        } catch (e) { setMicErr(x.noServerType) }
         setBusy(false)
       }
       recRef.current = mr
@@ -53,7 +55,7 @@ export default function Describe({ visit, setVisit, goToScreen }) {
       setListening(true)
       setTimeout(() => { if (mr.state === 'recording') mr.stop() }, 30000)
     } catch (e) {
-      setMicErr(e && (e.name === 'NotAllowedError' || e.name === 'SecurityError') ? 'Microphone is blocked. Allow it in the browser site settings, or type instead.' : 'No microphone found. Please type instead.')
+      setMicErr(e && (e.name === 'NotAllowedError' || e.name === 'SecurityError') ? x.micBlocked : x.noMic)
       setTyping(true)
     }
   }
@@ -67,9 +69,9 @@ export default function Describe({ visit, setVisit, goToScreen }) {
     rec.continuous = false
     rec.onresult = (e) => addText(Array.from(e.results).map((r) => r[0].transcript).join(' '))
     rec.onend = () => setListening(false)
-    rec.onerror = () => { setListening(false); setMicErr('Voice did not work on this browser. Please type instead.'); setTyping(true) }
+    rec.onerror = () => { setListening(false); setMicErr(x.voiceFail); setTyping(true) }
     recRef.current = rec
-    try { rec.start(); setListening(true) } catch (err) { setMicErr('Voice could not start. Please type instead.'); setTyping(true) }
+    try { rec.start(); setListening(true) } catch (err) { setMicErr(x.voiceStart); setTyping(true) }
   }
 
   const toggleMic = () => {
@@ -103,9 +105,9 @@ export default function Describe({ visit, setVisit, goToScreen }) {
         </button>
       </div>
 
-      {!SR && !canRec && <div role="alert" style={{ margin: '6px 16px', padding: '8px 12px', borderRadius: 12, background: '#FFF4D6', color: '#7A5200', fontSize: 14, textAlign: 'center' }}>Voice is not available in this browser (apps like WhatsApp or Instagram block the microphone). Open this link in Chrome or Safari, or type below.</div>}
-      {listening && canRec && <div role="status" style={{ margin: '6px 16px', textAlign: 'center', fontSize: 14, color: '#B3261E', fontWeight: 600 }}>Recording... tap the mic again when you finish.</div>}
-      {busy && <div role="status" style={{ margin: '6px 16px', textAlign: 'center', fontSize: 14, color: '#0E6B4F', fontWeight: 600 }}>Turning your voice into text...</div>}
+      {!SR && !canRec && <div role="alert" style={{ margin: '6px 16px', padding: '8px 12px', borderRadius: 12, background: '#FFF4D6', color: '#7A5200', fontSize: 14, textAlign: 'center' }}>{x.noVoice}</div>}
+      {listening && canRec && <div role="status" style={{ margin: '6px 16px', textAlign: 'center', fontSize: 14, color: '#B3261E', fontWeight: 600 }}>{x.recording}</div>}
+      {busy && <div role="status" style={{ margin: '6px 16px', textAlign: 'center', fontSize: 14, color: '#0E6B4F', fontWeight: 600 }}>{x.transcribing}</div>}
       {micErr && <div role="alert" style={{ margin: '6px 16px', padding: '8px 12px', borderRadius: 12, background: '#FFF4D6', color: '#7A5200', fontSize: 14, textAlign: 'center' }}>{micErr}</div>}
 
       {(SR || canRec) && (

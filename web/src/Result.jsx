@@ -9,6 +9,7 @@ import { Icon, TopRow, getLang, patientLabel } from './ui'
 import { levelOf } from './floor'
 import { StepList } from './Steps'
 import { M } from './more'
+import { traceText } from './i18n'
 
 const ICON = { RED: 'alert-triangle', AMBER: 'alert-circle', GREEN: 'check-circle', UNSURE: 'help-circle' }
 const TAGMAP = { ai_suggested: 'ai', worker_confirmed: 'worker', rules: 'rules', done: 'done' }
@@ -33,7 +34,7 @@ export default function Result({ visit, goToScreen }) {
   else if (level === 'UNSURE') local.push([!visit.checklistDone && !visit.signs.length ? t.notDone : t.unclearStep, 'rules'])
   else local.push([t.allClear, 'rules'])
   const fromAgent = visit.agent && visit.agent.trace && visit.agent.trace.length
-  const base = fromAgent ? visit.agent.trace.map((x) => [x.text, TAGMAP[x.tag] || 'rules']) : local
+  const base = fromAgent ? visit.agent.trace.map((x) => [traceText(x, lang), TAGMAP[x.tag] || 'rules']) : local
   const steps = [...base, ...(visit.doneSteps || []).map((x) => [x.text, 'done'])]
 
   const m = M[lang]

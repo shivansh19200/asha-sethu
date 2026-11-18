@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import rules from '../../data/rules.json'
 import { currentLevel } from './floor'
 import LevelPill from './Pill'
+import { useLang } from './ui'
+import { X, levelWord } from './i18n'
 import './demo.css'
 
-const NAME = Object.fromEntries(rules.signs.map((s) => [s.id, s.name_en]))
+const nameMap = (lang) => Object.fromEntries(rules.signs.map((s) => [s.id, lang === 'hi' ? s.name_hi : s.name_en]))
 
 export const SCENARIOS = [
   { id: 1, tag: 'Danger', title: 'Hot baby, a fit', story: 'Day 6. The mother says the baby had a fit this morning and feels very hot.', text: 'baby has fits and is very hot', done: false, level: 'RED', how: 'Red at once. A Red sign needs no more questions: the app shows the alert first.' },
@@ -28,23 +30,25 @@ export const startScenario = (s) => {
   window.dispatchEvent(new CustomEvent('asha-demo', { detail: { patient: 'newborn', text: s.text, checklistDone: s.done } }))
 }
 
-function Card({ s }) {
+function Card({ s, lang }) {
   const [flip, setFlip] = useState(false)
+  const x = X[lang]
+  const c = x.sc[s.id - 1]
   return (
     <div className={`fc ${flip ? 'on' : ''}`}>
       <div className="fc-in">
-        <button type="button" className="fc-face fc-front" onClick={() => setFlip(true)} aria-label={`Scenario ${s.id}: ${s.title}. Flip for the answer`}>
-          <span className="fc-n">{s.id}<i>{s.tag}</i></span>
-          <b>{s.title}</b>
-          <p>{s.story}</p>
-          <em>Tap to flip</em>
+        <button type="button" className="fc-face fc-front" onClick={() => setFlip(true)} aria-label={x.scen(s.id, c.title)}>
+          <span className="fc-n">{s.id}<i>{c.tag}</i></span>
+          <b>{c.title}</b>
+          <p>{c.story}</p>
+          <em>{x.flip}</em>
         </button>
         <div className="fc-face fc-back">
-          <div className="fc-exp">Expected <LevelPill level={s.level} lang="en" /></div>
-          <p>{s.how}</p>
+          <div className="fc-exp">{x.expected} <LevelPill level={s.level} lang={lang} /></div>
+          <p>{c.how}</p>
           <div className="fc-act">
-            <button type="button" className="fc-run" onClick={() => startScenario(s)}>Run in the app</button>
-            <button type="button" className="fc-back-btn" onClick={() => setFlip(false)}>Flip back</button>
+            <button type="button" className="fc-run" onClick={() => startScenario(s)}>{x.runIn}</button>
+            <button type="button" className="fc-back-btn" onClick={() => setFlip(false)}>{x.flipBack}</button>
           </div>
         </div>
       </div>
@@ -52,7 +56,9 @@ function Card({ s }) {
   )
 }
 
-function RedTeam() {
+function RedTeam({ lang }) {
+  const x = X[lang]
+  const NAME = nameMap(lang)
   const [res, setRes] = useState({})
   const run = async (r) => {
     setRes((x) => ({ ...x, [r.text]: { busy: true } }))
@@ -66,20 +72,20 @@ function RedTeam() {
   }
   return (
     <div className="rt">
-      <div className="rt-h"><b>Try to break it</b><span>Five tricky phrases, run live against the real rules.</span></div>
-      {RED_TEAM.map((r) => {
+      <div className="rt-h"><b>{x.rtTitle}</b><span>{x.rtSub}</span></div>
+      {RED_TEAM.map((r, ri) => {
         const o = res[r.text]
         return (
           <div key={r.text} className="rt-row">
             <button type="button" className="rt-btn" onClick={() => run(r)}>"{r.text}"</button>
-            <small>{r.why}</small>
-            {o && o.busy && <div className="rt-out">Checking...</div>}
-            {o && o.err && <div className="rt-out">Server not reachable.</div>}
+            <small>{x.rtWhy[ri]}</small>
+            {o && o.busy && <div className="rt-out">{x.rtBusy}</div>}
+            {o && o.err && <div className="rt-out">{x.rtErr}</div>}
             {o && o.u && (
               <div className="rt-out">
-                <span>Found: {o.u.signs.length ? o.u.signs.map((x) => NAME[x] || x).join(', ') : 'nothing'}</span>
-                {o.u.negated.length > 0 && <span>Not present: {o.u.negated.map((x) => NAME[x] || x).join(', ')}</span>}
-                <span className="rt-lv"><LevelPill level={o.level} lang="en" />{o.level === r.expect ? <em className="ok">as expected</em> : <em className="no">expected {r.expect}</em>}</span>
+                <span>{x.rtFound}: {o.u.signs.length ? o.u.signs.map((id) => NAME[id] || id).join(', ') : x.rtNothing}</span>
+                {o.u.negated.length > 0 && <span>{x.rtAbsent}: {o.u.negated.map((id) => NAME[id] || id).join(', ')}</span>}
+                <span className="rt-lv"><LevelPill level={o.level} lang={lang} />{o.level === r.expect ? <em className="ok">{x.rtOk}</em> : <em className="no">{x.rtExp(levelWord(r.expect, lang))}</em>}</span>
               </div>
             )}
           </div>
@@ -90,16 +96,18 @@ function RedTeam() {
 }
 
 export default function DemoPanel() {
+  const lang = useLang()
+  const x = X[lang]
   const reset = () => {
     try { ['recentVisits', 'pendingVisits', 'pendingSends', 'priorCode', 'demoMode'].forEach((k) => localStorage.removeItem(k)) } catch { /* ignore */ }
     window.location.reload()
   }
   return (
     <div className="demo">
-      <div className="demo-top"><span className="demo-tag">DEMO DATA</span><span>Made-up cases. Anything saved while a scenario runs is tagged demo.</span></div>
-      <div className="fc-grid">{SCENARIOS.map((s) => <Card key={s.id} s={s} />)}</div>
-      <RedTeam />
-      <button type="button" className="demo-reset" onClick={reset}>Reset demo on this device</button>
+      <div className="demo-top"><span className="demo-tag">{x.demoTag}</span><span>{x.demoTop}</span></div>
+      <div className="fc-grid">{SCENARIOS.map((s) => <Card key={s.id} s={s} lang={lang} />)}</div>
+      <RedTeam lang={lang} />
+      <button type="button" className="demo-reset" onClick={reset}>{x.demoReset}</button>
     </div>
   )
 }

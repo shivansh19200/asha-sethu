@@ -6,10 +6,13 @@ import './theme.css'
 import './Home.css'
 import './result.css'
 import { M } from './more'
+import { T } from './strings'
+import { X } from './i18n'
 import LevelPill from './Pill'
+import { announceLang } from './ui'
 import { getRecent, followups, patchRecent, ago, dueAt } from './recent'
 
-const NAME = Object.fromEntries(rules.signs.map((s) => [s.id, s.name_en]))
+const nameMap = (lang) => Object.fromEntries(rules.signs.map((s) => [s.id, lang === 'hi' ? s.name_hi : s.name_en]))
 const startVisit = (goToScreen, type) => { localStorage.removeItem('priorCode'); localStorage.removeItem('demoMode'); document.body.classList.remove('demo-on'); goToScreen('describe', type) }
 
 export default function Home({ goToScreen }) {
@@ -18,6 +21,14 @@ export default function Home({ goToScreen }) {
 
   const lang = language === 'EN' ? 'en' : 'hi'
   const m = M[lang]
+  const x = X[lang]
+  const NAME = nameMap(lang)
+  const [online, setOnline] = useState(typeof navigator === 'undefined' || navigator.onLine !== false)
+  useEffect(() => {
+    const on = () => setOnline(true); const off = () => setOnline(false)
+    window.addEventListener('online', on); window.addEventListener('offline', off)
+    return () => { window.removeEventListener('online', on); window.removeEventListener('offline', off) }
+  }, [])
   const [tick, setTick] = useState(0)
   const recent = getRecent()
   const fu = followups()
@@ -49,6 +60,7 @@ export default function Home({ goToScreen }) {
   const setLang = (next) => {
     setLanguage(next)
     localStorage.setItem('language', next)
+    announceLang(next)
   }
 
   return (
@@ -56,7 +68,7 @@ export default function Home({ goToScreen }) {
       {/* Top row */}
       <div className="home-top">
         <div className="home-brand"><Logo size={28} /> Asha Sethu</div>
-        <div className="seg-lang" role="group" aria-label="Language">
+        <div className="seg-lang" role="group" aria-label={x.langLabel}>
           <button type="button" className={language === 'EN' ? 'on' : ''} onClick={() => setLang('EN')}>EN</button>
           <button type="button" className={language !== 'EN' ? 'on' : ''} onClick={() => setLang('हि')}>हि</button>
         </div>
@@ -68,8 +80,8 @@ export default function Home({ goToScreen }) {
 
       {/* Header and label */}
       <div className="home-header-section">
-        <h1 className="home-header">Start a visit</h1>
-        <div className="home-label">Who is the visit for?</div>
+        <h1 className="home-header">{x.startVisit}</h1>
+        <div className="home-label">{x.whoFor}</div>
       </div>
 
       {/* Hero panel */}
@@ -135,8 +147,8 @@ export default function Home({ goToScreen }) {
               <use href="#mom" />
             </svg>
           </div>
-          <div className="tile-label">Mother</div>
-          <div className="tile-sub">Danger signs in a mother</div>
+          <div className="tile-label">{T[lang].mother}</div>
+          <div className="tile-sub">{x.motherSub}</div>
         </button>
 
         <button
@@ -148,12 +160,14 @@ export default function Home({ goToScreen }) {
               <use href="#baby" />
             </svg>
           </div>
-          <div className="tile-label">Newborn</div>
-          <div className="tile-sub">Danger signs in a baby</div>
+          <div className="tile-label">{T[lang].newborn}</div>
+          <div className="tile-sub">{x.newbornSub}</div>
         </button>
       </div>
 
       <button type="button" className="home-demo" onClick={() => goToScreen('demo')}>{m.demoLink}</button>
+      <button type="button" className="home-fam" onClick={() => goToScreen('family')}>{x.famLink}</button>
+      {!online && <div className="home-offline" role="status">{x.offlineNote}</div>}
 
       {/* Follow-ups and recent visits (real data from this phone) */}
       <div className="home-bottom">
@@ -170,23 +184,23 @@ export default function Home({ goToScreen }) {
           )}
         </div>
 
-        <div className="sx-section" style={{ marginTop: 18 }}>Seen before? Look up by patient code</div>
+        <div className="sx-section" style={{ marginTop: 18 }}>{x.lookupTitle}</div>
         <div className="sx-rowcard">
           <div style={{ display: 'flex', gap: 8 }}>
-            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="4-letter code" maxLength={8} style={{ flex: 1, minWidth: 0, padding: 10, fontSize: 16, textTransform: 'uppercase', border: '1px solid var(--bd)', borderRadius: 10 }} />
-            <button type="button" className="sx-btn sm line" onClick={lookup}>Look up</button>
+            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder={x.codePh} maxLength={8} style={{ flex: 1, minWidth: 0, padding: 10, fontSize: 16, textTransform: 'uppercase', border: '1px solid var(--bd)', borderRadius: 10 }} />
+            <button type="button" className="sx-btn sm line" onClick={lookup}>{x.lookup}</button>
           </div>
-          {found && found.visits === null && <div className="sx-small" style={{ marginTop: 8 }}>Could not reach the server.</div>}
-          {found && found.visits && found.visits.length === 0 && <div className="sx-small" style={{ marginTop: 8 }}>No visits found for {found.code}.</div>}
+          {found && found.visits === null && <div className="sx-small" style={{ marginTop: 8 }}>{x.noServer}</div>}
+          {found && found.visits && found.visits.length === 0 && <div className="sx-small" style={{ marginTop: 8 }}>{x.noneFound(found.code)}</div>}
           {found && found.visits && found.visits.length > 0 && (
             <div style={{ marginTop: 10 }}>
               {found.visits.map((v, i) => (
                 <div key={i} className="sx-rowtop" style={{ marginBottom: 6 }}>
-                  <span className="sx-small" style={{ textTransform: 'none', letterSpacing: 0, fontSize: 13 }}>{v.days_ago === 0 ? 'Today' : `${v.days_ago} d ago`}: {v.signs.map((x) => NAME[x] || x).join(', ') || 'no signs'}</span>
+                  <span className="sx-small" style={{ textTransform: 'none', letterSpacing: 0, fontSize: 13 }}>{v.days_ago === 0 ? x.today : x.dAgo(v.days_ago)}: {v.signs.map((id) => NAME[id] || id).join(', ') || x.noSigns}</span>
                   <LevelPill level={v.level} lang={lang} />
                 </div>
               ))}
-              <button type="button" className="sx-btn" onClick={begin}>Start a visit for this patient</button>
+              <button type="button" className="sx-btn" onClick={begin}>{x.startFor}</button>
             </div>
           )}
         </div>
@@ -215,17 +229,17 @@ export default function Home({ goToScreen }) {
                 </div>
                 {open && (
                   <div className="sx-rowmeta">
-                    {v.received && <span className="sx-chip" style={{ fontSize: 11 }}>✓ Doctor received</span>}
+                    {v.received && <span className="sx-chip" style={{ fontSize: 11 }}>{x.docReceived}</span>}
                     {v.reached ? (
                       <span className="sx-chip" style={{ fontSize: 11 }}>{m.reachedDone}</span>
                     ) : (
                       <>
                         {overdue && <span className="home-overdue-pill">{m.overdueN(1)}</span>}
-                        {v.followup === 'could_not_go' && <span className="sx-chip" style={{ fontSize: 11 }}>Could not go</span>}
-                        {v.followup === 'not_yet' && <span className="sx-chip" style={{ fontSize: 11 }}>Not yet</span>}
-                        <button type="button" className="sx-btn sm line" onClick={() => setFollowup(v, 'reached')}>Reached</button>
-                        <button type="button" className="sx-btn sm line" onClick={() => setFollowup(v, 'not_yet')}>Not yet</button>
-                        <button type="button" className="sx-btn sm line" onClick={() => setFollowup(v, 'could_not_go')}>Could not go</button>
+                        {v.followup === 'could_not_go' && <span className="sx-chip" style={{ fontSize: 11 }}>{x.couldNotGo}</span>}
+                        {v.followup === 'not_yet' && <span className="sx-chip" style={{ fontSize: 11 }}>{x.notYet}</span>}
+                        <button type="button" className="sx-btn sm line" onClick={() => setFollowup(v, 'reached')}>{x.reachedBtn}</button>
+                        <button type="button" className="sx-btn sm line" onClick={() => setFollowup(v, 'not_yet')}>{x.notYet}</button>
+                        <button type="button" className="sx-btn sm line" onClick={() => setFollowup(v, 'could_not_go')}>{x.couldNotGo}</button>
                       </>
                     )}
                   </div>

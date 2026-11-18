@@ -1,0 +1,24 @@
+/* Family records screen and the doctor ticket (QR) */
+.fam-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+.fam-actions .sx-btn { margin: 0; }
+.fam-priv { text-transform: none; letter-spacing: 0; font-size: 13px; margin: 10px 0 0; }
+.fam-msg { margin: 10px 0; padding: 10px 12px; border-radius: 12px; font-size: 14px; line-height: 1.4; }
+.fam-msg.ok { background: var(--ring); color: var(--ink); }
+.fam-msg.err { background: var(--ambbg); color: var(--ambink); }
+.fam-line { text-transform: none; letter-spacing: 0; font-size: 13px; margin-top: 4px; }
+.fam-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.fam-chips:empty { display: none; }
+.fam-row, .fam-ask { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.fam-ask span { font-size: 14px; flex-basis: 100%; }
+
+.qr-back { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(8, 32, 24, .6); animation: qrFade 220ms ease both; }
+.qr-sheet { width: 100%; max-width: 360px; max-height: 100%; overflow: auto; box-sizing: border-box; padding: 20px; border-radius: 20px; background: var(--card); color: var(--ink); text-align: center; animation: qrUp 300ms cubic-bezier(.22, 1, .36, 1) both; }
+.qr-sheet h2 { margin: 0 0 12px; font-size: 20px; }
+.qr-code { display: block; width: 100%; max-width: 300px; aspect-ratio: 1; margin: 0 auto 12px; border-radius: 8px; background: #fff; }
+.qr-sheet p { margin: 0 0 8px; font-size: 14px; line-height: 1.45; }
+.qr-sheet .qr-small { font-size: 12px; color: var(--mut); margin-bottom: 14px; }
+.qr-err { padding: 14px; border-radius: 12px; background: var(--ambbg); color: var(--ambink); margin-bottom: 12px; }
+@keyframes qrFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes qrUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .qr-back, .qr-sheet { animation: none; } }
+@media print { .qr-back { position: static; background: none; } }

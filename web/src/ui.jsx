@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { T } from './strings'
 //import path from 'path';
 
 export const getLang = () => (localStorage.getItem('language') === 'हि' ? 'hi' : 'en')
+
+// Re-renders a component when the language is changed anywhere (Home, Settings).
+export function useLang() {
+  const [lang, setLang] = useState(getLang())
+  useEffect(() => {
+    const f = () => setLang(getLang())
+    window.addEventListener('asha-lang', f)
+    return () => window.removeEventListener('asha-lang', f)
+  }, [])
+  return lang
+}
+export const announceLang = (next) => { document.documentElement.lang = next === 'EN' ? 'en' : 'hi'; window.dispatchEvent(new Event('asha-lang')) }
 
 const CIRCLE = <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
 const PATHS = {

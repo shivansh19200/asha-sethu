@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './theme.css'
 import './Settings.css'
+import { X } from './i18n'
+import { announceLang } from './ui'
+import { M } from './more'
 
 export default function Settings({ goToScreen }) {
   const [ashaName, setAshaName] = useState('')
@@ -55,7 +58,12 @@ export default function Settings({ goToScreen }) {
   const handleLanguageChange = (newLanguage) => {
     setLanguage(newLanguage)
     localStorage.setItem('language', newLanguage)
+    announceLang(newLanguage)
   }
+
+  const lang = language === 'EN' ? 'en' : 'hi'
+  const x = X[lang]
+  const m = M[lang]
 
   return (
     <div className="settings">
@@ -63,38 +71,38 @@ export default function Settings({ goToScreen }) {
         className="settings-back"
         onClick={() => goToScreen('home')}
       >
-        ← Back
+        {x.back}
       </button>
 
-      <h1 className="settings-header">Settings</h1>
+      <h1 className="settings-header">{x.settings}</h1>
 
       {/* ASHA Name */}
       <div className="settings-field">
-        <label className="settings-label">ASHA name</label>
+        <label className="settings-label">{x.ashaName}</label>
         <input
           type="text"
           className="settings-input"
           value={ashaName}
           onChange={handleAshaNameChange}
-          placeholder="Enter your name"
+          placeholder={x.enterName}
         />
       </div>
 
       {/* Village */}
       <div className="settings-field">
-        <label className="settings-label">Village</label>
+        <label className="settings-label">{x.village}</label>
         <input
           type="text"
           className="settings-input"
           value={village}
           onChange={handleVillageChange}
-          placeholder="Enter village name"
+          placeholder={x.enterVillage}
         />
       </div>
 
       {/* Language */}
       <div className="settings-field">
-        <label className="settings-label">Language</label>
+        <label className="settings-label">{x.langLabel}</label>
         <div className="settings-toggle-group">
           <button
             className={`settings-toggle-button ${language === 'EN' ? 'active' : ''}`}
@@ -113,31 +121,31 @@ export default function Settings({ goToScreen }) {
 
       {/* Dark mode toggle */}
       <div className="settings-field">
-        <label className="settings-label">Dark mode</label>
+        <label className="settings-label">{x.darkMode}</label>
         <div className="settings-toggle-group">
           <button
             className={`settings-toggle-button ${theme === 'system' ? 'active' : ''}`}
             onClick={() => handleThemeChange('system')}
           >
-            System
+            {x.system}
           </button>
           <button
             className={`settings-toggle-button ${theme === 'light' ? 'active' : ''}`}
             onClick={() => handleThemeChange('light')}
           >
-            Light
+            {x.light}
           </button>
           <button
             className={`settings-toggle-button ${theme === 'dark' ? 'active' : ''}`}
             onClick={() => handleThemeChange('dark')}
           >
-            Dark
+            {x.dark}
           </button>
         </div>
       </div>
 
-      <button className="settings-link" onClick={() => goToScreen('measure')}>How we measured</button>
-      <button className="settings-link" onClick={() => goToScreen('rules')}>Rules and sources</button>
+      <button className="settings-link" onClick={() => goToScreen('measure')}>{m.measureLink}</button>
+      <button className="settings-link" onClick={() => goToScreen('rules')}>{m.rulesLink}</button>
     </div>
   )
 }

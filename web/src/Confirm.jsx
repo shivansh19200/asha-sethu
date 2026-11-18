@@ -4,12 +4,14 @@ import './theme.css'
 import './screens.css'
 import './result.css'
 import { T } from './strings'
+import { X } from './i18n'
 import { Icon, TopRow, SignRow, getLang, patientLabel } from './ui'
 //import { headers } from 'next/headers';
 
 export default function Confirm({ visit, setVisit, goToScreen }) {
   const lang = getLang()
   const t = T[lang]
+  const x = X[lang]
   const patient = visit.patient === 'mother' ? 'mother' : 'newborn'
   const all = rules.signs.filter((s) => s.patient === patient)
   const byId = Object.fromEntries(all.map((s) => [s.id, s]))
@@ -75,8 +77,8 @@ export default function Confirm({ visit, setVisit, goToScreen }) {
 
       {other && (
         <div role="alert" style={{ margin: '12px 0', padding: '12px 14px', borderRadius: 14, background: '#FFF4D6', color: '#7A5200', fontSize: 15, lineHeight: 1.45 }}>
-          This sounds like a <b>{other === 'newborn' ? 'newborn' : 'mother'}</b>, but you started a {patient === 'newborn' ? 'newborn' : 'mother'} visit.
-          <div><button type="button" className="sx-fill" style={{ marginTop: 10 }} onClick={() => { setOther(null); setVisit((v) => ({ ...v, patient: other, signs: [], suggested: [], negated: [], understoodText: '' })) }}>Switch to {other === 'newborn' ? 'newborn' : 'mother'} visit</button></div>
+          {x.soundsA}<b>{t[other]}</b>{x.soundsB}{t[patient]}{x.soundsC}
+          <div><button type="button" className="sx-fill" style={{ marginTop: 10 }} onClick={() => { setOther(null); setVisit((v) => ({ ...v, patient: other, signs: [], suggested: [], negated: [], understoodText: '' })) }}>{x.switchTo(t[other])}</button></div>
         </div>
       )}
 
