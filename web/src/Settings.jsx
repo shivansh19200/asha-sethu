@@ -4,12 +4,16 @@ import './Settings.css'
 import { X } from './i18n'
 import { announceLang } from './ui'
 import { M } from './more'
+import { Y, fmtBytes } from './i18n2'
+import { storageInfo, validPhone, normPhone } from './family'
 
-export default function Settings({ goToScreen }) {
+export default function Settings({ goToScreen, changeMode }) {
   const [ashaName, setAshaName] = useState('')
   const [village, setVillage] = useState('')
   const [language, setLanguage] = useState('EN')
   const [theme, setTheme] = useState('system')
+  const [phone, setPhone] = useState('')
+  const [phoneErr, setPhoneErr] = useState(false)
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -22,6 +26,7 @@ export default function Settings({ goToScreen }) {
     setVillage(savedVillage)
     setLanguage(savedLanguage)
     setTheme(savedTheme)
+    setPhone(localStorage.getItem('ashaPhone') || '')
 
     // Apply theme on load
     applyTheme(savedTheme)
@@ -55,6 +60,13 @@ export default function Settings({ goToScreen }) {
     localStorage.setItem('village', value)
   }
 
+  // Her own number, shown to families so they can call or message her. Saved only when it looks like a phone number.
+  const savePhone = () => {
+    if (!phone.trim()) { localStorage.removeItem('ashaPhone'); setPhoneErr(false); return }
+    if (!validPhone(phone)) { setPhoneErr(true); return }
+    localStorage.setItem('ashaPhone', normPhone(phone)); setPhone(normPhone(phone)); setPhoneErr(false)
+  }
+
   const handleLanguageChange = (newLanguage) => {
     setLanguage(newLanguage)
     localStorage.setItem('language', newLanguage)
@@ -64,6 +76,8 @@ export default function Settings({ goToScreen }) {
   const lang = language === 'EN' ? 'en' : 'hi'
   const x = X[lang]
   const m = M[lang]
+  const y = Y[lang]
+  const info = storageInfo()
 
   return (
     <div className="settings">
@@ -98,6 +112,24 @@ export default function Settings({ goToScreen }) {
           onChange={handleVillageChange}
           placeholder={x.enterVillage}
         />
+      </div>
+
+      {/* ASHA phone number (shown to families) */}
+      <div className="settings-field">
+        <label className="settings-label" htmlFor="set-phone">{y.setPhone}</label>
+        <input
+          id="set-phone"
+          type="tel"
+          inputMode="tel"
+          autoComplete="off"
+          className="settings-input"
+          value={phone}
+          aria-invalid={phoneErr}
+          onChange={(e) => { setPhone(e.target.value); setPhoneErr(false) }}
+          onBlur={savePhone}
+        />
+        <div className="settings-hint">{y.setPhoneHint}</div>
+        {phoneErr && <div role="alert" className="settings-err">{y.setPhoneBad}</div>}
       </div>
 
       {/* Language */}
@@ -144,6 +176,8 @@ export default function Settings({ goToScreen }) {
         </div>
       </div>
 
+      <div className="settings-hint" style={{ marginTop: 18 }}>{y.famStored(info.count, fmtBytes(info.bytes))}</div>
+      <button className="settings-link" onClick={changeMode}>{y.setMode}</button>
       <button className="settings-link" onClick={() => goToScreen('measure')}>{m.measureLink}</button>
       <button className="settings-link" onClick={() => goToScreen('rules')}>{m.rulesLink}</button>
     </div>

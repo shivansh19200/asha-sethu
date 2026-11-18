@@ -5,6 +5,7 @@ import './result.css'
 import { T } from './strings'
 import { TopRow, Baby, getLang, patientLabel } from './ui'
 import { nextQuestion, TOPIC } from './floor'
+import Speak from './Speak'
 
 export default function Question({ visit, setVisit, goToScreen }) {
   const lang = getLang()
@@ -37,6 +38,7 @@ export default function Question({ visit, setVisit, goToScreen }) {
           <h1 className="sx-header">{t.q} {visit.answers.length + 1}</h1>
           <div className="sx-label" style={{ margin: 0 }}>{(TOPIC[q.sign] || ['', ''])[lang === 'hi' ? 1 : 0]}</div>
         </div>
+        <span style={{ marginLeft: 'auto' }}><Speak id={q.id} text={lang === 'hi' ? q.text_hi : q.text_en} lang={lang} /></span>
       </div>
       <div className="sx-qtext sx-in" style={{ '--i': 2 }}>{lang === 'hi' ? q.text_hi : q.text_en}</div>
       <button type="button" className="sx-fill sx-in" style={{ '--i': 3 }} onClick={() => answer('yes')}>{t.yes}</button>

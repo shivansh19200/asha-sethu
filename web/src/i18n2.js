@@ -1,0 +1,95 @@
+// Text for Family mode, the entry screen, the scanner and the hand-over. English and Hindi side by side.
+// Wording of the danger levels is NOT here: the card reuses the reviewed sentences in strings.js (actRED, actAMBER, actGREEN).
+// The Hindi here needs a Hindi reader's check before real use.
+export const fmtBytes = (b) => (b < 1024 ? `${b} B` : `${(b / 1024).toFixed(1)} KB`)
+export const fmtDay = (iso, lang) => new Date(iso).toLocaleDateString(lang === 'hi' ? 'hi-IN' : 'en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
+
+export const Y = {
+  en: {
+    entryAsk: 'Who is using this phone?',
+    entryAsha: 'I am an ASHA worker', entryAshaSub: 'Check a mother or newborn for danger signs',
+    entryFam: 'I am from the family', entryFamSub: 'See the card from your ASHA visit',
+    entryNote: 'Your choice stays on this phone. You can change it any time.',
+    modeChange: 'Change who is using this phone', modeFamily: 'Family',
+    // family home
+    fhHeader: 'Your visits', fhLabel: 'From your ASHA',
+    fhReceive: 'Receive from ASHA', fhReceiveSub: 'Ask your ASHA to show the code',
+    fhEmpty: 'No visits yet.', fhEmptyHint: 'Ask your ASHA to show you the code. Then tap "Receive from ASHA".',
+    fhOpen: 'Open',
+    stored: (n, size) => `${n} ${n === 1 ? 'visit' : 'visits'} saved on this phone, about ${size}`,
+    free: 'Free up space', freeAsk: (n) => `Shorten ${n} old ${n === 1 ? 'visit' : 'visits'}? The date, code and colour stay. The other details are removed from this phone.`,
+    freeYes: 'Yes, shorten', freeNo: 'No', freed: (n) => `${n} old ${n === 1 ? 'visit' : 'visits'} shortened.`,
+    // card
+    cdFound: 'What your ASHA found', cdNone: 'No danger signs found',
+    cdShort: 'Details were removed from this phone to save space.',
+    cdUnsure: 'Your ASHA could not rule out danger. Please ask your ASHA or a doctor.',
+    cdWarn: 'If things get worse, or you are worried, go to the hospital. Do not wait for a reply.',
+    cdCall: 'Call ASHA', cdSms: 'Message ASHA',
+    cdNoPhone: 'Your ASHA\'s number is not saved.', cdAddPhone: 'Add your ASHA\'s number', cdSave: 'Save number', cdPhoneBad: 'Enter 10 to 13 digits. A + at the start is fine.',
+    cdDoctor: 'Show code to doctor', cdDelete: 'Delete this visit', cdDeleteAsk: 'Delete this visit from this phone?',
+    cdPatient: { mother: 'Mother', newborn: 'Newborn' },
+    cdAshaBar: 'Showing this card to the family',
+    cdBackAsha: 'Back to ASHA screen',
+    smsBody: (code) => `Asha Sethu code ${code}`,
+    // scanner
+    scTitle: 'Receive from ASHA', scHint: 'Point the camera at the code on your ASHA\'s phone. Hold steady.',
+    scStarting: 'Opening the camera...', scDenied: 'The camera could not be opened. Allow the camera for this app, or choose a photo of the code.',
+    scPhoto: 'Choose a photo of the code', scOk: 'Visit saved on this phone.', scDup: 'This visit is already on this phone.',
+    scBad: 'This is not an Asha Sethu visit code.', scInvalid: 'The code was read, but the visit is not valid, so it was not saved.',
+    scNewer: 'This code is from a newer version of the app. Please update the app.', scNoCode: 'No code found in that photo. Try again, closer and brighter.',
+    scOpen: 'Open card', scAgain: 'Scan another', scClose: 'Close',
+    // hand over (ASHA side)
+    hoShow: 'Show to family', hoQr: 'Send to family\'s phone (QR)', hoTitle: 'Scan from the family\'s phone',
+    hoHint: 'On the family\'s phone: open Asha Sethu, choose "I am from the family", then "Receive from ASHA".',
+    hoSmall: 'Works with no signal. Nothing is uploaded.', hoTooBig: 'This visit is too long for a QR. Use "Show to family" instead.',
+    // settings, demo, speaker
+    setPhone: 'My phone number (shown to families)', setPhoneHint: 'Families can call or message this number from their card. Leave empty to hide it.',
+    setPhoneBad: 'Enter 10 to 13 digits. A + at the start is fine.', setMode: 'Change mode',
+    famStored: (n, size) => `${n} ${n === 1 ? 'record' : 'records'} on this phone, about ${size}`,
+    famBackupNote: 'The file is a backup for the ASHA. Families do not need it: use "Show to family" or the QR.',
+    famHand: 'Show to family', famHandQr: 'QR for family phone',
+    demoLoad: 'Load 3 demo families', demoLoaded: (n) => (n ? `${n} demo ${n === 1 ? 'family' : 'families'} added.` : 'The demo families are already here.'),
+    spk: 'Listen', spkStop: 'Stop'
+  },
+  hi: {
+    entryAsk: 'यह फ़ोन कौन इस्तेमाल कर रहा है?',
+    entryAsha: 'मैं आशा कार्यकर्ता हूँ', entryAshaSub: 'माँ या नवजात के ख़तरे के संकेत जाँचें',
+    entryFam: 'मैं परिवार से हूँ', entryFamSub: 'अपनी आशा की विज़िट का कार्ड देखें',
+    entryNote: 'आपकी पसंद इसी फ़ोन में रहती है। आप इसे कभी भी बदल सकते हैं।',
+    modeChange: 'बदलें कि फ़ोन कौन इस्तेमाल कर रहा है', modeFamily: 'परिवार',
+    fhHeader: 'आपकी विज़िट', fhLabel: 'आपकी आशा से',
+    fhReceive: 'आशा से पाएँ', fhReceiveSub: 'आशा से कोड दिखाने को कहें',
+    fhEmpty: 'अभी कोई विज़िट नहीं है।', fhEmptyHint: 'आशा से कोड दिखाने को कहें। फिर "आशा से पाएँ" दबाएँ।',
+    fhOpen: 'खोलें',
+    stored: (n, size) => `${n} विज़िट इस फ़ोन में सहेजी हैं, लगभग ${size}`,
+    free: 'जगह ख़ाली करें', freeAsk: (n) => `${n} पुरानी विज़िट छोटी करें? तारीख़, कोड और रंग रहेंगे। बाक़ी जानकारी इस फ़ोन से हट जाएगी।`,
+    freeYes: 'हाँ, छोटी करें', freeNo: 'नहीं', freed: (n) => `${n} पुरानी विज़िट छोटी की गईं।`,
+    cdFound: 'आपकी आशा ने क्या पाया', cdNone: 'कोई ख़तरे का लक्षण नहीं मिला',
+    cdShort: 'जगह बचाने के लिए इस फ़ोन से जानकारी हटा दी गई है।',
+    cdUnsure: 'आपकी आशा ख़तरे से इनकार नहीं कर सकीं। कृपया अपनी आशा या डॉक्टर से पूछें।',
+    cdWarn: 'हालत बिगड़े या चिंता हो तो अस्पताल जाएँ। जवाब का इंतज़ार न करें।',
+    cdCall: 'आशा को फ़ोन करें', cdSms: 'आशा को संदेश भेजें',
+    cdNoPhone: 'आपकी आशा का नंबर सहेजा नहीं है।', cdAddPhone: 'आशा का नंबर जोड़ें', cdSave: 'नंबर सहेजें', cdPhoneBad: '10 से 13 अंक लिखें। शुरू में + चलेगा।',
+    cdDoctor: 'डॉक्टर को कोड दिखाएँ', cdDelete: 'यह विज़िट हटाएँ', cdDeleteAsk: 'इस फ़ोन से यह विज़िट हटाएँ?',
+    cdPatient: { mother: 'माँ', newborn: 'नवजात' },
+    cdAshaBar: 'यह कार्ड परिवार को दिखाया जा रहा है',
+    cdBackAsha: 'आशा की स्क्रीन पर वापस',
+    smsBody: (code) => `आशा सेतु कोड ${code}`,
+    scTitle: 'आशा से पाएँ', scHint: 'कैमरा आशा के फ़ोन पर दिख रहे कोड की ओर रखें। हाथ स्थिर रखें।',
+    scStarting: 'कैमरा खुल रहा है...', scDenied: 'कैमरा नहीं खुला। इस ऐप को कैमरे की अनुमति दें, या कोड की फ़ोटो चुनें।',
+    scPhoto: 'कोड की फ़ोटो चुनें', scOk: 'विज़िट इस फ़ोन में सहेज ली गई।', scDup: 'यह विज़िट पहले से इस फ़ोन में है।',
+    scBad: 'यह आशा सेतु की विज़िट का कोड नहीं है।', scInvalid: 'कोड पढ़ा गया, पर विज़िट सही नहीं है, इसलिए सहेजी नहीं गई।',
+    scNewer: 'यह कोड ऐप के नए संस्करण का है। कृपया ऐप अपडेट करें।', scNoCode: 'इस फ़ोटो में कोड नहीं मिला। पास से और रोशनी में फिर कोशिश करें।',
+    scOpen: 'कार्ड खोलें', scAgain: 'एक और स्कैन करें', scClose: 'बंद करें',
+    hoShow: 'परिवार को दिखाएँ', hoQr: 'परिवार के फ़ोन पर भेजें (QR)', hoTitle: 'परिवार के फ़ोन से स्कैन करें',
+    hoHint: 'परिवार के फ़ोन पर: आशा सेतु खोलें, "मैं परिवार से हूँ" चुनें, फिर "आशा से पाएँ" दबाएँ।',
+    hoSmall: 'बिना सिग्नल के भी चलता है। कुछ भी अपलोड नहीं होता।', hoTooBig: 'यह विज़िट QR के लिए बहुत लंबी है। "परिवार को दिखाएँ" का उपयोग करें।',
+    setPhone: 'मेरा फ़ोन नंबर (परिवार को दिखेगा)', setPhoneHint: 'परिवार अपने कार्ड से इस नंबर पर फ़ोन या संदेश कर सकता है। छिपाने के लिए ख़ाली छोड़ें।',
+    setPhoneBad: '10 से 13 अंक लिखें। शुरू में + चलेगा।', setMode: 'मोड बदलें',
+    famStored: (n, size) => `${n} रिकॉर्ड इस फ़ोन में, लगभग ${size}`,
+    famBackupNote: 'यह फ़ाइल आशा के बैकअप के लिए है। परिवार को इसकी ज़रूरत नहीं: "परिवार को दिखाएँ" या QR का उपयोग करें।',
+    famHand: 'परिवार को दिखाएँ', famHandQr: 'परिवार के फ़ोन के लिए QR',
+    demoLoad: '3 डेमो परिवार जोड़ें', demoLoaded: (n) => (n ? `${n} डेमो परिवार जोड़े गए।` : 'डेमो परिवार पहले से यहाँ हैं।'),
+    spk: 'सुनें', spkStop: 'रोकें'
+  }
+}

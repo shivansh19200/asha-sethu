@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { syncPending } from './api'
 import Home from './Home'
 import Settings from './Settings'
@@ -12,6 +12,11 @@ import ReviewSend from './ReviewSend'
 import HowWeMeasured from './HowWeMeasured'
 import Rules from './Rules'
 import Family from './Family'
+import Entry from './Entry'
+import FamilyHome from './FamilyHome'
+import FamilyCard from './FamilyCard'
+import Scan from './Scan'
+import { getMode, setMode } from './mode'
 import Care from './Care'
 import DemoPanel from './Demo'
 import { M } from './more'
@@ -20,8 +25,16 @@ import { TopRow, getLang } from './ui'
 const emptyVisit = { patient: null, text: '', signs: [], checklistDone: false, unclear: false, confirmed: false, answers: [], skipped: false, saveResult: null, understoodText: null, negated: [], suggested: [], agent: null, clientId: null, noteInput: null, doneSteps: [], sendResult: null, noteText: null}
 
 export default function App() {
-  const [screen, setScreen] = useState('home')
+  // First launch asks who is using the phone (ASHA or family). The choice is remembered on this phone.
+  const [screen, setScreen] = useState(() => { const m = getMode(); return m === 'family' ? 'fhome' : m === 'asha' ? 'home' : 'entry' })
   const [visit, setVisit] = useState(emptyVisit)
+  const [card, setCard] = useState({ id: null, from: 'fhome' })
+  const screenRef = useRef(screen)
+  screenRef.current = screen
+  const FAMILY_SIDE = ['entry', 'fhome', 'fcard', 'receive']
+  const choose = (m) => { setMode(m); setScreen(m === 'family' ? 'fhome' : 'home') }
+  const changeMode = () => { setMode(null); setScreen('entry') }
+  const openCard = (id, from) => { setCard({ id, from }); setScreen('fcard') }
 
   useEffect(() => {
     syncPending()
@@ -31,9 +44,16 @@ export default function App() {
 
   // scenario cards on the landing page start a prefilled visit
   useEffect(() => {
-    const run = (e) => { setVisit({ ...emptyVisit, patient: e.detail.patient, text: e.detail.text, checklistDone: !!e.detail.checklistDone }); setScreen('describe') }
+    const run = (e) => { setMode('asha'); setVisit({ ...emptyVisit, patient: e.detail.patient, text: e.detail.text, checklistDone: !!e.detail.checklistDone }); setScreen('describe') }
     window.addEventListener('asha-demo', run)
     return () => window.removeEventListener('asha-demo', run)
+  }, [])
+
+  // The tour and the landing page's scenarios only make sense on the ASHA side: switch to it.
+  useEffect(() => {
+    const toAsha = () => { if (FAMILY_SIDE.includes(screenRef.current)) { setMode('asha'); setScreen('home') } }
+    window.addEventListener('asha-tour', toAsha)
+    return () => window.removeEventListener('asha-tour', toAsha)
   }, [])
 
   // goToScreen('describe', 'mother') starts a fresh visit for that patient type.
@@ -43,18 +63,22 @@ export default function App() {
   }
 
   if (window.location.hash === '#care') return <Care />
+  if (screen === 'entry') return <Entry choose={choose} />
+  if (screen === 'fhome') return <FamilyHome goToScreen={goToScreen} openCard={openCard} changeMode={changeMode} />
+  if (screen === 'fcard') return <FamilyCard id={card.id} from={card.from} asha={card.from !== 'fhome' && card.from !== 'receive'} goToScreen={goToScreen} />
+  if (screen === 'receive') return <Scan goToScreen={goToScreen} openCard={openCard} />
   if (screen === 'home') return <Home goToScreen={goToScreen} />
-  if (screen === 'settings') return <Settings goToScreen={goToScreen} />
+  if (screen === 'settings') return <Settings goToScreen={goToScreen} changeMode={changeMode} />
   if (screen === 'describe') return <Describe visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
   if (screen === 'confirm') return <Confirm visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
   if (screen === 'question') return <Question visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
   if (screen === 'result') return <Result visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
   if (screen === 'note') return <NoteRecord visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
-  if (screen === 'saved') return <Saved visit={visit} goToScreen={goToScreen} />   
+  if (screen === 'saved') return <Saved visit={visit} goToScreen={goToScreen} openCard={openCard} />   
   if (screen === 'review') return <ReviewSend visit={visit} setVisit={setVisit} goToScreen={goToScreen} />
   if (screen === 'measure') return <HowWeMeasured goToScreen={goToScreen} />
   if (screen === 'rules') return <Rules goToScreen={goToScreen} />
-  if (screen === 'family') return <Family goToScreen={goToScreen} />
+  if (screen === 'family') return <Family goToScreen={goToScreen} openCard={openCard} />
   if (screen === 'demo') {
     const lang = getLang()
     return (

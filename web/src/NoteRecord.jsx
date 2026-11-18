@@ -63,7 +63,7 @@ export default function NoteRecord({ visit, setVisit, goToScreen }) {
     addRecent({ id: cid.current, code: r.code, level, patient, ts: Date.now(), sent: false, reached: false })
     const text = r.ok ? x.stepSaved : x.stepSavedPhone
     // Family copy: the same record, kept on this phone, that the family can export (A1).
-    addFam(makeRecord({ id: cid.current, code: r.code, patient, signs: visit.signs, answers: visit.answers, level, ageDays: totalDays, advised, demo: !!localStorage.getItem('demoMode') }))
+    addFam(makeRecord({ id: cid.current, code: r.code, patient, signs: visit.signs, answers: visit.answers, level, ageDays: totalDays, advised, demo: !!localStorage.getItem('demoMode'), ashaPhone: localStorage.getItem('ashaPhone') || '' }))
     setVisit((v) => ({
       ...v,
       clientId: cid.current,

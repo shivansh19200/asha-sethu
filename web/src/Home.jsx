@@ -11,6 +11,7 @@ import { X } from './i18n'
 import LevelPill from './Pill'
 import { announceLang } from './ui'
 import { getRecent, followups, patchRecent, ago, dueAt } from './recent'
+import { getFam } from './family'
 
 const nameMap = (lang) => Object.fromEntries(rules.signs.map((s) => [s.id, lang === 'hi' ? s.name_hi : s.name_en]))
 const startVisit = (goToScreen, type) => { localStorage.removeItem('priorCode'); localStorage.removeItem('demoMode'); document.body.classList.remove('demo-on'); goToScreen('describe', type) }
@@ -166,7 +167,7 @@ export default function Home({ goToScreen }) {
       </div>
 
       <button type="button" className="home-demo" onClick={() => goToScreen('demo')}>{m.demoLink}</button>
-      <button type="button" className="home-fam" onClick={() => goToScreen('family')}>{x.famLink}</button>
+      <button type="button" className="home-fam" onClick={() => goToScreen('family')}>{x.famLink}{getFam().length ? ` (${getFam().length})` : ''}</button>
       {!online && <div className="home-offline" role="status">{x.offlineNote}</div>}
 
       {/* Follow-ups and recent visits (real data from this phone) */}

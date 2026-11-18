@@ -1,0 +1,67 @@
+/* Entry screen, Family mode, Family Card, scanner, speaker button */
+.entry { min-height: 100vh; min-height: 100dvh; box-sizing: border-box; padding: 16px 20px 28px; display: flex; flex-direction: column; gap: 14px; background: var(--bg); color: var(--ink); }
+.entry-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+.entry-h { margin: 18px 0 6px; font-size: 28px; line-height: 1.25; font-weight: 500; }
+.entry-tile, .fh-receive { display: flex; align-items: center; gap: 16px; width: 100%; min-height: 104px; padding: 18px; box-sizing: border-box; text-align: left; font: inherit; color: var(--ink); background: var(--card); border: 1.5px solid var(--bds); border-radius: 20px; cursor: pointer; transition: transform 120ms ease-out, background 160ms; }
+.entry-tile:active, .fh-receive:active { transform: scale(.98); background: var(--sky); }
+.entry-tile:focus-visible, .fh-receive:focus-visible, .fh-card:focus-visible, .spk:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+.entry-tile.fam, .fh-receive { border-color: var(--pri); }
+.entry-ico { flex: none; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 16px; background: var(--sky); color: var(--skyink); }
+.entry-txt { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.entry-txt b { font-size: 20px; font-weight: 500; line-height: 1.25; }
+.entry-txt small { font-size: 15px; color: var(--mut); line-height: 1.35; }
+.entry-note { margin: 6px 0 0; font-size: 14px; color: var(--mut); text-align: center; }
+.entry-foot { margin: auto 0 0; font-size: 12px; color: var(--mut); text-align: center; }
+
+.fh .entry-top { margin-bottom: 14px; }
+.fh-receive { margin: 4px 0 16px; min-height: 92px; background: var(--sky); }
+.fh-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.fh-card { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 72px; padding: 12px 14px; box-sizing: border-box; font: inherit; text-align: left; color: var(--ink); background: var(--card); border: 1px solid var(--bd); border-left-width: 8px; border-radius: 14px; cursor: pointer; }
+.fh-card:active { background: var(--sky); }
+.fh-card svg { flex: none; transform: rotate(180deg); color: var(--mut); }
+.lvb-red { border-left-color: #B3261E; } .lvb-amber, .lvb-unsure { border-left-color: #C77700; } .lvb-green { border-left-color: #1E7A3C; }
+.fh-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.fh-main b { font-weight: 500; font-size: 17px; }
+.fh-main small { font-size: 13px; color: var(--mut); }
+.fh-empty { margin: 10px 0 18px; padding: 18px 8px; }
+.fh-store { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin: 6px 0 10px; font-size: 13px; color: var(--mut); }
+
+.fc-hero { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 22px 18px; border-radius: 22px; text-align: center; }
+.fc-word { font-size: 30px; font-weight: 500; line-height: 1.1; }
+.fc-sentence { margin: 0; font-size: 22px; line-height: 1.35; font-weight: 500; }
+.fc-hero .spk { margin-top: 6px; color: inherit; border-color: currentColor; background: transparent; }
+.fc-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin: 12px 2px 0; font-size: 15px; color: var(--mut); }
+.fc-short { margin: 16px 0; padding: 12px; border-radius: 12px; background: var(--sky); color: var(--skyink); font-size: 15px; }
+.fc-contact { display: grid; gap: 10px; margin: 18px 0 8px; }
+.fc-contact .fc-a, .fc-a { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0; text-decoration: none; box-sizing: border-box; }
+.fc-contact .sx-fill { margin-top: 0; }
+.fc-nophone { margin: 18px 0 8px; padding: 14px; border: 1px dashed var(--bds); border-radius: 14px; font-size: 15px; }
+.fc-phrow { display: flex; gap: 8px; margin-top: 6px; align-items: center; }
+.fc-phrow .sx-input { flex: 1; min-width: 0; }
+.fc-warn { display: flex; gap: 10px; align-items: flex-start; margin: 14px 0 18px; padding: 12px 14px; border-radius: 14px; background: var(--ambbg); color: var(--ambink); font-size: 16px; line-height: 1.4; }
+.fc-warn svg { flex: none; margin-top: 2px; }
+
+.sc-hint { margin: 0 0 12px; font-size: 16px; color: var(--mut); }
+.sc-view { position: relative; width: 100%; aspect-ratio: 1; border-radius: 20px; overflow: hidden; background: #0b1512; }
+.sc-view video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sc-c { position: absolute; width: 38px; height: 38px; border: 4px solid #fff; opacity: .9; }
+.sc-c.tl { top: 14px; left: 14px; border-right: 0; border-bottom: 0; border-top-left-radius: 12px; }
+.sc-c.tr { top: 14px; right: 14px; border-left: 0; border-bottom: 0; border-top-right-radius: 12px; }
+.sc-c.bl { bottom: 14px; left: 14px; border-right: 0; border-top: 0; border-bottom-left-radius: 12px; }
+.sc-c.br { bottom: 14px; right: 14px; border-left: 0; border-top: 0; border-bottom-right-radius: 12px; }
+.sc-wait { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 16px; background: rgba(11, 21, 18, .55); }
+
+.spk { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; margin: 10px 0 0; font: inherit; font-size: 16px; font-weight: 500; color: var(--acc); background: transparent; border: 1.5px solid var(--bds); border-radius: 999px; cursor: pointer; }
+.spk[aria-pressed="true"] { background: var(--sky); }
+
+@media (prefers-reduced-motion: reduce) { .entry-tile, .fh-receive { transition: none; } }
+@media (max-width: 340px) { .entry-h { font-size: 24px; } .fc-sentence { font-size: 20px; } }
+
+.settings-hint { margin-top: 6px; font-size: 13px; color: var(--mut); line-height: 1.4; }
+.settings-err { margin-top: 6px; padding: 8px 10px; border-radius: 10px; font-size: 14px; background: var(--ambbg); color: var(--ambink); }
+
+/* the language switch is the first thing a new user touches: make it a full-size target here */
+.entry-top .seg-lang button { min-height: 44px; min-width: 52px; }
+
+/* family-facing controls are at least 48px tall */
+.fh .sx-link, .fc .sx-link, .fh .sx-btn.sm, .fc .sx-btn.sm, .fh .fam-ask .sx-btn.sm, .fc .fam-ask .sx-btn.sm { min-height: 48px; }

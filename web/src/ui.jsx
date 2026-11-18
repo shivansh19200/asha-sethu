@@ -31,6 +31,12 @@ const PATHS = {
   bulb: <><path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7" /><path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3" /><path d="M9.7 17l4.6 0" /></>,
   book: <><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" /><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" /><path d="M3 6l0 13" /><path d="M12 6l0 13" /><path d="M21 6l0 13" /></>,
   clock: <>{CIRCLE}<path d="M12 7v5l3 3" /></>,
+  scan: <><path d="M4 8V6a2 2 0 0 1 2 -2h2" /><path d="M4 16v2a2 2 0 0 0 2 2h2" /><path d="M16 4h2a2 2 0 0 1 2 2v2" /><path d="M16 20h2a2 2 0 0 0 2 -2v-2" /><path d="M7 12h10" /></>,
+  phone: <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />,
+  message: <><path d="M8 9h8" /><path d="M8 13h6" /><path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3z" /></>,
+  speaker: <><path d="M4 9v6h4l5 4V5L8 9z" /><path d="M16 9a4 4 0 0 1 0 6" /><path d="M18.5 6.5a8 8 0 0 1 0 11" /></>,
+  family: <><path d="M9 7a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M5 21v-1a4 4 0 0 1 4 -4h6a4 4 0 0 1 4 4v1" /><path d="M3 10a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M17 10a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /></>,
+  stetho: <><path d="M6 4v5a4 4 0 0 0 8 0V4" /><path d="M10 13v2a4 4 0 0 0 8 0v-2" /><path d="M18 11a2 2 0 1 0 0 4a2 2 0 0 0 0 -4" /></>,
 }
 
 export function Icon({ name, size = 20 }) {

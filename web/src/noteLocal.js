@@ -16,8 +16,8 @@ export function localNote({ patient, signs, level, age, code, asha, village, whe
     `${L.patient}: ${L[patient === 'mother' ? 'mother' : 'newborn']}${ageText ? `, ${ageText}` : ''}${code ? `, ${L.code} ${code}` : ''}`,
     `${L.level}: ${L.lv[level]}`,
     `${L.present}: ${signs.map((id) => names[id]).filter(Boolean).join('; ') || L.none}`,
-    `${L.asha}: ${asha || '-'}, ${village || '-'}`,
+    asha === null ? null : `${L.asha}: ${asha || '-'}, ${village || '-'}`, // asha === null: a family copy has no ASHA name
     `${L.date}: ${when}`,
     L.foot
-  ].join('\n')
+  ].filter((l) => l !== null).join('\n')
 }

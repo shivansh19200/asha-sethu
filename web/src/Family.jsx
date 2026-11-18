@@ -9,14 +9,16 @@ import { T } from './strings'
 import { M } from './more'
 import { X } from './i18n'
 import LevelPill from './Pill'
-import { getFam, delFam, buildFile, parseFile, mergeRecords, saveFile, fileName, shownLevel } from './family'
+import { getFam, delFam, buildFile, parseFile, mergeRecords, saveFile, fileName, shownLevel, storageInfo, loadDemoFamilies } from './family'
+import { Y, fmtBytes } from './i18n2'
 
 const SNAME = (lang) => Object.fromEntries(rules.signs.map((s) => [s.id, lang === 'hi' ? s.name_hi : s.name_en]))
 const day = (iso, lang) => new Date(iso).toLocaleDateString(lang === 'hi' ? 'hi-IN' : 'en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
 
-export default function Family({ goToScreen }) {
+export default function Family({ goToScreen, openCard }) {
   const lang = getLang()
   const x = X[lang]
+  const y = Y[lang]
   const t = T[lang]
   const m = M[lang]
   const names = SNAME(lang)
@@ -25,6 +27,8 @@ export default function Family({ goToScreen }) {
   const [asking, setAsking] = useState(null) // record_id waiting for delete confirmation
   const pick = useRef(null)
   const recs = getFam()
+  const info = storageInfo()
+  const demo = () => { const n = loadDemoFamilies(); setMsg({ kind: 'ok', text: y.demoLoaded(n) }); setTick(tick + 1) }
 
   const exportAll = async () => {
     if (!recs.length) { setMsg({ kind: 'err', text: x.famNone }); return }
@@ -64,6 +68,9 @@ export default function Family({ goToScreen }) {
         <input ref={pick} type="file" accept=".json,application/json" hidden onChange={onFile} />
       </div>
       <p className="sx-small fam-priv">{x.famPrivacy}</p>
+      <p className="sx-small fam-priv">{y.famBackupNote}</p>
+      <p className="sx-small fam-priv">{y.famStored(info.count, fmtBytes(info.bytes))}</p>
+      <button type="button" className="sx-btn sm line" style={{ marginTop: 10 }} onClick={demo}>{y.demoLoad}</button>
       {msg && <div role={msg.kind === 'err' ? 'alert' : 'status'} className={`fam-msg ${msg.kind}`}>{msg.text}</div>}
 
       {recs.length === 0 && (
@@ -83,7 +90,7 @@ export default function Family({ goToScreen }) {
                 <LevelPill level={sl.level} lang={lang} />
               </div>
               <div className="sx-small fam-line">{x.famWhen}: {day(r.created_at, lang)}{r.age_days ? ` · ${x.famAge}: ${x.famDays(r.age_days)}` : ''}</div>
-              <div className="sx-small fam-line">{x.famSigns}: {r.signs.map((id) => names[id]).join(', ') || x.famNoSigns}</div>
+              {!r.compact && <div className="sx-small fam-line">{x.famSigns}: {(r.signs || []).map((id) => names[id]).join(', ') || x.famNoSigns}</div>}
               {r.advised && <div className="sx-small fam-line">{x.famAdvice}: {r.advised}</div>}
               <div className="fam-chips">
                 {r.demo && <span className="sx-chip" style={{ fontSize: 11 }}>{x.famDemo}</span>}
@@ -98,7 +105,8 @@ export default function Family({ goToScreen }) {
                 </div>
               ) : (
                 <div className="fam-row">
-                  <button type="button" className="sx-btn sm line" onClick={() => exportOne(r)}>{x.famExportOne}</button>
+                  <button type="button" className="sx-btn sm line" onClick={() => openCard(r.record_id, 'family')}>{y.famHand}</button>
+                  {!r.compact && <button type="button" className="sx-btn sm line" onClick={() => exportOne(r)}>{x.famExportOne}</button>}
                   <button type="button" className="sx-btn sm line" onClick={() => setAsking(r.record_id)}>{x.famDelete}</button>
                 </div>
               )}

@@ -1,0 +1,75 @@
+id,lang,file,text
+q_nb_not_feeding,hi,web/public/audio/hi/q_nb_not_feeding.mp3,क्या बच्चा रोज़ से कम दूध पी रहा है?
+q_nb_fever,hi,web/public/audio/hi/q_nb_fever.mp3,क्या बच्चे का शरीर गर्म लग रहा है?
+q_nb_cold,hi,web/public/audio/hi/q_nb_cold.mp3,क्या बच्चे का शरीर बहुत ठंडा लग रहा है?
+q_nb_fast_breathing,hi,web/public/audio/hi/q_nb_fast_breathing.mp3,क्या बच्चा तेज़ सांस ले रहा है?
+q_nb_diff_breathing,hi,web/public/audio/hi/q_nb_diff_breathing.mp3,क्या बच्चे को सांस लेने में तकलीफ़ हो रही है?
+q_nb_fits,hi,web/public/audio/hi/q_nb_fits.mp3,क्या बच्चे को दौरे या झटके आए हैं?
+q_nb_sleepy,hi,web/public/audio/hi/q_nb_sleepy.mp3,क्या बच्चा बहुत सुस्त है या जगाने पर नहीं जागता?
+q_nb_yellow,hi,web/public/audio/hi/q_nb_yellow.mp3,क्या बच्चे की हथेली या तलवे पीले हैं?
+q_nb_cord,hi,web/public/audio/hi/q_nb_cord.mp3,क्या नाभि में मवाद या लालिमा है?
+q_nb_no_cry,hi,web/public/audio/hi/q_nb_no_cry.mp3,क्या बच्चा जन्म के समय नहीं रोया?
+q_m_headache,hi,web/public/audio/hi/q_m_headache.mp3,क्या माँ को सिरदर्द है?
+q_m_vision,hi,web/public/audio/hi/q_m_vision.mp3,क्या माँ को धुंधला दिख रहा है?
+q_m_fits,hi,web/public/audio/hi/q_m_fits.mp3,क्या माँ को दौरे पड़े हैं?
+q_m_bleeding,hi,web/public/audio/hi/q_m_bleeding.mp3,क्या माँ को बहुत ज़्यादा खून बह रहा है?
+q_m_belly_pain,hi,web/public/audio/hi/q_m_belly_pain.mp3,क्या माँ के पेट में तेज़ दर्द है?
+q_m_breathless,hi,web/public/audio/hi/q_m_breathless.mp3,क्या माँ की सांस फूल रही है?
+q_m_baby_less,hi,web/public/audio/hi/q_m_baby_less.mp3,क्या पेट में बच्चा रोज़ से कम हिल रहा है?
+q_m_swelling,hi,web/public/audio/hi/q_m_swelling.mp3,क्या चेहरे या हाथों में सूजन है?
+q_m_water,hi,web/public/audio/hi/q_m_water.mp3,क्या समय से पहले पानी बह रहा है?
+q_m_fever,hi,web/public/audio/hi/q_m_fever.mp3,क्या माँ को बुखार है?
+q_m_foul_discharge,hi,web/public/audio/hi/q_m_foul_discharge.mp3,क्या बदबूदार स्राव है?
+q_nb_chest_indrawing,hi,web/public/audio/hi/q_nb_chest_indrawing.mp3,क्या हर साँस के साथ बच्चे की छाती अंदर धँस रही है?
+q_nb_skin_pus,hi,web/public/audio/hi/q_nb_skin_pus.mp3,क्या बच्चे की त्वचा पर फुंसियाँ या मवाद है?
+q_nb_eye_pus,hi,web/public/audio/hi/q_nb_eye_pus.mp3,क्या बच्चे की आँखों में सूजन या मवाद है?
+q_nb_loose_stools,hi,web/public/audio/hi/q_nb_loose_stools.mp3,क्या बच्चे को पतले या पानी जैसे दस्त हैं?
+q_m_faint,hi,web/public/audio/hi/q_m_faint.mp3,क्या माँ बेहोश हुई?
+q_m_vag_bleed_preg,hi,web/public/audio/hi/q_m_vag_bleed_preg.mp3,क्या गर्भावस्था में योनि से खून आ रहा है?
+q_m_early_labour,hi,web/public/audio/hi/q_m_early_labour.mp3,क्या नौवें महीने से पहले प्रसव का दर्द है?
+q_m_pale_weak,hi,web/public/audio/hi/q_m_pale_weak.mp3,क्या माँ बहुत पीली या बहुत कमज़ोर है?
+q_m_urine_burning,hi,web/public/audio/hi/q_m_urine_burning.mp3,क्या पेशाब में जलन या दर्द है?
+q_m_breast,hi,web/public/audio/hi/q_m_breast.mp3,"क्या स्तन में दर्द, सूजन या लालिमा है?"
+q_m_stitches,hi,web/public/audio/hi/q_m_stitches.mp3,"क्या टाँकों में दर्द, लालिमा या मवाद है?"
+q_m_vomiting,hi,web/public/audio/hi/q_m_vomiting.mp3,क्या लगातार उल्टी हो रही है?
+q_nb_not_feeding,en,web/public/audio/en/q_nb_not_feeding.mp3,Is the baby feeding less than usual?
+q_nb_fever,en,web/public/audio/en/q_nb_fever.mp3,Does the baby's body feel hot?
+q_nb_cold,en,web/public/audio/en/q_nb_cold.mp3,Does the baby's body feel very cold?
+q_nb_fast_breathing,en,web/public/audio/en/q_nb_fast_breathing.mp3,Is the baby breathing fast?
+q_nb_diff_breathing,en,web/public/audio/en/q_nb_diff_breathing.mp3,Is the baby struggling to breathe?
+q_nb_fits,en,web/public/audio/en/q_nb_fits.mp3,Has the baby had fits or jerking?
+q_nb_sleepy,en,web/public/audio/en/q_nb_sleepy.mp3,Is the baby very sleepy or hard to wake?
+q_nb_yellow,en,web/public/audio/en/q_nb_yellow.mp3,Are the baby's palms or soles yellow?
+q_nb_cord,en,web/public/audio/en/q_nb_cord.mp3,Is there pus or redness at the cord?
+q_nb_no_cry,en,web/public/audio/en/q_nb_no_cry.mp3,Did the baby not cry at birth?
+q_m_headache,en,web/public/audio/en/q_m_headache.mp3,Does the mother have a headache?
+q_m_vision,en,web/public/audio/en/q_m_vision.mp3,Does the mother have blurred vision?
+q_m_fits,en,web/public/audio/en/q_m_fits.mp3,Has the mother had fits?
+q_m_bleeding,en,web/public/audio/en/q_m_bleeding.mp3,Is the mother bleeding heavily?
+q_m_belly_pain,en,web/public/audio/en/q_m_belly_pain.mp3,Does the mother have severe belly pain?
+q_m_breathless,en,web/public/audio/en/q_m_breathless.mp3,Is the mother short of breath?
+q_m_baby_less,en,web/public/audio/en/q_m_baby_less.mp3,Is the baby moving less than usual?
+q_m_swelling,en,web/public/audio/en/q_m_swelling.mp3,Is there swelling of the face or hands?
+q_m_water,en,web/public/audio/en/q_m_water.mp3,Is water leaking before the due time?
+q_m_fever,en,web/public/audio/en/q_m_fever.mp3,Does the mother have fever?
+q_m_foul_discharge,en,web/public/audio/en/q_m_foul_discharge.mp3,Is there foul-smelling discharge?
+q_nb_chest_indrawing,en,web/public/audio/en/q_nb_chest_indrawing.mp3,Is the baby's chest drawing in with each breath?
+q_nb_skin_pus,en,web/public/audio/en/q_nb_skin_pus.mp3,Does the baby have skin boils or pus spots?
+q_nb_eye_pus,en,web/public/audio/en/q_nb_eye_pus.mp3,Are the baby's eyes swollen or draining pus?
+q_nb_loose_stools,en,web/public/audio/en/q_nb_loose_stools.mp3,Does the baby have loose or watery stools?
+q_m_faint,en,web/public/audio/en/q_m_faint.mp3,Did the mother faint or lose consciousness?
+q_m_vag_bleed_preg,en,web/public/audio/en/q_m_vag_bleed_preg.mp3,Is there bleeding from the vagina during pregnancy?
+q_m_early_labour,en,web/public/audio/en/q_m_early_labour.mp3,Does she have labour pains before the ninth month?
+q_m_pale_weak,en,web/public/audio/en/q_m_pale_weak.mp3,Is the mother very pale or very weak?
+q_m_urine_burning,en,web/public/audio/en/q_m_urine_burning.mp3,Is there burning or pain when passing urine?
+q_m_breast,en,web/public/audio/en/q_m_breast.mp3,"Is a breast painful, swollen or red?"
+q_m_stitches,en,web/public/audio/en/q_m_stitches.mp3,"Is there pain, redness or pus at the stitches?"
+q_m_vomiting,en,web/public/audio/en/q_m_vomiting.mp3,Is she vomiting again and again?
+"lvl_RED","hi","web/public/audio/hi/lvl_RED.mp3","अभी अस्पताल जाएँ।"
+"lvl_AMBER","hi","web/public/audio/hi/lvl_AMBER.mp3","आज स्वास्थ्य केंद्र जाएँ।"
+"lvl_GREEN","hi","web/public/audio/hi/lvl_GREEN.mp3","कोई ख़तरे का लक्षण नहीं मिला। घर पर निगरानी रखें।"
+"lvl_RED","en","web/public/audio/en/lvl_RED.mp3","Go to the hospital now."
+"lvl_AMBER","en","web/public/audio/en/lvl_AMBER.mp3","Go to the health centre today."
+"lvl_GREEN","en","web/public/audio/en/lvl_GREEN.mp3","No danger signs found. Watch at home."
+"lvl_UNSURE","hi","web/public/audio/hi/lvl_UNSURE.mp3","आपकी आशा ख़तरे से इनकार नहीं कर सकीं। कृपया अपनी आशा या डॉक्टर से पूछें।"
+"lvl_UNSURE","en","web/public/audio/en/lvl_UNSURE.mp3","Your ASHA could not rule out danger. Please ask your ASHA or a doctor."

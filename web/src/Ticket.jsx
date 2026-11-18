@@ -10,9 +10,9 @@ import { X } from './i18n'
 // It carries the same referral note the ASHA reviewed (English, for the doctor) plus the rules version.
 export const ticketText = (noteEn) => `${noteEn}\nAsha Sethu rules v${rules.version}`
 
-function makeQr(text) {
+function makeQr(text, ecc = 'M') {
   try {
-    const q = qrcode(0, 'M')
+    const q = qrcode(0, ecc)
     q.addData(text, 'Byte')
     q.make()
     const n = q.getModuleCount()
@@ -22,10 +22,11 @@ function makeQr(text) {
   } catch { return null }
 }
 
-export default function Ticket({ text, onClose }) {
+// title, hint, small, ecc let the same sheet carry the hand-over code for the family's phone.
+export default function Ticket({ text, onClose, title, hint, small, ecc = 'M' }) {
   const lang = getLang()
   const x = X[lang]
-  const qr = useMemo(() => makeQr(text), [text])
+  const qr = useMemo(() => makeQr(text, ecc), [text, ecc])
   useEffect(() => {
     const k = (e) => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', k)
@@ -34,16 +35,16 @@ export default function Ticket({ text, onClose }) {
   // Portal: the screen has a transform animation, which would turn this fixed overlay into a screen-sized box.
   return createPortal(
     <div className="qr-back" onClick={onClose}>
-      <div className="qr-sheet" role="dialog" aria-modal="true" aria-label={x.qrTitle} onClick={(e) => e.stopPropagation()}>
-        <h2>{x.qrTitle}</h2>
+      <div className="qr-sheet" role="dialog" aria-modal="true" aria-label={title || x.qrTitle} onClick={(e) => e.stopPropagation()}>
+        <h2>{title || x.qrTitle}</h2>
         {qr ? (
           <svg className="qr-code" viewBox={`0 0 ${qr.n + 8} ${qr.n + 8}`} role="img" aria-label="QR" shapeRendering="crispEdges">
             <rect width="100%" height="100%" fill="#fff" />
             <path d={qr.d} fill="#000" />
           </svg>
         ) : <div className="qr-err" role="alert">{x.qrTooLong}</div>}
-        <p>{x.qrHint}</p>
-        <p className="qr-small">{x.qrLang}</p>
+        <p>{hint || x.qrHint}</p>
+        <p className="qr-small">{small || x.qrLang}</p>
         <button type="button" className="sx-fill" onClick={onClose}>{x.qrClose}</button>
       </div>
     </div>,

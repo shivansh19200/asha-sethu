@@ -1,0 +1,5 @@
+{
+  "_note": "Lists the recorded clips that exist, per language. A clip is /audio/<lang>/<id>.mp3. See docs/audio_script.csv for the exact text to record. Until a clip is listed here the speaker button uses the phone's own voice (if it has one for the language), or is hidden.",
+  "hi": [],
+  "en": []
+}
