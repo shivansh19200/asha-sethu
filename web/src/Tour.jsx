@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { startScenario, SCENARIOS } from './Demo'
 import { getLang } from './ui'
 import './tour.css'
@@ -24,7 +24,7 @@ const STEPS = [
   { sel: P + '.sx-fill', audio: 'hi_04_continue', title: 'Continue', text: 'Tap Continue.', hi: ['आगे बढ़ें', '"आगे बढ़ें" दबाइए।'], click: true },
   { sel: P + '.sx-chips', audio: 'hi_05_signs', title: 'Signs found', text: 'Plain rules found "Not feeding". Anything the AI only suggests carries an "AI suggested" tag and counts only after she taps it.', hi: ['मिले हुए लक्षण', 'देखिए, ऐप ने पहचान लिया, "दूध नहीं पी रहा"। कभी AI भी कोई लक्षण सुझाता है। तब उस पर "AI ने सुझाया" लिखा होता है। और वह तभी जुड़ता है जब आप उसे टैप करें।'], next: true },
   { sel: P + '.sx-fill', audio: 'hi_06_confirm', title: 'Confirm', text: 'Tap Confirm. She stays in charge.', hi: ['पुष्टि करें', 'सब ठीक लगे तो "पुष्टि करें" दबाइए। आख़िरी फ़ैसला हमेशा आपका ही रहता है।'], click: true },
-  { sel: P + '.sx-qtext', wait: P + '.sx-banner', audio: 'hi_07_agent', title: 'The agent asks', text: 'It asks only a question that could change the danger level, from a doctor-reviewed bank. Tap No to each one. "Show result now" is always available and never gives Green.', hi: ['ऐप सवाल पूछता है', 'अब ऐप कुछ सवाल पूछेगा। सिर्फ़ वही, जिनसे ख़तरे का स्तर बदल सकता है। ये सवाल डॉक्टर ने देखे हुए हैं। यहाँ हर सवाल पर "नहीं" दबाते जाइए। जल्दी हो, तो "अभी परिणाम दिखाएँ" दबा सकती हैं। उसमें ऐप कभी "हरा" नहीं दिखाएगा।'], hint: true },
+  { sel: P + '.sx-qtext', wait: P + '.sx-banner', audio: 'hi_07_agent', title: 'The agent asks', text: 'It asks only a question that could change the danger level, from a doctor-reviewed bank. Tap No to each one. "Show result now" is always available and never gives Green.', hi: ['ऐप सवाल पूछता है', 'अब ऐप कुछ सवाल पूछेगा। सिर्फ़ वही, जिनसे ख़तरे का स्तर बदल सकता है। ये सवाल डॉक्टर ने देखे हुए हैं। यहाँ हर सवाल पर "नहीं" दबाते जाइए। जल्दी हो, तो "अभी परिणाम दिखाएँ" दबा सकती हैं। उसमें ऐप कभी "हरा" नहीं दिखाएगा।'], hint: true, compact: true, short: { en: 'Tap No on each question.', hi: 'हर सवाल पर "नहीं" दबाइए।' } },
   { sel: P + '.sx-banner', audio: 'hi_08_result', title: 'The result', text: 'Amber means go to the health centre today. Red means go to the hospital now. If it says Unsure, check the list again or ask a doctor.', hi: ['नतीजा', 'ये रहा नतीजा, पीला। पीले का मतलब, आज ही स्वास्थ्य केंद्र जाना है। लाल आए तो अभी अस्पताल। और अगर "अनिश्चित" आए, तो सूची एक बार फिर देख लीजिए या डॉक्टर से पूछ लीजिए।'], next: true },
   { sel: P + '.sx-steps', audio: 'hi_09_steps', title: 'What the app did', text: 'Below you can see what the app did. Take a look if you want.', hi: ['ऐप ने क्या किया', 'नीचे आप देख सकती हैं कि ऐप ने क्या-क्या किया। चाहें तो एक नज़र डाल लीजिए।'], next: true },
   { sel: P + '.sx-fill', audio: 'hi_10_review', title: 'Review and send', text: 'Tap Review and send. Nothing has been sent yet.', hi: ['समीक्षा करें और भेजें', 'अब "समीक्षा करें और भेजें" दबाइए। अभी तक कुछ भी भेजा नहीं गया है।'], click: true },
@@ -34,6 +34,8 @@ const STEPS = [
   { id: 'end', audio: 'hi_14_end', title: 'Done', text: 'That was quick. The visit took just a few taps, no long form, no hassle. And the doctor has the news.', hi: ['विज़िट पूरी', 'देखिए, बस कुछ ही टैप में विज़िट पूरी हो गई। न लंबा फ़ॉर्म, न कोई झंझट। और डॉक्टर तक ख़बर भी पहुँच गई।'], cta: 'Open care team view', end: true }
 ]
 
+const SpeakerOn = <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z" /><path d="M15.5 8.5a5 5 0 0 1 0 7" /><path d="M18.5 5.5a9 9 0 0 1 0 13" /></svg>
+const SpeakerOff = <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z" /><path d="M22 9l-6 6" /><path d="M16 9l6 6" /></svg>
 // Labels around the tooltip. Hindi wording needs a Hindi reader's check.
 const UI = {
   en: { guided: 'Guided demo', step: (n, m) => `Step ${n} of ${m}`, skipTour: 'Skip tour', skipStep: 'Skip step', back: 'Back', next: 'Next', start: 'Start the visit', replay: 'Replay', care: 'Open care team view', tapDesk: 'Tap the highlighted button in the phone.', tapPhone: 'Tap the highlighted button.', keep: 'Keep answering. The tour continues at the result.', mute: 'Mute voice', unmute: 'Voice on' },
@@ -48,6 +50,10 @@ export default function Tour() {
   const [i, setI] = useState(-1)
   const [rect, setRect] = useState(null)
   const [phone, setPhone] = useState(null)
+  const [tipH, setTipH] = useState(0)
+  const [, bump] = useState(0)
+  const innerRef = useRef(null)
+  const prevRect = useRef(null)
   const idx = useRef(i)
   idx.current = i
   const step = STEPS[i]
@@ -90,6 +96,13 @@ export default function Tour() {
     if (i < 0 && audioRef.current) audioRef.current.pause()
   }, [i])
 
+  // re-measure on rotation or when the browser bar shows or hides
+  useEffect(() => {
+    const f = () => bump((n) => n + 1)
+    window.addEventListener('resize', f)
+    return () => window.removeEventListener('resize', f)
+  }, [])
+
   const close = () => { if (audioRef.current) audioRef.current.pause(); setI(-1); setRect(null) }
   const go = (n) => setI(Math.max(0, Math.min(STEPS.length - 1, n)))
 
@@ -129,6 +142,11 @@ export default function Tour() {
     return () => { live = false; cancelAnimationFrame(raf); clearTimeout(ta); document.removeEventListener('click', onClick, true) }
   }, [i])
 
+  const compact = !!step && !!step.compact && !DESK
+  useLayoutEffect(() => {
+    if (innerRef.current) { const h = innerRef.current.offsetHeight; if (h && h !== tipH) setTipH(h) }
+  })
+
   if (i < 0) return null
   const start = () => { startScenario(scenario()); document.querySelector('.phone-wrap')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); go(1) }
   const w = 350
@@ -136,25 +154,33 @@ export default function Tour() {
   const left = ph.left > w + 30 ? ph.left - w - 22 : ph.right + 18
   const top = rect ? Math.min(Math.max(rect.top + rect.height / 2 - 110, 76), window.innerHeight - 280) : Math.max(96, window.innerHeight / 2 - 160)
   const dots = STEPS.length
-  // phone: full-width card, at the bottom unless the highlighted control is in the lower half
-  const tipStyle = DESK ? { left, top, width: w } : { left: 12, right: 12, ...(rect && rect.top + rect.height / 2 > window.innerHeight / 2 ? { top: 12 } : { bottom: 12 }) }
+  // phone: full-width card, at the bottom unless the highlighted control is in the lower half.
+  // The question step is pinned to the top so the answer buttons stay free.
+  const vh = window.innerHeight
+  const hTip = tipH || 240
+  const atTop = step.compact && !DESK ? true : !!rect && rect.top + rect.height / 2 > vh / 2
+  const tipStyle = DESK ? { left, top, width: w, height: tipH || undefined } : { left: 12, right: 12, top: atTop ? 12 : Math.max(12, vh - 12 - hTip), height: tipH || undefined }
+  if (rect) prevRect.current = rect
+  const spotRect = rect || prevRect.current || { top: vh / 2, left: window.innerWidth / 2, width: 0, height: 0 }
 
   return (
     <>
-      {rect && step.sel && <div className={`tr-spot ${step.click ? 'pulse' : ''} ${anim ? 'anim' : ''}`} style={{ top: rect.top - 6, left: rect.left - 6, width: rect.width + 12, height: rect.height + 12 }} />}
-      {!rect && <div className="tr-dim" />}
-      <div className={`tr-tip ${anim ? 'anim' : ''}`} style={tipStyle} role="dialog" aria-live="polite">
-        <div className="tr-prog"><span>{i === 0 ? L.guided : L.step(Math.min(i, dots - 2), dots - 2)}</span><span>{lang === 'hi' && <button type="button" onClick={toggleMute}>{muted ? L.unmute : L.mute}</button>} <button type="button" onClick={close} aria-label={L.skipTour}>{L.skipTour}</button></span></div>
+      {<div className={`tr-spot ${step.click ? 'pulse' : ''} ${anim ? 'anim' : ''} ${rect && step.sel ? 'on' : ''}`} style={{ top: spotRect.top - 6, left: spotRect.left - 6, width: spotRect.width + 12, height: spotRect.height + 12 }} />}
+      <div className={`tr-dim ${rect && step.sel ? '' : 'on'}`} />
+      <div className={`tr-tip ${DESK ? (anim ? 'anim' : '') : 'mob'}`} style={tipStyle} role="dialog" aria-live="polite">
+        <div className="tr-in" ref={innerRef} key={i}>
+        <div className="tr-prog"><span>{i === 0 ? L.guided : L.step(Math.min(i, dots - 2), dots - 2)}</span><span>{lang === 'hi' && <button type="button" className="tr-icon" onClick={toggleMute} aria-label={muted ? L.unmute : L.mute} aria-pressed={muted} title={muted ? L.unmute : L.mute}>{muted ? SpeakerOff : SpeakerOn}</button>} <button type="button" onClick={close} aria-label={L.skipTour}>{L.skipTour}</button></span></div>
         <h3>{lang === 'hi' && step.hi ? step.hi[0] : step.title}</h3>
-        <p>{lang === 'hi' && step.hi ? step.hi[1] : step.text}</p>
+        <p>{compact ? step.short[lang] : (lang === 'hi' && step.hi ? step.hi[1] : step.text)}</p>
         {step.click && <div className="tr-hint">{DESK ? L.tapDesk : L.tapPhone}</div>}
-        {step.hint && <div className="tr-hint">{L.keep}</div>}
-        <div className="tr-bar">
+        {step.hint && !compact && <div className="tr-hint">{L.keep}</div>}
+        {!compact && <div className="tr-bar">
           {i > 1 && !step.end && <button type="button" className="tr-ghost" onClick={() => go(i - 1)}>{L.back}</button>}
           {(step.click || step.hint) && !step.end && <button type="button" className="tr-ghost" onClick={() => go(i + 1)}>{L.skipStep}</button>}
           {step.next && <button type="button" className="tr-main" onClick={() => go(i + 1)}>{L.next}</button>}
           {step.start && <button type="button" className="tr-main" onClick={start}>{L.start}</button>}
           {step.end && <><button type="button" className="tr-ghost" onClick={() => { startScenario(scenario()); go(1) }}>{L.replay}</button><a className="tr-main" href="#care" onClick={close}>{L.care}</a></>}
+        </div>}
         </div>
       </div>
     </>

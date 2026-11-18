@@ -16,3 +16,23 @@
 
 .tr-spot.anim { transition: top 420ms cubic-bezier(.22,1,.36,1), left 420ms cubic-bezier(.22,1,.36,1), width 420ms cubic-bezier(.22,1,.36,1), height 420ms cubic-bezier(.22,1,.36,1); }
 .tr-tip.anim { transition: top 420ms cubic-bezier(.22,1,.36,1), left 420ms cubic-bezier(.22,1,.36,1); }
+
+/* speaker on/off icon button */
+.tr-prog { gap: 10px; }
+.tr-prog > span:last-child { display: inline-flex; align-items: center; gap: 12px; }
+.tr-prog .tr-icon { display: inline-grid; place-items: center; width: 36px; height: 36px; padding: 0; border-radius: 999px; border: 1px solid #C5D3CA; background: #F3F8F5; color: #0E6B4F; text-decoration: none; }
+.tr-prog .tr-icon[aria-pressed="true"] { color: #6B7D74; background: #fff; }
+
+/* smoother motion: spotlight glides and fades, tooltip moves and resizes, text swaps with a short fade */
+:root { --tr-io: cubic-bezier(.65, 0, .35, 1); --tr-out: cubic-bezier(.22, 1, .36, 1); }
+.tr-dim { position: fixed; inset: 0; z-index: 89; background: rgba(8, 32, 24, .6); opacity: 0; pointer-events: none; transition: opacity 500ms var(--tr-out); }
+.tr-dim.on { opacity: 1; }
+.tr-spot { opacity: 0; transition: opacity 500ms var(--tr-out); }
+.tr-spot.on { opacity: 1; }
+.tr-spot.anim { transition: top 650ms var(--tr-io), left 650ms var(--tr-io), width 650ms var(--tr-io), height 650ms var(--tr-io), opacity 500ms var(--tr-out); }
+.tr-tip { padding: 0; overflow: hidden; box-sizing: border-box; transition: height 420ms var(--tr-out); }
+.tr-tip.mob { transition: top 650ms var(--tr-io), height 420ms var(--tr-out); }
+.tr-tip.anim { transition: top 650ms var(--tr-io), left 650ms var(--tr-io), height 420ms var(--tr-out); }
+.tr-in { padding: 18px 20px; animation: trSwap 420ms var(--tr-out) both; }
+@keyframes trSwap { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .tr-dim, .tr-spot, .tr-tip, .tr-in { transition: none !important; animation: none !important; } }
